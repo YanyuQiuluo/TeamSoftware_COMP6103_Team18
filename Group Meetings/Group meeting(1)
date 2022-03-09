@@ -3,8 +3,12 @@ Date: March 9, 2022, 5pm to 7.30pm
 In today's meeting we mainly decided on the general appearance of our UI interface: home Page and Country List page.  
 We're going to use NodeJS.  
 data source : The details are still to be worked out. (We tentatively need the following data: Country name, GDP, Solar Power Intensity and Carbon offset)  
-  
+carbon benefits
+
 General division of labor:  
 web Front-end: Li Zeyu and Guo Yifei  
 web Back-end: Wang Yixiang and Zhou Yue  
 database: Alfitni Arwa
+  
+Some question:  
+1. How to get the household personal carbon footprint(client said we need to get it from third company)?
