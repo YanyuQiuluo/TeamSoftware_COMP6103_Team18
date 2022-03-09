@@ -11,4 +11,32 @@ web Back-end: Wang Yixiang and Zhou Yue
 database: Alfitni Arwa
   
 Some question:  
-1. How to get the household personal carbon footprint(client said we need to get it from third company)?
+1. How to get the household personal carbon footprint(client said we need to get it from third company)?  
+  
+Data need:
+a 'country' csv file with:
+1. country name. 
+2. gdp  
+3. carbon emissions 
+4. solar power intensity
+5. price of solar panel
+6. savings
+7. id//
+
+
+a 'user' csv file:
+1. name
+2. email
+3. telephone
+4. password
+5. savings
+6. Address 
+
+a 'transaction' csv file
+1. from whom
+2. to whom
+3. amount
+4. datetime
+
+
+
