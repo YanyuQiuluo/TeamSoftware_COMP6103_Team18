@@ -1,24 +1,22 @@
 var express = require('express');
 var router = express.Router();
 
-router.route("/login")
+router.route("/")
     .post(function (req,res){
-        let password=req.body.password;
-        let username=req.body.userName;
 
-        if(password!='123'||username!='123'){
+        let username=req.body.userName;
+        let password=req.body.password;
+        let email=req.body.email;
+        let telephone=req.body.telephone;
+        let savings=req.body.savings;
+        let address=req.body.address;
+
+        if(!username || !password || !email || !telephone || !savings || !address){
             res.setHeader('Content-Type', 'application/json');
             res.json('error');
         }
         res.setHeader('Content-Type', 'application/json');
-        res.json('login success');
-    });
-
-router.route("/register")
-    .post(function (req,res){
-        let password=req.body.password;
-        let username=req.body.userName;
-
+        res.json('Register success');
 
     });
 
