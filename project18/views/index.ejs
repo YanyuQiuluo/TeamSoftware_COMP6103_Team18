@@ -2,10 +2,287 @@
 <html>
   <head>
     <title><%= title %></title>
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
+    <!--
+    CSS
+    ============================================= -->
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="/stylesheets/linearicons.css">
+    <link rel="stylesheet" href="/stylesheets/font-awesome.min.css">
+    <link rel="stylesheet" href="/stylesheets/bootstrap.css">
+    <link rel="stylesheet" href="/stylesheets/magnific-popup.css">
+    <link rel="stylesheet" href="/stylesheets/nice-select.css">
+    <link rel="stylesheet" href="/stylesheets/animate.min.css">
+    <link rel="stylesheet" href="/stylesheets/owl.carousel.css">
+
+    <script src="javascript/vendor/jquery-2.2.4.min.js"></script>
+    <script src="javascript/popper.min.js"></script>
+    <script src="javascript/vendor/bootstrap.min.js"></script>
+
+    <script src="javascript/easing.min.js"></script>
+    <script src="javascript/hoverIntent.js"></script>
+    <script src="javascript/superfish.min.js"></script>
+    <script src="javascript/jquery.ajaxchimp.min.js"></script>
+    <script src="javascript/jquery.magnific-popup.min.js"></script>
+    <script src="javascript/owl.carousel.min.js"></script>
+    <script src="javascript/jquery.nice-select.min.js"></script>
+    <script src="javascript/mail-script.js"></script>
+    <script src="javascript/main.js"></script>
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+
+
+
+    <header id="header">
+      <div class="header-top">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6 col-sm-6 col-4 header-top-left no-padding">
+              <a href="tel:+XX XXX XXXX XXX">+XX XXX XXXX XXXX</a>
+              <a href="XXXXXX@XXXXXXXX">XXXXXX@XXXXXXXX</a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="container main-menu">
+        <div class="row align-items-center justify-content-between d-flex">
+          <div id="logo">
+            <a href="index.html"><img src="img/login.png" alt="" title="" /></a>
+          </div>
+          <nav id="nav-menu-container">
+            <ul class="nav-menu">
+              <li class="menu-active"><a href="index.html">Home</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="COUNTRY LIST.html">COUNTRY LIST</a></li>
+              <li><a href="DONATE.html">DONATE</a></li>
+              <li><a href="MY ACCOUNT.html">MY ACCOUNT</a></li>
+
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </nav><!-- #nav-menu-container -->
+        </div>
+      </div>
+    </header><!-- #header -->
+
+    <!-- start banner Area -->
+    <section class="banner-area relative" id="home">
+      <div class="overlay overlay-bg"></div>
+      <div class="container">
+        <div class="row fullscreen d-flex justify-content-center align-items-center">
+          <div class="banner-content col-lg-9 col-md-12 justify-content-center ">
+            <h1>
+              Reducing carbon footprint <br>
+              for our better world
+            </h1>
+            <p class="text-white mx-auto">
+
+              In the UK, if you are wishing to reduce the world's carbon footprint, you might do so by funding solar power in other countries.
+
+            </p>
+            <a href="#" class="primary-btn header-btn text-uppercase mt-10">Get Started</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End banner Area -->
+
+    <!-- Start service Area -->
+    <section class="service-area section-gap" id="service">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-12 pb-50 header-text text-center">
+            <h1 class="mb-10">What we can do for our users</h1>
+            <p>
+              Who are extremely want to help other countries to reduce carbon footprint.
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-4" onclick="window.open('About.html','_self')">
+            <div class="single-service" >
+              <!-- 这里可以跳转到ABOUT页面	-->
+              <a href="#"><h4>Background Story</h4></a>
+              <p>
+                Solar power is an increasingly important form of renewable energy, with many countries setting targets to achieve a certain amount of solar generation in the coming years. However...
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-4" onclick="window.open('Country Lists.html','_self')">
+            <div class="single-service">
+              <!--	这里可以跳转到Country lists	-->
+              <a href="#"><h4>Country Lists</h4></a>
+              <p>
+                This is a list of the countries we include. Each country on the list has a country name, its GDP, carbon emissions and solar Power Intensity...
+                <br />
+                <br />
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-4" onclick="window.open('Donate.html','_self')">
+            <div class="single-service">
+              <a href="#"><h4>Donate </h4></a>
+              <p>
+                Householders can compare carbon benefits for different countries, and choose the country you want to donate.
+                <br />
+                <br />
+                <br />
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End service Area -->
+
+    <!-- Start gallery Area -->
+    <section class="gallery-area pb-120">
+      <div class="container">
+        <div class="row d-flex justify-content-center">
+          <div class="col-md-12 pb-40 header-text text-center">
+            <h1 class="pb-10">The electricityMap</h1>
+            <p>
+              Carbon intensity of electricity consumed (gCO₂eq/kWh)(The darker the color, the more carbon intensity it consumes)
+            </p>
+          </div>
+        </div>
+        <a href="https://app.electricitymap.org/map" target="_blank"><div id="map">
+            <img src="img/carbon-intensity-of-electricity-consumed.png" alt="">
+          </div></a>
+      </div>
+    </section>
+    <!-- End gallery Area -->
+
+    <!-- Start feature Area -->
+
+    <!-- End feature Area -->
+
+    <!-- Start testimonial Area -->
+
+    <!-- End testimonial Area -->
+
+    <!-- Start callto-action Area -->
+
+    <!-- End callto-action Area -->
+
+    <!-- Start blog Area -->
+    <section class="blog-area section-gap">
+      <div class="container">
+        <div class="row d-flex justify-content-center">
+          <div class="menu-content pb-60 col-lg-9">
+            <div class="title text-center">
+              <h1 class="mb-10">Recommendation</h1>
+              <p>Countries that can contribute.</p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="active-blog-carusel">
+            <div class="single-blog-post item">
+              <div class="thumb">
+                <img class="img-fluid" src="img/country1.png" alt="">
+              </div>
+              <div class="details">
+
+                <a href="#"><h4 class="title">Country's name</h4></a>
+                <p>
+                  xxxxxxxxxx Introduction
+                </p>
+                <h6 class="date">31st January,2018</h6>
+              </div>
+            </div>
+            <div class="single-blog-post item">
+              <div class="thumb">
+                <img class="img-fluid" src="img/country2.png" alt="">
+              </div>
+              <div class="details">
+
+                <a href="#"><h4 class="title">Country's name</h4></a>
+                <p>
+                  xxxxxxxxxx Introduction
+                </p>
+                <h6 class="date">31st January,2018</h6>
+              </div>
+            </div>
+            <div class="single-blog-post item">
+              <div class="thumb">
+                <img class="img-fluid" src="img/country3.png" alt="">
+              </div>
+              <div class="details">
+
+                <a href="#"><h4 class="title">Country's name</h4></a>
+                <p>
+                  xxxxxxxxxx Introduction
+                </p>
+                <h6 class="date">31st January,2018</h6>
+              </div>
+            </div>
+            <div class="single-blog-post item">
+              <div class="thumb">
+                <img class="img-fluid" src="img/country4.png" alt="">
+              </div>
+              <div class="details">
+
+                <a href="#"><h4 class="title">Country's name</h4></a>
+                <p>
+                  xxxxxxxxxx Introduction
+                </p>
+                <h6 class="date">31st January,2018</h6>
+              </div>
+            </div>
+            <div class="single-blog-post item">
+              <div class="thumb">
+                <img class="img-fluid" src="img/country5.png" alt="">
+              </div>
+              <div class="details">
+
+                <a href="#"><h4 class="title">Country's name</h4></a>
+                <p>
+                  xxxxxxxxxx Introduction
+                </p>
+                <h6 class="date">31st January,2018</h6>
+              </div>
+            </div>
+            <div class="single-blog-post item">
+              <div class="thumb">
+                <img class="img-fluid" src="img/country6.png" alt="">
+              </div>
+              <div class="details">
+
+                <a href="#"><h4 class="title">Country's name</h4></a>
+                <p>
+                  xxxxxxxxxx Introduction
+                </p>
+                <h6 class="date">31st January,2018</h6>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End blog Area -->
+
+    <!-- Start brands Area -->
+
+    <!-- End brands Area -->
+
+    <!-- start footer Area -->
+    <div class="footer-nav-container">
+      <div class="footer-nav" role="navigation">
+        <div class="footer-nav-item hover-line"><a href="/About-Us">ABOUT US</a><div class="hover-nav"></div></div>
+        <div class="footer-nav-item hover-line"><a href="/About-Us/Contact-Us">CONTACT US</a><div class="hover-nav"></div></div>
+        <div class="footer-nav-item hover-line"><a href="/Magazines">MAGAZINES</a><div class="hover-nav"></div></div>
+        <div class="footer-nav-item hover-line"><a href="http://blog.nwf.org/">BLOG</a><div class="hover-nav"></div></div>
+        <div class="footer-nav-item hover-line"><a href="https://online.nwf.org/site/SPageNavigator/ActionCenter">ACTION FUND</a><div class="hover-nav"></div></div>
+        <div class="footer-nav-item hover-line"><a href="/About-Us/Careers">CAREERS</a><div class="hover-nav"></div></div>
+
+      </div>
+    </div>
+    <!-- End footer Area -->
+
+
+
   </body>
 </html>
