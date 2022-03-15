@@ -22,6 +22,9 @@ a 'country' csv file with:
 5. price of solar panel
 6. savings
 7. id//
+8. fuel usage
+9. electicity usage
+
 
 
 a 'user' csv file:
