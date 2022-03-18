@@ -9,9 +9,12 @@ router.route("/")
         res.setHeader('Content-Type', 'application/json');
 
         if(password!='123'||username!='123'){
+
+            res.json(['aaa','bbb','cccc']);
             res.json('error');
         }
         res.json('login success');
+
     });
 
 
