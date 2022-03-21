@@ -4,8 +4,6 @@ var router = express.Router();
 router.route("/")
     .post(function (req,res){
 
-
-
                 let country_id=req.body.country_id;
                 let country_name=req.body.country_name;
                 let gdp=req.body.gdp;
