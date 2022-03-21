@@ -1,3 +1,4 @@
+'use strict';
 $('#submit').on('click', function () {
 
     $('.tip1').css('display','none');
@@ -23,7 +24,8 @@ $('#submit').on('click', function () {
                 password: psd
             },
             success: function(res){
-                console.log('res')
+                console.log('res');
+                window.location.href='http://localhost:3000/'
             }
         });
     }
