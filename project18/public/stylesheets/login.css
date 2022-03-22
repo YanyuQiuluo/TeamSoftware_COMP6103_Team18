@@ -14,6 +14,13 @@ body {
     background-size: cover;
 }
 
+#body-register {
+    height: 100%;
+    background: #fff url(../img/background-register.png) 50% 50% no-repeat;
+    /*//Samuel Ferrara  https://unsplash.com/photos/1527pjeb6jg*/
+    background-size: cover;
+}
+
 .dowebok {
     position: absolute;
     left: 50%;
