@@ -4,7 +4,7 @@ var router = express.Router();
 
 router.route("/")
     .post(function (req,res){
-            let connection = require('./database');
+            let connection = require('../mode_js/database');
 
             let sql = "SELECT * FROM country";
             connection.query(sql,function (err,results){
