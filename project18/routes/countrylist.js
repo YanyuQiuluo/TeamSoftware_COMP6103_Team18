@@ -1,8 +1,20 @@
 var express = require('express');
 var router = express.Router();
+var connection = require('database');
 
 router.route("/")
     .post(function (req,res){
+
+
+
+        let sql = "SELECT * FROM country";
+        connection.query(sql,function (err,results){
+            if(err) throw err;
+            res.json(results);
+        });
+        return;
+
+
 
                 let country_id=req.body.country_id;
                 let country_name=req.body.country_name;
