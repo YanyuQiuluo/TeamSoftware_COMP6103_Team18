@@ -1,18 +1,28 @@
 var express = require('express');
 var router = express.Router();
 var connection = require('database');
+const mysql = require("mysql");
 
 router.route("/")
     .post(function (req,res){
+            const mysql = require('mysql');
 
+        // First you need to create a connection to the database
+        // Be sure to replace 'user' and 'password' with the correct values
+            const connection = mysql.createConnection({
+                    host: 'localhost',
+                    database: 'new_schema',
+                    user: 'root',
+                    password: '234567891'
 
+            });
 
-        let sql = "SELECT * FROM country";
-        connection.query(sql,function (err,results){
+            let sql = "SELECT * FROM country";
+            connection.query(sql,function (err,results){
             if(err) throw err;
             res.json(results);
-        });
-        return;
+            });
+            return;
 
 
 
