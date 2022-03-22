@@ -15,17 +15,23 @@ $('#submit').on('click', function () {
     } else if (!psd) {
         $('.tip2').show()
     } else {
+        let pageName = document.getElementById("login") ? 'login' : 'register'
         $.ajax({
             type: 'POST',
-            url: 'http://localhost:3000/login',
+            url: pageName === 'login' ? 'http://localhost:3000/login' : 'http://localhost:3000/register',
             dataType : 'json',
             data: {
                 userName: usn,
                 password: psd
             },
             success: function(res){
-                console.log('res');
-                window.location.href='http://localhost:3000/'
+                if (res === 'login success') {
+                    window.location.href='http://localhost:3000/'
+                } else if (res === 'Register success') {
+                    window.location.href='http://localhost:3000/loginPage'
+                } else {
+                    alert('error')
+                }
             }
         });
     }
