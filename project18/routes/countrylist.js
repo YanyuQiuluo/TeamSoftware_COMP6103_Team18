@@ -1,7 +1,5 @@
 var express = require('express');
 var router = express.Router();
-var connection = require('database');
-const mysql = require("mysql");
 
 router.route("/")
     .post(function (req,res){
