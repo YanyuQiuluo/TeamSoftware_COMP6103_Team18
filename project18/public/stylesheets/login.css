@@ -47,6 +47,16 @@ body {
     background: url(../img/login2.png) 0 0 no-repeat;
 }
 
+.form-top {
+    position: relative;
+    width: 360px;
+    margin: 0 auto;
+    padding-top: 30px;
+    padding-bottom: 50px;
+    text-align: center;
+    color: #fff;
+}
+
 .form-item {
     position: relative;
     width: 360px;
@@ -78,6 +88,14 @@ body {
     background-color: #fff;
 }
 
+.tip0 {
+    display: none;
+    position: absolute;
+    left: 20px;
+    top: 52px;
+    font-size: 14px;
+    color: #f50;
+}
 
 .tip1 {
     display: none;
