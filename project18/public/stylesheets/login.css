@@ -33,6 +33,13 @@ body {
     overflow: hidden;
 }
 
+#back-button{
+    height:50px;
+    position: absolute;
+    left:10px;
+    top:10px;
+}
+
 .logo {
     width: 104px;
     height: 104px;
