@@ -9,7 +9,15 @@ html {
 
 body {
     height: 100%;
-    background: #fff url(../img/backgroud.png) 50% 50% no-repeat;
+    background: #fff url(../img/background.png) 50% 50% no-repeat;
+    /*//Samuel Ferrara  https://unsplash.com/photos/1527pjeb6jg*/
+    background-size: cover;
+}
+
+#body-register {
+    height: 100%;
+    background: #fff url(../img/background-register.png) 50% 50% no-repeat;
+    /*//Samuel Ferrara  https://unsplash.com/photos/1527pjeb6jg*/
     background-size: cover;
 }
 
@@ -25,11 +33,28 @@ body {
     overflow: hidden;
 }
 
+#back-button{
+    height:75px;
+    position: absolute;
+    left:10px;
+    top:10px;
+}
+
 .logo {
     width: 104px;
     height: 104px;
     margin: 50px auto 80px;
     background: url(../img/login2.png) 0 0 no-repeat;
+}
+
+.form-top {
+    position: relative;
+    width: 360px;
+    margin: 0 auto;
+    padding-top: 30px;
+    padding-bottom: 50px;
+    text-align: center;
+    color: #fff;
 }
 
 .form-item {
@@ -40,9 +65,9 @@ body {
 }
 
 .form-item input {
-    width: 288px;
+    width: 333px;
     height: 48px;
-    padding-left: 70px;
+    padding-left: 25px;
     border: 1px solid #fff;
     border-radius: 25px;
     font-size: 18px;
@@ -63,12 +88,13 @@ body {
     background-color: #fff;
 }
 
-#username {
-    background: url(../img/emil.png) 20px 14px no-repeat;
-}
-
-#password {
-    background: url(../img/password.png) 23px 11px no-repeat;
+.tip0 {
+    display: none;
+    position: absolute;
+    left: 20px;
+    top: 52px;
+    font-size: 14px;
+    color: #f50;
 }
 
 .tip1 {
