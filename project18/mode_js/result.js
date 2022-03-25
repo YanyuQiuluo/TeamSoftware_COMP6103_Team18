@@ -3,7 +3,7 @@ var re={};
 re.suc=function (res,code="200"){
     return{
         code: code,
-        res: res,
+        result: res,
         msg:"success"
     }
 }
@@ -11,7 +11,7 @@ re.suc=function (res,code="200"){
 re.fail=function (msg,code="400"){
     return{
         code:code,
-        res: {},
+        result: {},
         msg:msg
     }
 }
