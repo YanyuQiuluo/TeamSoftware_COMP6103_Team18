@@ -28,13 +28,75 @@ $('#submit').on('click', function () {
                 password: psd
             },
             success: function(res){
-                if (res === 'Register success') {
-                    window.location.href='http://localhost:3000/loginPage'
-                } else {
-                    alert('error')
-                }
+                document.getElementById("emailInput").innerHTML = getEmailInput();
+                $('#information').css('display','none');
+                $('#emailVerify').show();
+                // if (res === 'Register success') {
+                //     window.location.href='http://localhost:3000/loginPage'
+                // } else {
+                //     alert('error')
+                // }
             }
         });
     }
 
 })
+
+$('#next').on('click', function () {
+    $('.tip0').css('display','none');
+    $('.tip1').css('display','none');
+    let emailCode = document.getElementById("emailCode").value
+
+    if (!emailCode) {
+        $('.tip0').show();
+    } else {
+        $.ajax({
+            type: 'POST',
+            url: 'http://localhost:3000/register',
+            dataType : 'json',
+            data: {
+                userName: emailCode
+            },
+            success: function(res){
+                document.getElementById("emailInput").innerHTML = getEmailInput();
+                $('#information').css('display','none');
+                $('#emailVerify').show();
+                // if (res === 'Register success') {
+                //     window.location.href='http://localhost:3000/loginPage'
+                // } else {
+                //     alert('error')
+                // }
+            }
+        });
+    }
+})
+
+$('#resend').on('click', function () {
+    $.ajax({
+        type: 'POST',
+        url: 'http://localhost:3000/register',
+        dataType : 'json',
+        data: {
+            email: email,
+            userName: usn,
+            password: psd
+        },
+        success: function(res){
+            // if (res === 'Register success') {
+            //     window.location.href='http://localhost:3000/loginPage'
+            // } else {
+            //     alert('error')
+            // }
+        }
+    });
+})
+
+$('#back').on('click', function () {
+    $('#emailVerify').css('display','none');
+    $('#information').show();
+})
+
+function getEmailInput(){
+    let email = document.getElementById("email").value + '. '
+    return email
+}
