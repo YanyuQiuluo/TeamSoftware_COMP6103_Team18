@@ -27,7 +27,7 @@ router.route("/")
                     return;
                 }
                 token =Tokens.onLogIn(re[0]);
-                res.json(result.suc(token));
+                res.json(result.success(token));
             });
 
 

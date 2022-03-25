@@ -1,4 +1,5 @@
 var express = require('express');
+const result = require("../mode_js/result");
 var router = express.Router();
 
 
@@ -9,7 +10,7 @@ router.route("/")
             let sql = "SELECT * FROM country";
             connection.query(sql,function (err,results){
             if(err) throw err;
-            res.json(results);
+            res.json(result.success( results));
             });
 
 

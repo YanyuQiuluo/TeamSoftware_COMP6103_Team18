@@ -1,6 +1,6 @@
 var re={};
 
-re.suc=function (res,code="200"){
+re.success=function (res,code="200"){
     return{
         code: code,
         result: res,
