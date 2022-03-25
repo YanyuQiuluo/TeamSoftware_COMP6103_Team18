@@ -60,7 +60,7 @@ function country_list_query() {
 
     });
 
-    // http://localhost:3000/home
+   /* // http://localhost:3000/home
     webApp.get('/home', function(request, response) {
         // If the user is loggedin
         if (request.session.) {
@@ -71,8 +71,8 @@ function country_list_query() {
             response.send('Please login to view this page!');
         }
         response.end();
-    });*/
-
+    });
+*/
     webApp.listen(3000);
 }
 function login(){
