@@ -25,7 +25,7 @@ require('./app_WYX')(app);
 
 require('./app_ZY')(app);
 
-// require('./app_Arwa')(app);
+require('./app_Arwa')(app);
 
 require('./app_GYF')(app);
 
