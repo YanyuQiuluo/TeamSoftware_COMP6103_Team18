@@ -6,7 +6,7 @@ console.log("load DB"+a);
 // Be sure to replace 'user' and 'password' with the correct values
 const connection = mysql.createConnection({
     host: 'localhost',
-    database: 'new_schema',
+    database: 'sunlight',
     user: 'root',
     password: '234567891'
 
