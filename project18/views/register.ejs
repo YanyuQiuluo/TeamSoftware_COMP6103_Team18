@@ -10,7 +10,7 @@
 <a href="/" >
     <img src="../img/back-button.png" alt="" id="back-button">
 </a>
-<div class="dowebok">
+<div class="dowebok" id="information">
 <!--    <div class="logo"></div>-->
     <div class="form-top">
         <h1 class="signUp">Sign Up</h1>
@@ -32,6 +32,22 @@
         <a class="reg" href="/loginPage" target="_self">Sign in</a>
         <a class="forget" href="#" target="_blank">Forgot password</a>
     </div>
+</div>
+<div class="dowebokVerify" id="emailVerify">
+    <div class="emailPic"></div>
+    <div class="form-top">
+        <h2 class="title">Enter confirmation code</h2>
+        <p class="tips">Enter the confirmation code that we sent to </p>
+        <span class="tips" id="emailInput"></span>
+        <span class="tips"><button id="resend">Resend code.</button></span>
+    </div>
+    <div class="form-item">
+        <input id="emailCode" type="text" autocomplete="off" placeholder="Confirmation code">
+        <p class="tip0">Please enter the confirmation code that we sent to your email.</p>
+        <p class="tip1">That code isn't valid. You can request a new one.</p>
+    </div>
+    <div class="form-next"><button id="next">Next</button></div>
+    <div class="form-back"><button id="back">Go back</button></div>
 </div>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
 <script src="javascript/register.js"></script>

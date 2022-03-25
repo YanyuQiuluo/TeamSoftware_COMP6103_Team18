@@ -33,6 +33,31 @@ body {
     overflow: hidden;
 }
 
+.dowebokVerify{
+    display: none;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 430px;
+    height: 520px;
+    margin: -300px 0 0 -215px;
+    border: 1px solid #fff;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.emailPic{
+    width: 104px;
+    height: 104px;
+    margin: 30px auto 0px;
+    background: url(../img/email.png) center no-repeat;
+    background-size: 104px 104px;
+}
+
+.title{
+    padding-bottom: 10px;
+}
+
 #back-button{
     height:75px;
     position: absolute;
@@ -54,6 +79,11 @@ body {
     padding-top: 30px;
     padding-bottom: 50px;
     text-align: center;
+    color: #fff;
+}
+
+.tips {
+    font-size: 14px;
     color: #fff;
 }
 
@@ -86,6 +116,51 @@ body {
     outline: none;
     cursor: pointer;
     background-color: #fff;
+}
+
+.form-next{
+    position: relative;
+    margin: 0 auto;
+    width: 360px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.form-next button {
+    width: 360px;
+    height: 50px;
+    border: 0;
+    border-radius: 25px;
+    font-size: 18px;
+    color: #1f6f4a;
+    outline: none;
+    cursor: pointer;
+    background-color: #fff;
+}
+
+.form-back{
+    position: relative;
+    margin: 0 auto;
+    width: 360px;
+}
+
+.form-back button {
+    width: 360px;
+    height: 50px;
+    border: 0;
+    font-size: 18px;
+    color: #fff;
+    outline: none;
+    cursor: pointer;
+    background: none;
+}
+
+.tips button{
+    border: 0;
+    color: #0095f6;
+    outline: none;
+    cursor: pointer;
+    background: none;
 }
 
 .tip0 {
@@ -157,6 +232,30 @@ body {
 }
 
 .dowebok :-ms-input-placeholder {
+    font-size: 18px;
+    line-height: 1.4;
+    color: #fff;
+}
+
+.dowebokVerify ::-webkit-input-placeholder {
+    font-size: 18px;
+    line-height: 1.4;
+    color: #fff;
+}
+
+.dowebokVerify :-moz-placeholder {
+    font-size: 18px;
+    line-height: 1.4;
+    color: #fff;
+}
+
+.dowebokVerify ::-moz-placeholder {
+    font-size: 18px;
+    line-height: 1.4;
+    color: #fff;
+}
+
+.dowebokVerify :-ms-input-placeholder {
     font-size: 18px;
     line-height: 1.4;
     color: #fff;
