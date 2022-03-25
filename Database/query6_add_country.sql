@@ -1,1 +1,0 @@
-insert into country (country_name, gdp, carbon_emission, price_of_solar_panel) values (country_name, gdp, carbon_emission, price_of_solar_panel)
