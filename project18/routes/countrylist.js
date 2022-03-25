@@ -1,4 +1,5 @@
 var express = require('express');
+const connection = require("../mode_js/database");
 var router = express.Router();
 
 
@@ -10,8 +11,16 @@ router.route("/")
             connection.query(sql,function (err,results){
             if(err) throw err;
             res.json(results);
+
+
             });
 
+            /*if(req.body.rankingFeature.length>0)
+                let sql2 = "SELECT * FROM country order by " + rankingFeature + rakingType;
+                connection.query(sql2, function (err, results) {
+                if (err) throw err;
+                res.json(results);
+            });*/
 
 
 
@@ -35,6 +44,5 @@ router.route("/")
                 'price_of_solar_panel':price_of_solar_panel,'savings':savings});*/
 
     });
-
 
 module.exports = router;

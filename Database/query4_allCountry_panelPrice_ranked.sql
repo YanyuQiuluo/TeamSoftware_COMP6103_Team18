@@ -1,0 +1,1 @@
+select * from country order by price_of_solar_panel desc

@@ -1,66 +1,74 @@
 //connect to the Database
-function Load(app) {
-    const mysql = require('mysql');
-    const express = require('express');
-    const session = require('express-session');
-    const path = require('path');
+//function Load(app) {
+const mysql = require('mysql');
+const express = require('express');
+const session = require('express-session');
+const path = require('path');
 
-    const connection = mysql.createConnection({
-        host     : 'localhost',
-        user     : 'root',
-        password : 'password',
-        database : 'sunlight'
-    });
+const connection = mysql.createConnection({
+    host     : 'localhost',
+    user     : 'root',
+    password : 'password',
+    database : 'sunlight'
+});
 
-    const webApp = express();
+const webApp = express();
 
-    webApp.use(session({
-        secret: 'secret',
-        resave: true,
-        saveUninitialized: true
-    }));
-    webApp.use(express.json());
-    webApp.use(express.urlencoded({ extended: true }));
-    webApp.use(express.static(path.join(__dirname, 'static')));
+webApp.use(session({
+    secret: 'secret',
+    resave: true,
+    saveUninitialized: true
+}));
+webApp.use(express.json());
+webApp.use(express.urlencoded({ extended: true }));
+//webApp.use(express.static(path.join(__dirname, 'static')));
 
 
-    //upload login page and data handing with the server
-    //login();
+//upload login page and data handing with the server
+// login();
+country_list_query();
 
-}
-module.exports=Load
+//}
+//module.exports=Load
 function country_list_query() {
 
     // http://localhost:3000/
     webApp.get('/', function(request, response) {
         // Render login template
         response.sendFile(path.join(__dirname + '/ArwaTest.html'));
+        //response.send('11');
     });
 
 // http://localhost:3000/auth
-     webApp.post('/auth', function(request, response) {
+    webApp.post('/auth', function(request, response) {
 
         // Execute SQL query that'll select the account from the database based on the specified username and password
-        var sql = "SELECT * FROM country";
+        let sql = "SELECT * FROM country";
         connection.query(sql, function(error, results, fields) {
             // If there is an issue with the query, output the error
             if (error) throw error;
             // If the list exists
             if (results.length > 0) {
-                // Authenticate the user
-                request.session.loggedin = true;
-                request.session.username = username;
+                response.json(results);
+                response.send('list is not empty');
             } else {
-                    response.send('list is empty');
+                response.send('list is empty');
             }
             response.end();
 
         });
 
+        /*if(req.body.rankingFeature.length>0)
+                let sql2 = "SELECT * FROM country order by " + rankingFeature + rakingType;
+                connection.query(sql2, function (err, results) {
+                if (err) throw err;
+                res.json(results);
+            });*/
+
 
     });
 
-    // http://localhost:3000/home
+    /*// http://localhost:3000/home
     webApp.get('/home', function(request, response) {
         // If the user is loggedin
         if (request.session.) {
@@ -71,8 +79,8 @@ function country_list_query() {
             response.send('Please login to view this page!');
         }
         response.end();
-    });*/
-
+    });*!/
+*/
     webApp.listen(3000);
 }
 function login(){

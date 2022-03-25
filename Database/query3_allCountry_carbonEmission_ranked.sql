@@ -1,0 +1,1 @@
+select * from country order by carbon_emissions desc

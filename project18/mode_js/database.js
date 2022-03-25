@@ -8,7 +8,7 @@ const connection = mysql.createConnection({
     host: 'localhost',
     database: 'sunlight',
     user: 'root',
-    password: '234567891'
+    password: 'password'
 
 });
 
