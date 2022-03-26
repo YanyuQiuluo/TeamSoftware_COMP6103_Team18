@@ -33,7 +33,7 @@ module.exports = function (rec_address){
         console.log('mail sent:', info.response);
     });
 
-    veri_code(){
+    function veri_code(){
         var Num="";
         for(var i=0;i<6;i++)
         {
