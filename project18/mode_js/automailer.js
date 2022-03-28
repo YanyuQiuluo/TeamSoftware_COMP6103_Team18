@@ -15,6 +15,7 @@ const server = automailer.createTransport(config);
 // Send email
 module.exports = function (rec_address){
 
+    verify_code = veri_code();
     var mail = {
         // sender
         from: 'SunlightCommunity18@gmail.com',
@@ -23,7 +24,7 @@ module.exports = function (rec_address){
         // receiver
         to:rec_address,//comes from front end
         // content of the email;
-        text: veri_code+' is your verification code.'
+        text: 'Your verify code is '+verify_code+'.'
     };
 
     server.sendMail(mail, function(error, info){
@@ -41,5 +42,7 @@ module.exports = function (rec_address){
         }
         return Num;
     }
+
+    return verify_code;
 
 };
