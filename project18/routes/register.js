@@ -7,11 +7,8 @@ router.route("/")
         let username=req.body.userName;
         let password=req.body.password;
         let email=req.body.email;
-        let telephone=req.body.telephone;
-        let savings=req.body.savings;
-        let address=req.body.address;
 
-        if(!username || !password || !email || !telephone || !savings || !address){
+        if(!username || !password || !email){
             res.setHeader('Content-Type', 'application/json');
             res.json('error');
         }
