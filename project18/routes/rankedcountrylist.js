@@ -10,21 +10,23 @@ router.route("/")
         let connection = require('../mode_js/database');
 
         //featureIndex will be sent by the user to choose upon which feature the ranking will take place
-        let featureIndex = 0;
+        let featureIndex = 2;
+        let feature = "gdp";
         if(featureIndex==0){
-            let feature = "gdp";
+            feature = "gdp";
         }else if(featureIndex==1){
-            let feature = "carbon_emission";
+            feature = "carbon_emission";
         }else if(featureIndex==2){
-            let feature = "price_of_solar_panel";
+            feature = "price_of_solar_panel";
         }
 
         //rankingTypeIndex will be sent by the user to choose the way of ranking (decreasing or increasing)
         let rankingTypeIndex = 0;
+        let rankingType = "desc";
         if(rankingTypeIndex==0){
-            let rankingType = "desc";
+            rankingType = "desc";
         }else{ //the default in sql in increasing
-            let rankingType = "";
+            rankingType = "";
         }
 
         if(feature.length>0) {
