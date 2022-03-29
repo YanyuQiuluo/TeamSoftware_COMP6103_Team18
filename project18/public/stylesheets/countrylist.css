@@ -234,6 +234,7 @@ button:focus {
 }
 
 .product-item__content {
+    padding: 0 30px 25px;
     position: relative;
 }
 
@@ -412,7 +413,7 @@ button:focus {
     -webkit-align-items: center;
     -ms-flex-align: center;
     align-items: center;
-    height: 520px;
+    height: 400px;
 }
 
 /*@media only screen and (max-width: 767.98px) {*/

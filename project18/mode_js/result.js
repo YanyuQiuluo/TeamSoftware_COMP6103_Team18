@@ -2,18 +2,17 @@ var re={};
 
 re.success=function (res,code="200"){
     return{
+        code: code,
         result: res,
-        msg:"success",
-        code: code
-
+        msg:"success"
     }
 }
 
 re.fail=function (msg,code="400"){
     return{
+        code:code,
         result: {},
-        msg:msg,
-        code:code
+        msg:msg
     }
 }
 module.exports=re;
