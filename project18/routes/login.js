@@ -2,21 +2,31 @@ var express = require('express');
 var router = express.Router();
 
 var result=require("../mode_js/result");
-const Tokens = require("../mode_js/Tokens");
-const conn = require("../mode_js/database");
+var Tokens = require("../mode_js/Tokens");
+var conn=require('../mode_js/database');
+
+
+
 router.route("/")
     .post(function (req,res){
 
         res.setHeader('Content-Type', 'application/json');
 
-        let password=req.body.password;
         let username=req.body.userName;
-        let conn=require('../mode_js/database');
-        // let sql="SELECT * FROM user";
-        let sql="select * from user where username=  '"+username+"';";
-        console.log(sql);
-        // let sql="select * from user where username == "+username;
+        if(!username){
+            res.json(result.fail(" account empty"));
+        }
 
+        let password=req.body.password;
+        if(!password){
+            res.json(result.fail("password empty"));
+        }
+
+        let sql="select * from user where username=  '"+username+"';";
+        console.log("login  "+sql);
+        // let sql="select * from user where username == "+username;
+        conn.query("")
+            .then()
         conn.query(sql,
             function (err,re){
                 if(err)res.json(err);
