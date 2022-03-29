@@ -1,6 +1,4 @@
 var re={}
-
-
 var dic={}
 
 
