@@ -166,6 +166,7 @@ button:focus {
 
 .container.container-wide{
     padding-top: 15px;
+    padding-bottom: 20px;
 }
 
 /*@media screen and (min-width: 1200px) {*/
