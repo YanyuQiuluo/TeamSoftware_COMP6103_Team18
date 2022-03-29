@@ -1,0 +1,154 @@
+#header {
+    position: inherit;!important;
+
+}
+.page-header-wrap.bg-img{
+    background: url("../img/world-map.png") no-repeat;
+    background-size: cover;
+}
+.page-header-content {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    height: 300px;
+}
+strong {
+    font-weight: 700;
+}
+
+img {
+    max-width: 100%;
+}
+
+button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    padding: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    -webkit-transition: 0.4s;
+    -o-transition: 0.4s;
+    transition: 0.4s;
+}
+
+button:active,
+button:focus {
+    outline: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.container.container-wide{
+    padding-top: 15px;
+}
+.page-header-content h1 {
+    color: #FFFFFF;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 1;
+    margin-bottom: 0;
+}
+.breadcrumb {
+    background-color: transparent;
+    border-radius: 0;
+    padding: 0;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    margin-bottom: 0;
+    margin-top: 20px;
+}
+
+.breadcrumb li {
+    position: relative;
+}
+
+.breadcrumb li:after {
+    content: '>';
+    color: #FFFFFF;
+    font-size: 18px;
+    font-family: "Oswald", sans-serif;
+    vertical-align: middle;
+    line-height: 1;
+    display: inline-block;
+    margin-top: -7px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.breadcrumb li a {
+    color: #FFFFFF;
+    font-size: 18px;
+    font-family: "Oswald", sans-serif;
+    font-weight: 300;
+    line-height: 1;
+}
+
+.breadcrumb li a:hover {
+    color: #eeb644;
+}
+
+.breadcrumb li.current:after {
+    display: none;
+}
+
+.breadcrumb li.current a {
+    color: #FFFFFF;
+    pointer-events: none;
+}
+
+.article-container {
+    padding-top: 40px;
+    padding-left: 150px!important;
+    padding-right: 150px!important;
+}
+.article-introduction {
+    font-size: 1.3rem;
+    margin-top: 0;
+    padding-bottom: 50px;
+}
+.text-parbase-section {
+    padding-bottom: 50px;
+}
+.text-parbase-section img{
+    height: auto !important
+}
+.text-parbase-section ul {
+    margin-bottom: 1.5rem;
+    padding-left: 2.5rem;
+}
+.img-background{
+    padding-bottom: 50px;
+}
+.pic-introduction{
+    font-size: 16px;
+    text-align: center;
+    padding-top: 15px;
+    color: #4e555b;
+}
+.donate-btn{
+    background-color: #f8dc00;
+    border-color: #f8dc00;
+    border-radius: 0;
+    height:45px;
+    width: 150px;
+    display:block;
+    margin:0 auto;
+    margin-top: -30px;
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
