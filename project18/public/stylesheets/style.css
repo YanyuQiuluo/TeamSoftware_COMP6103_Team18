@@ -233,7 +233,8 @@ h1, h4, h6 {
 
 #header #logo img {
   padding: 0;
-  margin: 0
+  margin: 0;
+  height: 50px;
 }
 
 @media (max-width: 768px) {
@@ -494,7 +495,7 @@ h1, h4, h6 {
 
 .footer-nav-container{
 
-  width: 1515px;
+  /*width: 1515px;*/
   bottom: 0;
 
   background: #000;
