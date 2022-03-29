@@ -1,4 +1,3 @@
-/*
 //connect to the Database
 function Load(app) {
     const mysql = require('mysql');
@@ -61,7 +60,7 @@ function country_list_query() {
 
     });
 
-   /!* // http://localhost:3000/home
+   /* // http://localhost:3000/home
     webApp.get('/home', function(request, response) {
         // If the user is loggedin
         if (request.session.) {
@@ -73,7 +72,7 @@ function country_list_query() {
         }
         response.end();
     });
-*!/
+*/
     webApp.listen(3000);
 }
 function login(){
@@ -128,12 +127,4 @@ function login(){
 
     webApp.listen(3000);
 
-}*/
-
-const countrylistRouter = require("./routes/rankedcountrylist")
-
-function Load(app) {
-    app.use('/rankedcountrylist', countrylistRouter);
-
 }
-module.exports=Load
