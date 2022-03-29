@@ -1,39 +1,30 @@
-var express = require('express');
-var router = express.Router();
-
-var result=require("../mode_js/result");
+const express = require('express');
+const router = express.Router();
+const result = require("../mode_js/result");
 const Tokens = require("../mode_js/Tokens");
-const conn = require("../mode_js/database");
+
 router.route("/")
     .post(function (req,res){
 
-        res.setHeader('Content-Type', 'application/json');
+            res.setHeader('Content-Type', 'application/json');
+            let username=req.body.userName;
+            if(!username){res.json(result.fail("username empty")); return;}
+            let password=req.body.password;
+            if(!password){res.json(result.fail(" password empty"));return;}
 
-        let password=req.body.password;
-        let username=req.body.userName;
-        let conn=require('../mode_js/database');
-        // let sql="SELECT * FROM user";
-        let sql="select * from user where username=  '"+username+"';";
-        console.log(sql);
-        // let sql="select * from user where username == "+username;
 
-        conn.query(sql,
-            function (err,re){
-                if(err)res.json(err);
-                if(Array.isArray( re)==false||re.length==0){
-                    res.json( result.fail("account no found"));
-                    return;
-                }
-                if(re[0].password!=password){
-                    res.json( result.fail("password error"));
-                    return;
-                }
-                token =Tokens.onLogIn(re[0]);
-                res.json(result.success(token));
-            });
+            require("../mode_js/MongoDB")
+                .table("user",closeDB={})
+                .then(x=>{return x.findOne({"username":username})})
+                .then(x=>{
+                        if(!x)throw "user no fund";
+                        if(x.password!=password)throw "password error";
+                        let token = Tokens.onLogIn(x);
+                        res.json(result.success( token));
+                })
+                //-----------------------------------------------------------------------------------------------------------------------------------------------
+                .catch(x=>res.json(result.fail( x)))
+                .finally(()=>{closeDB.invoke()})
     });
-
-
-
 
 module.exports = router;
