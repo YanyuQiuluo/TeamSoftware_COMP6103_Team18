@@ -1,6 +1,7 @@
 'use strict';
 $('#submit').on('click', function () {
     $('.tip0').css('display','none');
+    $('.tip00').css('display','none');
     $('.tip1').css('display','none');
     $('.tip2').css('display','none');
     let email = document.getElementById("email").value
@@ -23,9 +24,7 @@ $('#submit').on('click', function () {
             url: 'http://localhost:3000/register',
             dataType : 'json',
             data: {
-                email: email,
-                userName: usn,
-                password: psd
+                email: email
             },
             success: function(res){
                 document.getElementById("emailInput").innerHTML = getEmailInput();
