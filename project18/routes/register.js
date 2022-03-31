@@ -1,5 +1,7 @@
 var express = require('express');
 const result = require("../mode_js/result");
+const Tokens = require("../mode_js/Tokens");
+const automailer = require("../mode_js/automailer");
 var router = express.Router();
 
 let dic={};
@@ -19,7 +21,36 @@ router.route("/register1")
             res.json('null value');
             return;
         }
-        let sql = "SELECT * FROM user WHERE email = '"+email+"';";
+
+
+
+        require("./mode_js/MongoDB")
+            .table("user",closeDB={})
+            .then(x=>{return x.findOne({"email":email})})
+            .then(x=>{
+                if(x.length>0){
+                    res.json(result.success(token));
+                } else {
+                    //verify_code = automailer.verify();
+                    let verify_code = automailer(email);
+                    dic[email] = verify_code;
+
+                    // respond sent message.
+                    res.json('code sent');
+                }
+            })
+            //-----------------------------------------------------------------------------------------------------------------------------------------------
+            .catch(x=>res.json(result.fail(x)))
+            .finally(()=>{closeDB.invoke()})
+
+
+
+
+
+
+
+
+        /*let sql = "SELECT * FROM user WHERE email = '"+email+"';";
         connection.query(sql,function (err,results){
             if(err) throw err;
             console.log(results);
@@ -35,7 +66,7 @@ router.route("/register1")
                 // respond sent message.
                 res.json('code sent');
             }
-        });
+        });*/
 
 
     });
@@ -50,19 +81,40 @@ router.route("/verify")
         let email=req.body.email;
 
         // ensure verify code is right.
-        console.log(verify_return);
-        console.log(dic[email]);
+        //console.log(verify_return);
+        //console.log(dic[email]);
         if (verify_return == dic[email]){
-            let connection = require('../mode_js/database');
+            //let connection = require('../mode_js/database');
 
             //let sql = "INSERT INTO user SET";
             //let post = {username:username, password:password, userType:'household', email:email};
-            let sql = "INSERT INTO user(username, password, userType, email) VALUES('"+username+"', '"+password+"', 'household', '"+email+"')";
+            /*let sql = "INSERT INTO user(username, password, userType, email) VALUES('"+username+"', '"+password+"', 'household', '"+email+"')";
             connection.query(sql,function (err,results){
                 if(err) throw err;
                 res.json(result.success(results));
             });
-            return;
+            return;*/
+            let new_user = {username:username,password:password,userType:'household',email:email};
+
+            require("./mode_js/MongoDB")
+                .table("user",closeDB={})
+                .then(x=>{return x.insertOne(new_user)})
+                .then(x=>{
+                    res.json(result.success(x));
+                })
+                //-----------------------------------------------------------------------------------------------------------------------------------------------
+                .catch(x=>res.json(result.fail( x)))
+                .finally(()=>{closeDB.invoke()})
+
+
+
+            /*dbo.collection("user").insertOne(new_user, function (err, res) {
+                if (err) throw err;
+                console.log("insert success");
+                console.log(report);
+                console.log(dbo);
+                db.close();
+            });*/
         }
 
         // return json if verify code is wrong.
