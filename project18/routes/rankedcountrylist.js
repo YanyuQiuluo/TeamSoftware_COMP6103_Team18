@@ -8,6 +8,7 @@ router.route("/")
     .post(function (req,res){
 
         let connection = require('../mode_js/database');
+        let feature = "";
 
         //featureIndex will be sent by the user to choose upon which feature the ranking will take place
         let featureIndex = req.body.feature_index;
