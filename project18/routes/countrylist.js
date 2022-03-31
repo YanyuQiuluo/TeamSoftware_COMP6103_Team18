@@ -1,17 +1,28 @@
 var express = require('express');
 const result = require("../mode_js/result");
+const Tokens = require("../mode_js/Tokens");
 var router = express.Router();
 
 
 router.route("/")
     .post(function (req,res){
-            let connection = require('../mode_js/database');
+            /*let connection = require('../mode_js/database');
 
             let sql = "SELECT * FROM country";
             connection.query(sql,function (err,results){
             if(err) throw err;
             res.json(result.success( results));
-            });
+            });*/
+
+        require("../mode_js/MongoDB")
+            .table("country",closeDB={})
+            .then(x=>{return x.find({},{_id:0}).sort({"gdp":-1}).toArray()})
+            .then(x=>{
+                res.json(result.success(x));
+            })
+            //-----------------------------------------------------------------------------------------------------------------------------------------------
+            .catch(x=>res.json(result.fail(x)))
+            .finally(()=>{closeDB.invoke()})
 
 
 
