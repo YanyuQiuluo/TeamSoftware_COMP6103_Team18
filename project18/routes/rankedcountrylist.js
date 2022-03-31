@@ -10,7 +10,7 @@ router.route("/")
         let connection = require('../mode_js/database');
 
         //featureIndex will be sent by the user to choose upon which feature the ranking will take place
-        let featureIndex = 0;
+        let featureIndex = req.body.feature_index;
         if(featureIndex==0){
             let feature = "gdp";
         }else if(featureIndex==1){
@@ -20,7 +20,7 @@ router.route("/")
         }
 
         //rankingTypeIndex will be sent by the user to choose the way of ranking (decreasing or increasing)
-        let rankingTypeIndex = 0;
+        let rankingTypeIndex = req.body.ranking_index;
         if(rankingTypeIndex==0){
             let rankingType = "desc";
         }else{ //the default in sql in increasing

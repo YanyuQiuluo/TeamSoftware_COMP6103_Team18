@@ -6,17 +6,30 @@ var router = express.Router();
 
 router.route("/")
     .post(function (req,res){
-            /*let connection = require('../mode_js/database');
 
-            let sql = "SELECT * FROM country";
-            connection.query(sql,function (err,results){
-            if(err) throw err;
-            res.json(result.success( results));
-            });*/
+        //require feature index
+        let featureIndex = req.body.feature_index;
+        if(featureIndex==0){
+            let feature = "gdp";
+        }else if(featureIndex==1){
+            let feature = "carbon_emission";
+        }else if(featureIndex==2){
+            let feature = "price_of_solar_panel";
+        }
 
-        require("../mode_js/MongoDB")
+        //require ranking index, -1:decreasing, 0:default without ranking, 1:increasing
+        let rankingTypeIndex = req.body.ranking_index;
+
+        let qu= require("../mode_js/MongoDB")
             .table("country",closeDB={})
-            .then(x=>{return x.find({},{_id:0}).sort({"gdp":-1}).toArray()})
+            .then(x=>{
+                if(!ranking_index==0){
+                    return x.find({},{_id:0}).sort({feature:rankingTypeIndex}).toArray()
+                }else{
+                    return x.find({},{_id:0});
+                }
+
+            })
             .then(x=>{
                 res.json(result.success(x));
             })
