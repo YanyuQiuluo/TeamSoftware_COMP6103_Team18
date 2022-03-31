@@ -8,6 +8,19 @@ router.route("/")
     .post(function (req,res){
 
 
+        //require feature index
+        let featureIndex = req.body.feature_index;
+        var feature=""
+        if(featureIndex==0){
+             feature = "gdp";
+        }else if(featureIndex==1){
+             feature = "carbon_emission";
+        }else if(featureIndex==2){
+             feature = "price_of_solar_panel";
+        }else if(featureIndex==3){
+             feature = "savings";
+        }
+
 
         //require ranking index, -1:decreasing, 0:default without ranking, 1:increasing
         //For rankingTypeIndex, x.fing.sort(-1) means decreasing, x.fing.sort(1) means increasing
@@ -23,23 +36,10 @@ router.route("/")
             .then(x=>{
                 if(!rankingTypeIndex==0){
 
-                    //require feature index
-                    let featureIndex = req.body.feature_index;
-                    if(featureIndex==0){
-                        return x.find({},{_id:0}).sort({"gdp":1}).toArray();
-                    }else if(featureIndex==1){
-                        return x.find({},{_id:0}).sort({"carbon_emission":1}).toArray();
-                    }else if(featureIndex==2){
-                        return x.find({},{_id:0}).sort({"price_of_solar_panel":1}).toArray();
-                    }else if(featureIndex==3){
-                        return x.find({},{_id:0}).sort({"savings":1}).toArray();
-                    }
-
-                    //return x.find({},{_id:0}).sort({ff:1}).toArray();
-
-
-
-
+                    var re=x.find({},{_id:0});
+                    eval("re=re.sort({"+feature+":rankingTypeIndex});")
+                    re=re.toArray();
+                    return re;
 
                 }else{
                     console.log(3333);
