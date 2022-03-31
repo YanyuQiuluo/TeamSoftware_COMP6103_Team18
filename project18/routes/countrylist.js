@@ -15,15 +15,19 @@ router.route("/")
             let feature = "carbon_emission";
         }else if(featureIndex==2){
             let feature = "price_of_solar_panel";
+        }else if(featureIndex==3){
+            let feature = "savings";
         }
 
         //require ranking index, -1:decreasing, 0:default without ranking, 1:increasing
+        //For rankingTypeIndex, x.fing.sort(-1) means decreasing, x.fing.sort(1) means increasing
+        //if rankingTypeIndex = o, output will be default list.
         let rankingTypeIndex = req.body.ranking_index;
 
-        let qu= require("../mode_js/MongoDB")
+        require("../mode_js/MongoDB")
             .table("country",closeDB={})
             .then(x=>{
-                if(!ranking_index==0){
+                if(!rankingTypeIndex==0){
                     return x.find({},{_id:0}).sort({feature:rankingTypeIndex}).toArray()
                 }else{
                     return x.find({},{_id:0});
