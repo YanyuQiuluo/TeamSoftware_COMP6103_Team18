@@ -4,7 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-
+// require("./mode_js/UpdateDataBase");
 
 var app = express();
 
