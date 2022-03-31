@@ -227,4 +227,29 @@ $(document).ready(function() {
         }
     });
 
+
+    $(function() {
+        $.ajax({
+            type: 'POST',
+            url: 'http://localhost:3000/login',
+            dataType: 'json',
+            data: {
+                userName: usn
+            },
+            success: function (res) {
+                if (res.code === '200') {
+                    document.getElementById("useridd").innerHTML="userName";
+                } else {
+                    alert('error')
+                }
+            }
+        });
+    });
+
 });
+
+// function getUsername(){
+//     let x = document.getElementById("userid2").innerText="123";
+//
+// }
+
