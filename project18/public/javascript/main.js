@@ -229,8 +229,8 @@ $(document).ready(function() {
 
 
     $(function() {
-        if (window.localStorage.getItem("userName")) {
-            document.getElementById("useridd").innerHTML = window.localStorage.getItem("userName");
+        if (window.sessionStorage.getItem("userName")) {
+            document.getElementById("useridd").innerHTML = window.sessionStorage.getItem("userName");
             $('#un-login').css('display','none');
             $('#userid').show();
         } else {
