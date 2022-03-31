@@ -35,14 +35,11 @@ router.route("/")
             .table("country",closeDB={})
             .then(x=>{
                 if(!rankingTypeIndex==0){
-
-                    var re=x.find({},{_id:0});
-                    eval("re=re.sort({"+feature+":rankingTypeIndex});")
-                    re=re.toArray();
-                    return re;
+                    let sortRule={}
+                    sortRule[feature]=rankingTypeIndex;
+                    return x.find({}).sort(sortRule).toArray();
 
                 }else{
-                    console.log(3333);
                     return x.find({},{_id:0}).toArray();
 
                 }
