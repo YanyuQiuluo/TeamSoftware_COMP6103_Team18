@@ -1,0 +1,25 @@
+1. Teamwork (Weighting - 30%)
+For teamwork, we want to understand
+● How you organised your team and what tools were used.
+frontend: HTML and CSS
+backend: Node JS
+Database: first we decide to use MySQL because "Arwa" who was in charge of database structure has some experience with MySQL
+            then we decide to switch to MongoDB for more easily SQL structure.
+
+
+● How the team communicated throughout the project and ensured members
+were carried along.
+the team members meet twice a week. before each meeting we discuss what each of us will work on. then at the meeting we work together
+to solve any difficulties.
+
+● The balance of contributions from team members during the project iterations.
+frontend:
+backend:
+Database: Arwa
+
+To assess this, the following will be reviewed
+● Final team report
+● Team supervisory meeting notes
+● Feedback from the client meetings
+● GitLab commits
+
