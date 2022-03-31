@@ -20,7 +20,7 @@ router.route("/")
                         if(!x)throw "user no fund";
                         if(x.password!=password)throw "password error";
                         let token = Tokens.onLogIn(x);
-                        res.json(result.success( token));
+                        res.json(result.success(token));
                 })
                 //-----------------------------------------------------------------------------------------------------------------------------------------------
                 .catch(x=>res.json(result.fail( x)))
