@@ -81,17 +81,23 @@
     <div class="shop-page-action-bar mb-30">
         <div class="container container-wide">
             <div class="action-bar-inner">
-                <div class="row align-items-center">
-                    <div class="col-sm-6">
+                <div class="align-items-center">
+                    <div class="items-left">
                         <div class="sort-by-wrapper">
                             <label for="sort" class="sr-only">Sort By</label>
                             <select name="sort" id="sort">
-                                <option value="sbp">Sort By Carbon Emissions per capita</option>
-                                <option value="sbn">Sort By GDP</option>
-                                <option value="sbt">Sort By Price of a Solar Panel</option>
-                                <option value="sbr">Sort By Savings for The Country</option>
+                                <option value="Carbon">Sort By Carbon Emissions per capita</option>
+                                <option value="GDP">Sort By GDP</option>
+                                <option value="Price">Sort By Price of a Solar Panel</option>
+                                <option value="Saving">Sort By Savings for The Country</option>
                             </select>
                         </div>
+                    </div>
+                    <div class="items-right">
+                        <button class="up-arrow" id="up-arrow-pic" value=""></button>
+                        <button class="up-arrow-select" id="up-arrow-pic-select" value=""></button>
+                        <button class="down-arrow" id="down-arrow-pic" value=""></button>
+                        <button class="down-arrow-select" id="down-arrow-pic-select" value=""></button>
                     </div>
                 </div>
             </div>
