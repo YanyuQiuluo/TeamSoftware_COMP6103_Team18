@@ -25,7 +25,7 @@ $('#submit').on('click', function () {
     if (emailReg.test(email) && usn && psd) {
         $.ajax({
             type: 'POST',
-            url: 'http://localhost:3000/register1',
+            url: 'http://localhost:3000/register/register1',
             dataType : 'json',
             data: {
                 email: email
@@ -54,7 +54,7 @@ $('#next').on('click', function () {
     } else {
         $.ajax({
             type: 'POST',
-            url: 'http://localhost:3000/verify',
+            url: 'http://localhost:3000/register/verify',
             dataType : 'json',
             data: {
                 userName: usn,
