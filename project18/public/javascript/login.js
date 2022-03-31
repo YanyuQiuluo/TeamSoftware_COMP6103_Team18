@@ -21,7 +21,7 @@ $('#submit').on('click', function () {
                 password: psd
             },
             success: function(res){
-                if (res === 'login success') {
+                if (res.code === '200') {
                     window.location.href='http://localhost:3000/'
                 } else {
                     alert('error')
