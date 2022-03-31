@@ -229,21 +229,14 @@ $(document).ready(function() {
 
 
     $(function() {
-        $.ajax({
-            type: 'POST',
-            url: 'http://localhost:3000/login',
-            dataType: 'json',
-            data: {
-                userName: usn
-            },
-            success: function (res) {
-                if (res.code === '200') {
-                    document.getElementById("useridd").innerHTML="userName";
-                } else {
-                    alert('error')
-                }
-            }
-        });
+        if (window.localStorage.getItem("userName")) {
+            document.getElementById("useridd").innerHTML = window.localStorage.getItem("userName");
+            $('#un-login').css('display','none');
+            $('#userid').show();
+        } else {
+            $('#userid').css('display','none');
+            $('#un-login').show();
+        }
     });
 
 });
