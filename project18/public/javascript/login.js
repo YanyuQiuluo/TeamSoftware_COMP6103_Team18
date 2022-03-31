@@ -22,6 +22,7 @@ $('#submit').on('click', function () {
             },
             success: function(res){
                 if (res.code === '200') {
+                    window.localStorage.setItem("userName", usn);
                     window.location.href='http://localhost:3000/'
                 } else {
                     alert('error')

@@ -658,3 +658,6 @@ body.mobile-nav-active #mobile-nav-toggle {
 #useridd{
   color: white;
 }
+.userName{
+  display: none;
+}
