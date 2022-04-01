@@ -34,7 +34,7 @@ router.route("/")
         require("../mode_js/MongoDB")
             .table("country",closeDB={})
             .then(x=>{
-                if(!rankingTypeIndex==0){
+                if(rankingTypeIndex!=0){
                     let sortRule={}
                     sortRule[feature]=rankingTypeIndex;
                     return x.find({}).sort(sortRule).toArray();
