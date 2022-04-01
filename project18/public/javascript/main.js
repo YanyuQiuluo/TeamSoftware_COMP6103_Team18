@@ -232,7 +232,8 @@ $(document).ready(function() {
         if (window.sessionStorage.getItem("userName")) {
             document.getElementById("useridd").innerHTML = window.sessionStorage.getItem("userName");
             $('#un-login').css('display','none');
-            $('#userid').show();
+            $('.userName').show();
+
         } else {
             $('#userid').css('display','none');
             $('#un-login').show();
