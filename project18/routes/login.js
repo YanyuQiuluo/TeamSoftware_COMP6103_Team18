@@ -15,9 +15,9 @@ router.route("/")
 
             require("../mode_js/MongoDB")
                 .table("user",closeDB={})
-                .then(x=>{return x.findOne({"username":username})})
+                .then(x=>{return x.findOne({"username":username})  })
                 .then(x=>{
-                        if(!x)throw "user no fund";
+                        if(!x)throw "user no found";
                         if(x.password!=password)throw "password error";
                         let token = Tokens.onLogIn(x);
                         res.json(result.success(token));
