@@ -14,7 +14,7 @@ router.route("/")
         if(featureIndex==0){
              feature = "gdp";
         }else if(featureIndex==1){
-             feature = "carbon_emissions";
+             feature = "carbon_emission";
         }else if(featureIndex==2){
              feature = "price_of_solar_panel";
         }else if(featureIndex==3){
