@@ -1,0 +1,37 @@
+[{
+  "_id": {
+    "$oid": "6242dcee9c6f0000d400186a"
+  },
+  "country_id": "123",
+  "country_name": "Tanzania",
+  "gdp": 62.41,
+  "carbon_emissions": 0.21,
+  "price_of_solar_panel": 500,
+  "savings": "0",
+  "country_image": "https://cdn.britannica.com/20/20-004-EB20A026/Flag-Tanzania.jpg",
+  "country_discription": "Tanzania is a country in East Africa within the African Great Lakes region. Only 15 per cent of Tanzanians had access to electric power in 2011, however rising to 35.2 per cent in 2018.In 2013, 49.7 per cent of Tanzania's electricity generation came from natural gas, 28.9 per cent from hydroelectric sources, 20.4 per cent from thermal sources, and 1.0 percent from outside the country."
+},{
+  "_id": {
+    "$oid": "6242de8e9c6f0000d4001871"
+  },
+  "carbon_emissions": 0.36,
+  "country_id": "456",
+  "country_image": "https://cdn.britannica.com/15/15-004-B5D6BF80/Flag-Kenya.jpg",
+  "country_name": "Kenya",
+  "gdp": 98.84,
+  "price_of_solar_panel": 600,
+  "savings": 100,
+  "country_discription": "Kenya has one of the highest household solar ownership rates in the world. More Kenyans are turning to solar power due to relatively high connectivity costs to the grid and the abundance of solar power in Kenya. Solar photovoltaic systems are particularly prevalent among rural households with limited access to grid electricity. They are sold to users in Kenya through a competitive free market network and are commonly used for solar water pumping, solar irrigation, and cold storage. More factories are installing solar panels on their rooftops to counter the high cost and instability of grid electricity. Under the Value Added Tax (VAT) Act 2013, the VAT Amendment Act 2014, and the Finance Act 2018, the Kenyan government agreed to remove import duty and zero-rated VAT for renewable energy equipment and accessories. To achieve the renewable energy goals set forth in “Vision 2030,” the Kenyan government has launched several solar energy projects, of which the Garissa Solar Power Plant has substantially reduced energy costs in Kenya and has become the largest solar power plant in East and Central Africa."
+},{
+  "_id": {
+    "$oid": "6242de909c6f0000d4001872"
+  },
+  "carbon_emissions": 0.15,
+  "country_id": "789",
+  "country_image": "https://cdn.countryflags.com/thumbs/ethiopia/flag-800.png",
+  "country_name": "Ethiopia",
+  "gdp": 107.6,
+  "price_of_solar_panel": 550,
+  "savings": 320,
+  "country_discription": "In 2011, over 96% of Ethiopia's electricity was from hydropower. The country began a large program to expand its electricity supply in the 2010s from 2,000 MW to 10,000 MW. This was to be done mainly with renewable sources. Wind and geothermal were included to offset seasonal differences in water levels. Ethiopia plans to export electricity to neighboring countries, but transmission lines will need to be upgraded and expanded.Most of the energy needs of Ethiopia are filled by biofuels for cooking, heating, and off-grid lighting. Petroleum, including gasoline, diesel, and kerosene supply less than 7% of the country's energy supply. Solar photovoltaics is being promoted to replace fuel-based lighting and off-grid electrical supply with a solar panel assembly plant opening in Addis Ababa in early 2013. The majority of Ethiopia's population lives in rural areas and very few have access to electricity.Ethiopia is planning for a carbon-neutral status by 2025. This aim was set through their ambitious three-stage Growth and Transformation Plan, Ethiopia seeks to transform itself into a modern economy by 2025. According to the Ministry of Water and Energy, as of 2018, only 23% of the national populace has access to grid electricity. That figure falls even further to 10% when moving to rural areas – a figure that's smaller than the 17% average found across the rest of Africa. Drought frequency, flooding, poor land management techniques, and a rapidly growing population all have increased the situation’s direness. As of 2018, Ethiopia had launched the National Electrification Program which aimed for 65% of the population to be grid-connected by 2025. "
+}]
