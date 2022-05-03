@@ -4,7 +4,7 @@ const result = require("../mode_js/result");
 const Tokens = require("../mode_js/Tokens");
 const paypal = require("./PayPalCfg");
 router.route("/")
-    .post(function (req,res){
+    .get(function (req,res){
 
         const payerId = req.body.PayerID;
         const paymentId = req.body.paymentId;
