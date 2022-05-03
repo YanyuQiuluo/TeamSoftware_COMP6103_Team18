@@ -72,7 +72,6 @@ function getUrlParam(name) {
 
 // Minus button click event
 function decrease(){
-    let subtraction = document.getElementById("subtraction");
     let number = document.getElementById("number");
     if (number.value<=0) {
         // If the value of the input is less than 1, set the value to 1
@@ -84,8 +83,8 @@ function decrease(){
 
 // Input box out of focus event
 function number(){
-    var number = document.getElementById("number");
-    var value = number.value;
+    let number = document.getElementById("number");
+    let value = number.value;
     // If the value of the input is empty, set the value to 0
     if (value=="") {
         number.value = 0;
@@ -102,7 +101,6 @@ function number(){
 
 // Add button click event
 function increase(){
-    let add = document.getElementById("add");
     let number = document.getElementById("number");
     number.value = parseInt(number.value) + 1;
 }
