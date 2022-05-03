@@ -5,7 +5,7 @@ const Tokens = require("../mode_js/Tokens");
 const paypal = require("./PayPalCfg");
 
 router.route("/")
-    .post(function (req,res){
+    .get(function (req,res){
         res.end("payment cancel");
     });
 
