@@ -6,8 +6,8 @@ const paypal = require("./PayPalCfg");
 router.route("/")
     .get(function (req,res){
 
-        const payerId = req.body.PayerID;
-        const paymentId = req.body.paymentId;
+        const payerId = req.query.PayerID;
+        const paymentId = req.query.paymentId;
 
         const execute_payment_json = {
             "payer_id": payerId,
