@@ -1,23 +1,20 @@
 const express = require('express');
-const paypal = require('paypal-rest-sdk');
 var router = express.Router();
-
+const paypal = require("paypal-rest-sdk");
 paypal.configure({
     'mode': 'sandbox', //sandbox or live
-    'client_id': '####yourclientid######',
-    'client_secret': '####yourclientsecret#####'
+    'client_id': 'AZy5f1Hb6e31rRiN1Yl7C5Rl0O2aDZC7aK-QpEGEjDumOPORvwOPpwMC-6wewOBTGI_TxGvMrje-Zu2-',
+    'client_secret': 'EFbe8sLzq2XgLlnhILj5FNIvsHlUAhVbCVbxHLCelZ6tobaW_rWpY7DYbAJWP2xFwqGC1JSPwD9LqwCD'
 });
-
-
 router.get('/', (req, res) => res.sendFile(__dirname + "/index.html"));
 
 
-router.listen(PORT, () => console.log(`Server Started on ${PORT}`));
+//outer.listen(PORT, () => console.log(`Server Started on ${PORT}`));
 
 
 
 
-router.post('/pay', (req, res) => {
+router.post('/', (req, res) => {
     const create_payment_json = {
         "intent": "sale",
         "payer": {
