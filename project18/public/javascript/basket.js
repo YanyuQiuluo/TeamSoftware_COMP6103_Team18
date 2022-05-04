@@ -1,23 +1,12 @@
-let result = {} // basket data array
-let priceArr = [] // Array of price of solar panels
+let result = {} /** Basket data array */
+let priceArr = [] /** Array of price of solar panels */
+let uuid = "" /** An unique ID to represent a transaction */
 $(function(){
-    result = {
-        userId: 'AF',
-        basket: [
-            {
-                countryId: '123',
-                qty: 2
-            },
-            {
-                countryId: '456',
-                qty: 4
-            },
-            {
-                countryId: '789',
-                qty: 6
-            }
-        ]
+    let element = document.getElementById("basket-container");
+    if(element.scrollHeight <= element.clientHeight) { /** There is a scroll bar, then fixed the foot bar*/
+        document.getElementById("footer-nav-container").style.position = 'fixed'
     }
+    result = JSON.parse(window.localStorage.getItem("userBasket"))
     $.ajax({
         type: 'POST',
         url: 'http://localhost:3000/countrylist',
@@ -35,9 +24,6 @@ $(function(){
                 alert('error')
             }
         }
-    });
-    $('#username').bind('input propertychange', function() {
-        $('#result').html($(this).val().length);
     });
 })
 
@@ -75,7 +61,7 @@ function addTotalAmount() {
 function decrease(countryId){
     let number = document.getElementById("number"+countryId);
     if (number.value<=0) {
-        // If the value of the input is less than 1, set the value to 1
+        /** If the value of the input is less than 1, set the value to 1 */
         number.value = 0;
     }else {
         number.value = number.value - 1;
@@ -87,15 +73,15 @@ function decrease(countryId){
 function numberInput(countryId){
     let number = document.getElementById("number"+countryId);
     let value = number.value;
-    // If the value of the input is empty, set the value to 0
+    /**  If the value of the input is empty, set the value to 0*/
     if (value=="") {
         number.value = 0;
     }
-    // If the value of the input is not a number
+     /**  If the value of the input is not a number*/
     if (isNaN(value)) {
         number.value = 1;
     }
-    // If the value of the input is empty, set the value to 1
+     /**  If the value of the input is empty, set the value to 1*/
     if (parseInt(value)<=1) {
         number.value = 1;
     }
@@ -116,6 +102,7 @@ function refreshData(countryId, qty){
             result.basket[j].qty = parseInt(qty);
         }
     }
+    window.localStorage.setItem("userBasket", JSON.stringify(result));
     addTotalAmount();
 }
 
@@ -154,3 +141,39 @@ function getTotalAmount(){
     }
     return amount;
 }
+
+/** Generate an unique ID to represent a transaction */
+function uniqueId(){
+    let num=['0','1','2','3','4','5','6','7','8','9'];
+    let [max,min]=[Math.floor(Math.random()*(10-7+1)+1),Math.floor(Math.random()*(17-10+1)+17)];
+    num = num.sort(()=>0.4-Math.random()).slice(max,min).slice(0,8).join("");
+    let a=new Date().getTime() + num; /** Using timestamp */
+    return a
+}
+
+/** Send the donation amount */
+function confirmDonate(){
+    if (getTotalAmount() > 0) {
+        uuid = uniqueId()
+        console.log(result.basket)
+        $.ajax({
+            type: 'POST',
+            url: 'http://localhost:3000/paypal_start',
+            dataType : 'json',
+            data: {
+                uuid: uuid,
+                username: window.sessionStorage.getItem("userName"),
+                transfer_amount: getTotalAmount(),
+                basket: result.basket
+            },
+            success: function(res){
+                if (res) {
+                    window.open(res)
+                } else {
+                    alert('error')
+                }
+            }
+        });
+    }
+}
+
