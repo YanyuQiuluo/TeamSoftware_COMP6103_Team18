@@ -18,6 +18,7 @@ async  function func(req,res){
     let re= await user_.findOne({where:{"email":email}})
     if(re)throw "email exist";
     dic[email] = automailer(email);
+    console.log(dic);
     return "code sent";
 }
 
@@ -31,10 +32,11 @@ async  function func2(req,res){
     let password=req.body.password;
     let verify_return=req.body.verify_return;
     let email=req.body.email;
-    if (verify_return === dic[email]){
+    if (verify_return == dic[email]){
         let new_user = user_.build({username:username,password:password,userType:'household',email:email})
         await new_user.save();
     }
+    throw "verify error";
 }
 
 
