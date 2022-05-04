@@ -4,14 +4,9 @@ const result = require("../mode_js/result");
 const Tokens = require("../mode_js/Tokens");
 const user_ = require("../Model/User");
 
-router.route("/")
-    .post( function (req, res) {
-        res.setHeader('Content-Type', 'application/json');
-        func(req,res)
-            .then(x=>{res.json(result.success(x));  })
-            .catch(x=>{res.json(result.fail(x));})
-    });
 
+router.route("/")
+    .post( function (req, res) {result.Run(req,res,func);});
 
 async  function func(req,res){
     let username=req.body.userName;
@@ -21,9 +16,7 @@ async  function func(req,res){
     let re= await user_.findOne({where:{"username":username}})
     if(!re)throw "user no found";
     if(re.password!==password)throw "password error";
-    return Tokens.onLogIn(re);
+    return {"token":Tokens.onLogIn(re) ,"user":re};
 }
-
-
 
 module.exports = router;
