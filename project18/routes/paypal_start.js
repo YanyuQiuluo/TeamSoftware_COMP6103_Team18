@@ -31,12 +31,12 @@ router.post('/', (req, res) => {
                     "name": "Redhock Bar Soap",
                     "sku": "001",
                     "price": req.body.transfer_amount,//"25.00",
-                    "currency": "USD",
+                    "currency": "GBP",
                     "quantity": 1
                 }]
             },
             "amount": {
-                "currency": "USD",
+                "currency": "GBP",
                 "total": req.body.transfer_amount//"25.00"
             },
             "description": "Washing Bar soap"
