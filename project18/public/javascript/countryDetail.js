@@ -1,4 +1,5 @@
 let result = [] // response data array
+let basketObj = {} // Object of basket data
 let countryId = ''
 $(function(){
     countryId = parseInt(getUrlParam('id'));
@@ -18,6 +19,15 @@ $(function(){
             }
         }
     });
+    if(window.sessionStorage.getItem("userName") && window.localStorage.getItem("userBasket")
+        && JSON.parse(window.localStorage.getItem("userBasket")).basket.length > 0) {
+        $('.empty-basket').css('display','none');
+        $('.not-empty-basket').show();
+    } else {
+        $('.not-empty-basket').css('display','none');
+        $('.empty-basket').show();
+    }
+
 })
 
 function addData() {
@@ -46,14 +56,14 @@ function addData() {
         '                                         <strong>You can reduce carbon emissions by donating solar panels for '+ result.country_name+ ':' +'</strong>\n' +
         '                                    </div>\n' +
         '                                    <input type="button" value="-" id="subtraction" style="width: 40px;height: 35px;font-size: 20px" onClick="decrease()" />\n' +
-        '                                    <input type="text" value="0" id="number" onBlur="number()" style="width: 80px;height: 35px" />\n' +
+        '                                    <input type="text" value="1" id="number" onBlur="number()" style="width: 80px;height: 35px" />\n' +
         '                                    <input type="button" value="+" id="add" style="width: 40px;height: 35px;font-size: 20px" onClick="increase()" />\n' +
         '                                    <span>The price of each solar panel for '+ result.country_name+ ' is '+ '<strong>£'+ result.price_of_solar_panel+'</strong></span>\n' +
         '                                </div>\n' +
         '                            </div>\n' +
         '                        </div>\n' +
         '                        <div class="donate-button">\n' +
-        '                           <div class="basket-item"><button id="submit" onClick="add2Basket()">Add to Basket</button></div>\n' +
+        '                           <div class="basket-item"><button id="submit" onClick="add2Basket('+ result.country_id+')">Add to Basket</button></div>\n' +
         '                        </div>\n' +
         '                    </div>\n' +
         '                </div>\n' +
@@ -105,13 +115,42 @@ function increase(){
     number.value = parseInt(number.value) + 1;
 }
 
-function add2Basket() {
+function add2Basket(countryId) {
     if (!window.sessionStorage.getItem("userName")) {
         window.location.href='http://localhost:3000/loginPage'
     } else {
-        // 购物车数据发送给后台
-        $('.empty-basket').css('display','none');
-        $('.not-empty-basket').show();
+        if(!window.localStorage.getItem("userBasket")) {
+            basketObj = {
+                userId: window.sessionStorage.getItem("userName"),
+                basket: []
+            }
+        } else {
+            basketObj = JSON.parse(window.localStorage.getItem("userBasket"))
+        }
+        let qty = document.getElementById("number").value
+        if (parseInt(qty) > 0) {
+            sortBasket(countryId, qty)
+            window.localStorage.setItem("userBasket", JSON.stringify(basketObj));
+            showToast("Added to your donation basket", 1500)
+            $('.empty-basket').css('display','none');
+            $('.not-empty-basket').show();
+        }
+    }
+}
+
+function sortBasket(countryId, qty) {
+    let existCountryId = false
+    for(let i=0; i< basketObj.basket.length; i++) {
+        if(basketObj.basket[i].countryId == countryId) {
+            basketObj.basket[i].qty += parseInt(qty)
+            existCountryId = true
+        }
+    }
+    if (!existCountryId) {
+        basketObj.basket[basketObj.basket.length] = {
+            countryId: countryId,
+            qty: parseInt(qty)
+        }
     }
 }
 

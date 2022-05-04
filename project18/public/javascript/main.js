@@ -247,3 +247,12 @@ $(document).ready(function() {
 //
 // }
 
+/** Nav bar click DONATE button */
+function navDonate() {
+    if (!window.sessionStorage.getItem("userName")){
+        window.location.href='http://localhost:3000/loginPage'
+    } else {
+        window.location.href='http://localhost:3000/basketPage'
+    }
+}
+
