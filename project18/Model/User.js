@@ -5,7 +5,9 @@ const UserModel = sequelize.define(
     {
         user_full_name: Sequelize.STRING,
         username: Sequelize.STRING,
-        password: Sequelize.STRING
+        password: Sequelize.STRING,
+        user_type: Sequelize.STRING,
+
     },
     { timestamps: false }
 )

@@ -5,12 +5,7 @@ const Tokens = require("../mode_js/Tokens");
 const m = require("../Model/Contry");
 
 router.route("/")
-    .post( function (req, res) {
-        res.setHeader('Content-Type', 'application/json');
-        func(req,res)
-            .then(x=>{res.json(result.success(x));  })
-            .catch(x=>{res.json(result.fail(x));})
-    });
+    .post( function (req, res) {result.Run(req,res,func);});
 
 async  function func(req,res){
     let countryID=req.body.countryID;

@@ -3,15 +3,9 @@ const router = express.Router();
 const result = require("../mode_js/result");
 const Tokens = require("../mode_js/Tokens");
 const user_ = require("../Model/User");
-const automailer = require("../mode_js/automailer");
 
 router.route("/register1")
-    .post( function (req, res) {
-        res.setHeader('Content-Type', 'application/json');
-        func(req,res)
-            .then(x=>{res.json(result.success(x));  })
-            .catch(x=>{res.json(result.fail(x));})
-    });
+    .post( function (req, res) {result.Run(req,res,func);});
 
 
 let dic={};
@@ -28,13 +22,10 @@ async  function func(req,res){
 }
 
 
+
 router.route("/verify")
-    .post( function (req, res) {
-        res.setHeader('Content-Type', 'application/json');
-        func2(req,res)
-            .then(x=>{res.json(result.success(x));  })
-            .catch(x=>{res.json(result.fail(x));})
-    });
+    .post( function (req, res) {result.Run(req,res,func2);});
+
 async  function func2(req,res){
     let username=req.body.username;
     let password=req.body.password;
