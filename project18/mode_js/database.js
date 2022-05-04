@@ -1,4 +1,5 @@
 const mysql = require('mysql');
+const mysql2 = require('mysql2');
 let a=0;
 a=a+1;
 console.log("load DB"+a);

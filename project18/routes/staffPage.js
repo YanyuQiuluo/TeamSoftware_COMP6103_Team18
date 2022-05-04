@@ -6,7 +6,7 @@ var router = express.Router();
 router.route("/")
     .post(function (req,res){
         // function of a staff:
-        //1. Edit country and browse transaction infomation:
+        //1. browsing the back data of each country:
         //2.
 
 
