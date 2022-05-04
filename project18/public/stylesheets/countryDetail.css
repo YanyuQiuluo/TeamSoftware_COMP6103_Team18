@@ -445,14 +445,16 @@ button:focus {
     opacity: 1;
     visibility: visible;
 }
-
-.form-item {
+.donate-button{
+    display: flex;
+}
+.basket-item {
     position: relative;
     width: 360px;
     margin: 0 auto;
-    padding-bottom: 30px;
+    padding-bottom: 15px;
 }
-.form-item button {
+.basket-item button {
     background-color: #f8dc00;
     border-color: #f8dc00;
     border-radius: 0;
@@ -469,4 +471,32 @@ button:focus {
     font-weight: 600;
 }
 
+.product-action{
+    margin-top: 20px;
+}
+.product-action input{
+    vertical-align:top;
+    justify-content: center;
+    align-content: center;
+}
+.product-action-tips{
+    margin-bottom: 10px;
+}
+.product-action span{
+    line-height: 35px;
+    margin-left: 10px;
+}
+
+.basket-icon{
+    position: fixed;
+    bottom: 150px;
+    right: 90px;
+}
+.basket-icon img{
+    height: 90px;
+    width: 90px;
+}
+.not-empty-basket {
+    display: none;
+}
 
