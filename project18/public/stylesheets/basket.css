@@ -1,0 +1,77 @@
+.basket-container{
+    margin-top: 170px;
+    margin-bottom: 40px;
+}
+
+.basket-item{
+    width: 70%;
+    margin: 0 auto;
+    border: 2px solid #f8dc00;
+    border-radius: 18px;
+    text-align: center;
+}
+.basket-item .basket-column{
+    background-color: #f8dc00;
+    height: 55px;
+    font-size: 20px;
+    color: black;
+    line-height: 55px;
+    font-weight: 500;
+    border-radius: 18px 18px 0 0;
+    margin-bottom: 20px;
+}
+.basket-item .basket-column table{
+    width:100%;
+}
+.basket-item .basket-row {
+    line-height: 45px;
+    font-size: 20px;
+    font-weight: 400;
+}
+.basket-item .basket-row table{
+    width: 100%;
+}
+.basket-item .basket-row input{
+    justify-content: center;
+    align-content: center;
+}
+.basket-total {
+    border-top: 2px solid #f8dc00;
+    margin-top: 20px;
+    height:60px;
+    font-size: 19px;
+    line-height: 60px;
+    font-weight: 500;
+    border-radius:0 0 10px 10px;
+    text-align: right;
+    padding-right: 100px;
+}
+.basket-btn{
+    display: flex;
+}
+.donate-btn {
+    position: relative;
+    width: 360px;
+    margin: 0 auto;
+    padding-bottom: 15px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+.donate-btn button {
+    background-color: #f8dc00;
+    border-color: #f8dc00;
+    border-radius: 10px;
+    height: 50px;
+    width: 150px;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 600;
+}
+.inputOp{
+    width: 40px;
+    height: 35px;
+    font-size: 20px;
+    line-height: 30px
+}

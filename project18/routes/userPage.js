@@ -16,7 +16,6 @@ router.route("/")
             .table("household",closeDB={})
             .then(x=>{
                 return x.findOne({"household_id":userid});
-
             })
             .then(x=>{
                 res.json(result.success(x));
