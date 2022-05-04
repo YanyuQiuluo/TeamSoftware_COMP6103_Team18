@@ -1,0 +1,48 @@
+1- log in
+    pre-condition(s):
+    -none
+    post-condition(s):
+        success:
+            homepage present with the username shown on the top-left corner.
+        failed:
+           failed massage poped up. 
+    steps:
+    - open the website
+    - click on login button 
+    - enter the username and password in the correct box
+    - click login
+
+2- register
+
+3- browse country:
+4- forget password:
+    pre-condition(s):
+    -none
+    post-condition(s):
+        success:
+            homepage present with the username shown on the top-left corner.
+        failed:
+           failed massage poped up. 
+    steps:
+    - open the website
+    - click on login button 
+    - click forget password button
+    - click login 
+5-donate
+    pre-condition(s): login
+    post-condition(s):
+        success: 
+            success massage of donation poped up.
+            transaction sucessfully finished. and stored at the transaction table.
+            the amount of donated panels updated in the relevat country detailed page.
+        failed:
+            failed massage poped up.
+            no transaction stored at the transaction table.
+            the amount of donated panels didn't changed in the relevat country detailed page.
+    
+    5.1 - one panel for one country
+    5.2 - multible panels for one country
+    5.3 - multible panels for serveral country
+        5.3.1 - one panels for each country
+        5.3.2 -  
+    5.6 - 
