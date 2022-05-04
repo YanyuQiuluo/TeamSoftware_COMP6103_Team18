@@ -23,7 +23,7 @@ router.route("/")
                         res.json(result.success(token));
                 })
                 //-----------------------------------------------------------------------------------------------------------------------------------------------
-                .catch(x=>res.json(result.fail( x)))
+                .catch(x=>res.json(result.fail(x)))
                 .finally(()=>{closeDB.invoke()})
     });
 

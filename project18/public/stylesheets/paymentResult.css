@@ -1,0 +1,42 @@
+.result-pic{
+    text-align:center;
+    margin-top: 160px;
+}
+.result-pic img{
+    width: 100px;
+    height: 100px;
+}
+.result-tips{
+    padding-top: 10px;
+}
+.result-content{
+    margin-top: 20px;
+}
+.result-table{
+    width: 70%;
+    margin: 0 auto;
+    border: 1px solid #f8dc00;
+    border-radius: 18px;
+    text-align: center;
+}
+.result-column{
+    background-color: #f8dc00;
+    height: 55px;
+    font-size: 20px;
+    color: black;
+    line-height: 55px;
+    font-weight: 500;
+    border-radius: 18px 18px 0 0;
+    margin-bottom: 20px;
+}
+.result-column table{
+    width:100%;
+}
+.result-row {
+    line-height: 45px;
+    font-size: 20px;
+    font-weight: 400;
+}
+.result-row table{
+    width: 100%;
+}
