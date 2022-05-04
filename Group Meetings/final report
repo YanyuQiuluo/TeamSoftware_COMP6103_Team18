@@ -1,4 +1,5 @@
 1. Teamwork (Weighting - 30%)
+
 For teamwork, we want to understand
 ● How you organised your team and what tools were used.
 frontend: HTML and CSS
@@ -16,10 +17,49 @@ to solve any difficulties.
 frontend:
 backend:
 Database: Arwa
+Documentation: Arwa
+Test:
+    - write test cases: Arwa
+    - execute test cases:
+    -writing test results:
 
 To assess this, the following will be reviewed
 ● Final team report
 ● Team supervisory meeting notes
 ● Feedback from the client meetings
 ● GitLab commits
+------------------------------------------------------------------------------------------------------
+2. Documentation (Weighting - 40%)
+
+With this criterion, we want to evaluate
+● how your team carried out its projects
+● how you adequately describe/present the solution developed to the client -
+including how it could be used in your absence.
+A large part of the team documentation mark will be based on the quality of your team
+report, the extent to which it details all the requested information, including changes to
+stories and basic information about using your system.
+Team documentation will be graded using a number of mediums which include
+● Final team report
+● User guide
+● Setup guide (how can the client set up the software developed?)
+● Test results
+-------------------------------------------------------------------------------------------------------
+3. Delivered Software (Weighting - 30%)
+
+With this criterion, we want to evaluate how well your delivered software meets the
+requirements specified.
+Particularly, we are interested in answering the following questions
+● How usable is the product?
+● Does it meet the client’s requirements?
+● Is the product developed to specification?
+The software will be graded using a number of mediums some of which include
+○ The basic organisation of your code into units, and its overall structure
+○ The amount of work completed to date, and the extent to which you are on
+track to delivering a good quality product
+○ Client feedback on the quality of the product
+○ Basic functional test of the product
+○ Walkthrough video
+Each team is required to produce a 3-minute video walkthrough of their software
+showing various functionalities developed. This must be added to a ‘/video’ folder of
+your team’s GitLab repository and you should provide a link to it in the report.
 
