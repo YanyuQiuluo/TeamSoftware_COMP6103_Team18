@@ -11,7 +11,7 @@ router.get('/', (req, res) => res.sendFile(__dirname + "/index.html"));
 
 //outer.listen(PORT, () => console.log(`Server Started on ${PORT}`));
 
-router.get('/test',(req,res)  => {
+router.post('/test',(req,res)  => {
     const create_payment_json = {
         "intent": "sale",
         "payer": {
@@ -27,12 +27,12 @@ router.get('/test',(req,res)  => {
                     "name": "Redhock Bar Soap",
                     "sku": "001",
                     "price": "25.00",
-                    "currency": "USD",
+                    "currency": "GBP",
                     "quantity": 1
                 }]
             },
             "amount": {
-                "currency": "USD",
+                "currency": "GBP",
                 "total": "25.00"
             },
             "description": "Washing Bar soap"

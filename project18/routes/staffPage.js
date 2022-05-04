@@ -6,19 +6,18 @@ var router = express.Router();
 router.route("/")
     .post(function (req,res){
         // function of a staff:
-        //1. browsing the back data of each country:
-        //2.
-
+        //1. browsing countrylist.
+        //2. browsing transactionlist.
+        //3. browsing data calculated by upper two list.
 
         //require feature index
         let userid = req.body.email;
-
+        let transactionlist;
 
         require("../mode_js/MongoDB")
-            .table("household",closeDB={})
+            .table("transaction",closeDB={})
             .then(x=>{
-                return x.findOne({"household_id":userid});
-
+                transactionlist = x.findAll();
             })
             .then(x=>{
                 res.json(result.success(x));
