@@ -49,9 +49,8 @@ function addData() {
     // console.log(document.getElementsByClassName("superuser"));
     // document.getElementById('superuser').innerText = "qqq";
 
-    let user2Name = window.sessionStorage.getItem("userName");
-    document.getElementsByClassName("superuser").innerText = "user2Name";
-    console.log(document.getElementsByClassName("superuser"));
+
+
     // var html = '';
 
     // html += '<h1 class="index-header"> Welcome back' + '<h1>' + user2Name + '</h1>' + '</h1>'

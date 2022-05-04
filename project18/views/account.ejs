@@ -28,7 +28,6 @@
 </head>
 <body>
 
-
 <header id="header">
     <div class="header-top">
         <div class="container">
@@ -73,9 +72,9 @@
 
 <section class="centre-content bg-black ">
 
-    <h1 class="index-header">
-       Welcome back <p1 class="superuser"> </p1> </h1>
-
+    <h1 id="xuli" class="index-header">
+    </h1>
+    </h1>
 </section>
 
 
@@ -191,4 +190,10 @@
 
 
 </body>
+
+<script type="text/javascript">
+    let user2Name ="Welcome back "+ window.sessionStorage.getItem("userName");
+    let object = document.getElementById("xuli");
+    object.innerHTML = user2Name;
+</script>
 </html>
