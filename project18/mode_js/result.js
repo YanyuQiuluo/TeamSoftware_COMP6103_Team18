@@ -15,4 +15,10 @@ re.fail=function (msg,code="400"){
         msg:msg
     }
 }
+re.Run=function (req,res,f){
+    res.setHeader('Content-Type', 'application/json');
+    f(req,res)
+        .then(x=>{res.json(re.success(x));  })
+        .catch(x=>{res.json(re.fail(x));})
+}
 module.exports=re;
