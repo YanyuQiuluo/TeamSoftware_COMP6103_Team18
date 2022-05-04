@@ -24,18 +24,18 @@ router.post('/test',(req,res)  => {
         "transactions": [{
             "item_list": {
                 "items": [{
-                    "name": "Redhock Bar Soap",
+                    "name": "SolarOffset Donation",
                     "sku": "001",
-                    "price": "25.00",
+                    "price": "\""+req.body.transfer_amount+"\"",
                     "currency": "GBP",
                     "quantity": 1
                 }]
             },
             "amount": {
                 "currency": "GBP",
-                "total": "25.00"
+                "total": "\""+req.body.transfer_amount+"\""
             },
-            "description": "Washing Bar soap"
+            "description": "SolarOffset Donation"
         }]
     };
 
@@ -45,7 +45,7 @@ router.post('/test',(req,res)  => {
         } else {
             for(let i = 0;i < payment.links.length;i++){
                 if(payment.links[i].rel === 'approval_url'){
-                    res.redirect(payment.links[i].href);
+                    res.json(payment.links[i].href.url);
                 }
             }
         }

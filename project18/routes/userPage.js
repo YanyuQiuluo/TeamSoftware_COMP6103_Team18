@@ -23,6 +23,9 @@ router.route("/")
             //-----------------------------------------------------------------------------------------------------------------------------------------------
             .catch(x=>res.json(result.fail(x)))
             .finally(()=>{closeDB.invoke()})
+
+        //传一个json：username，email， footprint, electricity usage monthly
+        //调用一个只有这个用户的transaction list。
     });
 
 
