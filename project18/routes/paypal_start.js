@@ -30,14 +30,14 @@ router.post('/', (req, res) => {
                 "items": [{
                     "name": "Redhock Bar Soap",
                     "sku": "001",
-                    "price": req.body.price,//"25.00",
+                    "price": req.body.transfer_amount,//"25.00",
                     "currency": "USD",
                     "quantity": 1
                 }]
             },
             "amount": {
                 "currency": "USD",
-                "total": req.body.price//"25.00"
+                "total": req.body.transfer_amount//"25.00"
             },
             "description": "Washing Bar soap"
         }]
