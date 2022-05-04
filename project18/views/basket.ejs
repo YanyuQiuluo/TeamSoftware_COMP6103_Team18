@@ -53,9 +53,8 @@
                     <li class="menu-active"><a href="/">Home</a></li>
                     <li><a href="aboutPage">About</a></li>
                     <li><a href="countrylistPage">COUNTRY LIST</a></li>
-                    <li><a href="DONATE.html">DONATE</a></li>
+                    <li><a href="javascript:void(0);" onclick="navDonate()">DONATE</a></li>
                     <li><a href="MY ACCOUNT.html">MY ACCOUNT</a></li>
-
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
             </nav><!-- #nav-menu-container -->
@@ -64,7 +63,7 @@
 </header><!-- #header -->
 
 <!--== Start Page Content Wrapper ==-->
-<div class="basket-container">
+<div class="basket-container" id="basket-container">
     <div class="basket-item">
         <div class="basket-column">
             <table>
@@ -79,12 +78,30 @@
         <div class="basket-row" id="basket-row"></div>
         <div class="basket-total" id="basket-total"></div>
         <div class="basket-btn">
-            <div class="donate-btn"><button id="donateBtn" onClick="confirmDonate()">Donate Now</button></div>
+            <div class="donate-btn"><button id="donateBtn" data-toggle="modal" data-target="#myModal" onClick="confirmDonate()">Donate Now</button></div>
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="myModalLabel">Donation submitted</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        </div>
+                        <div class="modal-body" style="text-align: left">Please complete the payment in the newly opened window.
+                            If you have paid successfully, you can click the Right button to see how much carbon footprint have been reduced by your donation.</div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Resubmit</button>
+                            <button type="button" class="btn btn-primary" onclick="gotoResult()" style="color: black;background-color: #f8dc00;border: 1px solid #f8dc00;font-weight: 500">
+                                Paid Successfully
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
-<div class="footer-nav-container">
+<div class="footer-nav-container" id="footer-nav-container">
     <div class="footer-nav" role="navigation">
         <div class="footer-nav-item hover-line"><a href="http://localhost:3000/aboutPage">ABOUT US</a><div class="hover-nav"></div></div>
         <div class="footer-nav-item hover-line"><a href="/contactPage">CONTACT US</a><div class="hover-nav"></div></div>

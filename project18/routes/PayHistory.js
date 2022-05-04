@@ -1,25 +1,13 @@
 var express = require('express');
 const result = require("../mode_js/result");
 var router = express.Router();
-
-
+const m = require("../Model/transaction");
 router.route("/")
-    .post(function (req,res){
+    .post( function (req, res) {result.Run(req,res,func);});
 
-        let userid = req.body.userid;
-
-        require("../mode_js/MongoDB")
-            .table("transaction",closeDB={})
-            .then(x=>{
-                return x.find({"user_id":userid});
-            })
-            .then(x=>{
-                res.json(result.success(x));
-            })
-            //-----------------------------------------------------------------------------------------------------------------------------------------------
-            .catch(x=>res.json(result.fail(x)))
-            .finally(()=>{closeDB.invoke()})
-    });
-
+async  function func(req,res){
+    let userid = req.body.userid;
+    return await m.findAll({where: {"user_id": userid}});
+}
 
 module.exports = router;
