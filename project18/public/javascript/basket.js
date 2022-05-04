@@ -3,7 +3,7 @@ let priceArr = [] /** Array of price of solar panels */
 let uuid = "" /** An unique ID to represent a transaction */
 $(function(){
     let element = document.getElementById("basket-container");
-    if(element.scrollHeight <= element.clientHeight) { /** There is a scroll bar, then fixed the foot bar*/
+    if(element.scrollHeight <= element.clientHeight + 20) { /** There is a scroll bar, then fixed the foot bar*/
         document.getElementById("footer-nav-container").style.position = 'fixed'
     }
     result = JSON.parse(window.localStorage.getItem("userBasket"))
@@ -175,5 +175,10 @@ function confirmDonate(){
             }
         });
     }
+}
+
+function gotoResult() {
+    // 还需判断交易是否成功
+    window.location.href='http://localhost:3000/paymentResultPage'
 }
 
