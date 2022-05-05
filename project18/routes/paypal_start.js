@@ -3,6 +3,7 @@ var router = express.Router();
 const paypal = require("paypal-rest-sdk");
 const {DATETIME} = require("mysql/lib/protocol/constants/types");
 const transaction = require("../Model/transaction");
+const result = require("../mode_js/result");
 paypal.configure({
     'mode': 'sandbox', //sandbox or live
     'client_id': 'AZy5f1Hb6e31rRiN1Yl7C5Rl0O2aDZC7aK-QpEGEjDumOPORvwOPpwMC-6wewOBTGI_TxGvMrje-Zu2-',
@@ -18,6 +19,7 @@ router.get('/', (req, res) => res.sendFile(__dirname + "/index.html"));
 
 
 router.post('/', async (req, res) => {
+    res.setHeader('Content-Type', 'application/json');
     const create_payment_json = {
         "intent": "sale",
         "payer": {
@@ -48,11 +50,14 @@ router.post('/', async (req, res) => {
     // payment started
     paypal.payment.create(create_payment_json, function (error, payment) {
         if (error) {
-            throw error;
+            res.json(result.fail( error));
+
         } else {
             for (let i = 0; i < payment.links.length; i++) {
                 if (payment.links[i].rel === 'approval_url') {
-                    res.json(payment.links[i].href);
+                    let re=payment.links[i].href;
+                    console.log(re);
+                    res.json(result.success( re));
                 }
             }
         }
