@@ -2,6 +2,7 @@ const express = require('express');
 var router = express.Router();
 const paypal = require("paypal-rest-sdk");
 const {DATETIME} = require("mysql/lib/protocol/constants/types");
+const transaction = require("../Model/transaction");
 paypal.configure({
     'mode': 'sandbox', //sandbox or live
     'client_id': 'AZy5f1Hb6e31rRiN1Yl7C5Rl0O2aDZC7aK-QpEGEjDumOPORvwOPpwMC-6wewOBTGI_TxGvMrje-Zu2-',
@@ -31,14 +32,14 @@ router.post('/', async (req, res) => {
                 "items": [{
                     "name": "Redhock Bar Soap",
                     "sku": "001",
-                    "price": req.body.transfer_amount,//"25.00",
+                    "price": req.body.transfer_amount_total,//"25.00",
                     "currency": "GBP",
                     "quantity": 1
                 }]
             },
             "amount": {
                 "currency": "GBP",
-                "total": req.body.transfer_amount//"25.00"
+                "total": req.body.transfer_amount_total//"25.00"
             },
             "description": "Washing Bar soap"
         }]
@@ -59,15 +60,18 @@ router.post('/', async (req, res) => {
 
     // payment started record
     const transaction = require("../Model/transaction");
-    const payment = await transaction.create({
-        dataTime: getCurrentTime(),
-        transfer_amount: req.body.transfer_amount,
-        panel_amount: req.body.panel_amount,
-        country_name: req.body.donate_country,
-        user_name: req.body.username,
-        status: "pending",
-        uuid:req.body.uuid
-    });
+    for(var i=0; i<req.body.basket.length; i++){
+        const payment = await transaction.create({
+
+            dataTime: getCurrentTime(),
+            transfer_amount: req.body.basket[i].transfer_amount,
+            panel_amount: req.body.basket[i].panel_amount,
+            country_name: req.body.basket[i].donate_country,
+            user_name: req.body.username,
+            status: "pending",
+            uuid:req.body.uuid
+        });
+    }
 
     function getCurrentTime() {
         var date = new Date();//current time
