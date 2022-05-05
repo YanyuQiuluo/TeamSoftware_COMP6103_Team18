@@ -9,10 +9,11 @@ const UserModel = sequelize.define(
             autoIncrement: true // 对postgres来说会自动转为 SERIAL
         },
 
-        user_full_name: Sequelize.STRING,
+        user_full_name:{type: Sequelize.STRING,defaultValue: ""},
         username: Sequelize.STRING,
         password: Sequelize.STRING,
         user_type: Sequelize.STRING,
+        email:{type: Sequelize.STRING,}
     },
     { timestamps: false }
 )

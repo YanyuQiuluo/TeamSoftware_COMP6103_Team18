@@ -32,11 +32,24 @@ async  function func2(req,res){
     let password=req.body.password;
     let verify_return=req.body.verify_return;
     let email=req.body.email;
-    if (verify_return == dic[email]){
-        let new_user = user_.build({username:username,password:password,userType:'household',email:email})
-        await new_user.save();
-    }
-    throw "verify error";
+
+    let re= await user_.findOne({where:{"email":email}})
+    if(re)throw "email exist";
+
+    if (verify_return != dic[email])    throw "verify error";
+
+    let re2= await user_.findOne({where:{"username":username}})
+    if(re2)throw "username exist";
+
+
+    let new_user = user_.build(
+        {
+            username:username,
+            password:password,
+            user_type:'household',
+            email:email})
+    await new_user.save();
+    return new_user;
 }
 
 
