@@ -8,10 +8,10 @@ router.route("/")
     .post( function (req, res) {result.Run(req,res,func);});
 
 async  function func(req,res){
-    let countryID=req.body.countryID;
-    if(!countryID)throw "no id";
-    let re= await m.findOne({where:{"country_id":countryID}})
-    if(!re)throw "countryID no found";
+    let country_name=req.body.country_name;
+    if(!country_name)throw "no name";
+    let re= await m.findOne({where:{"country_name":country_name}})
+    if(!re)throw "country name no found";
     return re;
 }
 
