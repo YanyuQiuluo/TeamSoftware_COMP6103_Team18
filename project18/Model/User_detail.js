@@ -20,6 +20,7 @@ const UserModel = sequelize.define(
         user_type: Sequelize.STRING,
         feul_usage_pm: Sequelize.STRING,
         electicity_usage_pm: Sequelize.STRING,
+            email:{type: Sequelize.STRING,},
     },
     { timestamps: false }
 )
