@@ -13,8 +13,8 @@ const country = sequelize.define(
         carbon_emissions:Sequelize.DOUBLE,
         price_of_solar_panel:Sequelize.DOUBLE,
         savings:Sequelize.DOUBLE,
-        country_image:Sequelize.TEXT
-
+        country_image:Sequelize.TEXT,
+        country_description: Sequelize.STRING,
     },
     { timestamps: false }
 )
