@@ -9,7 +9,7 @@ router.route("/")
 async  function func(req,res){
     let userid = req.body.email;
     if(!userid)throw "userid null";
-    let re= await m.findAll({where:{"id":userid}})
+    let re= await m.findAll({where:{"user_id":userid}})
     if(!re)throw "userid no found";
     return re;
 }
