@@ -64,3 +64,10 @@ function addData() {
     // $(".members-home").trigger("create");
 }
 
+$(function(){
+    let element = document.getElementById("scroll");
+    if(element.scrollHeight <= element.clientHeight + 20) { /** There is a scroll bar, then fixed the foot bar*/
+    document.getElementById("footer123").style.position = 'fixed'
+    }
+})
+
