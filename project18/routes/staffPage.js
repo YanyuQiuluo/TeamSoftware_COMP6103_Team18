@@ -2,6 +2,9 @@ var express = require('express');
 const result = require("../mode_js/result");
 var router = express.Router();
 
+router.get('/', function(req, res, next) {
+    res.render('staffPage', { title: 'staffPage' });
+});
 
 router.route("/")
     .post(function (req,res){
