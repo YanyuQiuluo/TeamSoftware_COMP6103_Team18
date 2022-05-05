@@ -11,7 +11,7 @@
  Target Server Version : 80028
  File Encoding         : 65001
 
- Date: 05/05/2022 11:54:21
+ Date: 05/05/2022 12:10:32
 */
 
 SET NAMES utf8mb4;
@@ -36,9 +36,9 @@ CREATE TABLE `countries`  (
 -- ----------------------------
 -- Records of countries
 -- ----------------------------
-INSERT INTO `countries` VALUES (123, 'Tanzania', 62.41, 0.21, 500, 0, NULL);
-INSERT INTO `countries` VALUES (456, 'Kenya', 98.84, 0.36, 600, 100, NULL);
-INSERT INTO `countries` VALUES (789, 'Ethiopia', 107.6, 0.15, 550, 320, NULL);
+INSERT INTO `countries` VALUES (123, 'Tanzania', 62.41, 0.21, 500, 0, 'https://cdn.britannica.com/20/20-004-EB20A026/Flag-Tanzania.jpg');
+INSERT INTO `countries` VALUES (456, 'Kenya', 98.84, 0.36, 600, 100, 'https://cdn.britannica.com/15/15-004-B5D6BF80/Flag-Kenya.jpg');
+INSERT INTO `countries` VALUES (789, 'Ethiopia', 107.6, 0.15, 550, 320, 'https://cdn.countryflags.com/thumbs/ethiopia/flag-800.png');
 
 -- ----------------------------
 -- Table structure for transactions
