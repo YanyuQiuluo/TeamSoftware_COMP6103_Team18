@@ -69,14 +69,15 @@ router.post('/', async (req, res) => {
         const payment = await transaction.create({
 
             dataTime: getCurrentTime(),
-            transfer_amount: req.body.basket[i].transfer_amount,
-            panel_amount: req.body.basket[i].panel_amount,
-            country_name: req.body.basket[i].donate_country,
+            transfer_amount: JSON.parse(req.body.basket[i]).transfer_amount,
+            panel_amount: JSON.parse(req.body.basket[i]).panel_amount,
+            country_name: JSON.parse(req.body.basket[i]).donate_country,
             user_name: req.body.username,
             status: "pending",
             uuid:req.body.uuid
         });
     }
+
 
     function getCurrentTime() {
         var date = new Date();//current time
