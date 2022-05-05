@@ -58,8 +58,8 @@
                     <li class="menu-active"><a href="/">Home</a></li>
                     <li><a href="aboutPage">About</a></li>
                     <li><a href="countrylistPage">COUNTRY LIST</a></li>
-                    <li><a href="DONATE.html">DONATE</a></li>
-                    <li><a href="MY ACCOUNT.html">MY ACCOUNT</a></li>
+                    <li><a href="javascript:void(0);" onclick="navDonate()">DONATE</a></li>
+                    <li><a href="#">MY ACCOUNT</a></li>
 
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
@@ -68,11 +68,11 @@
     </div>
 </header><!-- #header -->
 
-<div class="members-home">
+<div class="members-home" id="scroll">
 
 <section class="centre-content bg-black ">
 
-    <h1 id="xuli" class="index-header">
+    <h1 id="superuser" class="index-header">
     </h1>
     </h1>
 </section>
@@ -172,12 +172,11 @@
 
 
 
-
 <!--== Start Page Content Wrapper ==-->
 
 <!--== End Page Content Wrapper ==-->
 
-<div class="footer-nav-container">
+<div class="footer-nav-container" id="footer123">
     <div class="footer-nav" role="navigation">
         <div class="footer-nav-item hover-line"><a href="http://localhost:3000/aboutPage">ABOUT US</a><div class="hover-nav"></div></div>
         <div class="footer-nav-item hover-line"><a href="/contactPage">CONTACT US</a><div class="hover-nav"></div></div>
@@ -193,7 +192,7 @@
 
 <script type="text/javascript">
     let user2Name ="Welcome back "+ window.sessionStorage.getItem("userName");
-    let object = document.getElementById("xuli");
+    let object = document.getElementById("superuser");
     object.innerHTML = user2Name;
 </script>
 </html>
