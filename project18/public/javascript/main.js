@@ -243,6 +243,13 @@ $(document).ready(function() {
 
 //    关于logout按钮
 
+    if (window.sessionStorage.getItem("userName")){
+        $('#logo').append('<a href="http://localhost:3000/myaccountPage"><img src="img/login.png" alt="" title="" /></a>')
+    }else{
+        $('#logo').append('<a href="http://localhost:3000/loginPage"><img src="img/login.png" alt="" title="" /></a>')
+    }
+
+
 if(window.sessionStorage.getItem("userName")){
     $('#logout').show();
     $('#logout').on("click",function (){
@@ -258,6 +265,8 @@ if(window.sessionStorage.getItem("userName")){
     });
 
     }
+
+
 
 
 
