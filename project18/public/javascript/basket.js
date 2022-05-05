@@ -152,20 +152,30 @@ function uniqueId(){
 function confirmDonate(){
     if (getTotalAmount() > 0) {
         uuid = uniqueId()
-        console.log(result.basket)
+        let basketSend = []
+        for(let i=0;i<result.basket.length;i++) {
+            let objItem = {
+                "donate_country": String(result.basket[i].countryName),
+                "panel_amount": String(result.basket[i].qty),
+                "transfer_amount": String(getPrice(result.basket[i].countryName) * result.basket[i].qty)
+            }
+            basketSend[i] = JSON.stringify(objItem)
+        }
+        let parmsSend = {
+                basket: basketSend,
+                uuid: String(uuid),
+                username: String(window.sessionStorage.getItem("userName")),
+                transfer_amount_total: String(getTotalAmount())
+            }
         $.ajax({
             type: 'POST',
             url: 'http://localhost:3000/paypal_start',
             dataType : 'json',
-            data: {
-                uuid: uuid,
-                username: window.sessionStorage.getItem("userName"),
-                transfer_amount: getTotalAmount(),
-                basket: result.basket
-            },
+            traditional: true,
+            data: parmsSend,
             success: function(res){
-                if (res) {
-                    window.open(res)
+                if (res.code == "200") {
+                    window.open(res.result)
                 } else {
                     alert('error')
                 }
@@ -178,4 +188,5 @@ function gotoResult() {
     // 还需判断交易是否成功
     window.location.href='http://localhost:3000/paymentResultPage'
 }
+
 
