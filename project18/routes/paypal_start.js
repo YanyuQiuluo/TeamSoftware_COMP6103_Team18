@@ -26,8 +26,8 @@ router.post('/', async (req, res) => {
             "payment_method": "paypal"
         },
         "redirect_urls": {
-            "return_url": "http://localhost:3000/success?uuid="+req.body.uuid,
-            "cancel_url": "http://localhost:3000/cancel?uuid="+req.body.uuid
+            "return_url": "http://localhost:3000/success?uuid="+req.body.uuid+"&total="+req.body.transfer_amount_total,
+            "cancel_url": "http://localhost:3000/cancel?uuid="+req.body.uuid+"&total="+req.body.transfer_amount_total
         },
         "transactions": [{
             "item_list": {

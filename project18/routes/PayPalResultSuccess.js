@@ -9,13 +9,14 @@ router.route("/")
         const payerId = req.query.PayerID;
         const paymentId = req.query.paymentId;
         const uuid = req.query.uuid;
+        const total = req.query.total;
 
         const execute_payment_json = {
             "payer_id": payerId,
             "transactions": [{
                 "amount": {
                     "currency": "GBP",
-                    "total": "25.00"
+                    "total": total
                 }
             }]
         };
