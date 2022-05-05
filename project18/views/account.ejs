@@ -24,7 +24,7 @@
     <script src="javascript/jquery.magnific-popup.min.js"></script>
     <script src="javascript/owl.carousel.min.js"></script>
     <script src="javascript/main.js"></script>
-    <script src="javascript/account.js"></script>
+
 </head>
 <body>
 
@@ -84,11 +84,11 @@
 
             <div class="col-md-12">
                 <div class="row dashboard-stats">
-                    <div class="col-md-12 bg-white" style="text-align:left">
-                        <h2>Username: </h2>
-                        <h2>Email: </h2>
-                        <h2>Carbon footprint: </h2>
-                        <h2>Electricity usage monthly: </h2>
+                    <div class="col-md-12 bg-white" style="text-align:left" id="userInformation">
+                        <h2 id="uname"></h2>
+                        <h2 id="emaiL"></h2>
+                        <h2 id="carbonF"></h2>
+                        <h2 id="Elect"></h2>
                     </div>
 <!--                    <div class="col-md-4 bg-white">-->
 <!--                        <h2>name: XXX</h2>-->
@@ -116,7 +116,7 @@
                             <div class="container mt-3">
                                 <h2>Paid Invoices</h2>
 
-                                <table class="table">
+                                <table class="table" >
                                     <thead>
                                     <tr>
                                         <th>Name</th>
@@ -125,25 +125,25 @@
                                         <th>Time</th>
                                     </tr>
                                     </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
+                                    <tbody id="tablePersonal">
+<!--                                    <tr>-->
+<!--                                        <td></td>-->
+<!--                                        <td></td>-->
+<!--                                        <td></td>-->
+<!--                                        <td></td>-->
+<!--                                    </tr>-->
+<!--                                    <tr>-->
+<!--                                        <td></td>-->
+<!--                                        <td></td>-->
+<!--                                        <td></td>-->
+<!--                                        <td></td>-->
+<!--                                    </tr>-->
+<!--                                    <tr>-->
+<!--                                        <td></td>-->
+<!--                                        <td></td>-->
+<!--                                        <td></td>-->
+<!--                                        <td></td>-->
+<!--                                    </tr>-->
                                     </tbody>
                                 </table>
                             </div>
@@ -196,3 +196,5 @@
     object.innerHTML = user2Name;
 </script>
 </html>
+
+<script src="javascript/account.js"></script>
