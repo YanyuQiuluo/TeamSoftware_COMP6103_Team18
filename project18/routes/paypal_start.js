@@ -1,6 +1,7 @@
 const express = require('express');
 var router = express.Router();
 const paypal = require("paypal-rest-sdk");
+const {DATETIME} = require("mysql/lib/protocol/constants/types");
 paypal.configure({
     'mode': 'sandbox', //sandbox or live
     'client_id': 'AZy5f1Hb6e31rRiN1Yl7C5Rl0O2aDZC7aK-QpEGEjDumOPORvwOPpwMC-6wewOBTGI_TxGvMrje-Zu2-',
@@ -15,7 +16,7 @@ router.get('/', (req, res) => res.sendFile(__dirname + "/index.html"));
 
 
 
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
     const create_payment_json = {
         "intent": "sale",
         "payer": {
@@ -43,17 +44,54 @@ router.post('/', (req, res) => {
         }]
     };
 
+    // payment started
     paypal.payment.create(create_payment_json, function (error, payment) {
         if (error) {
             throw error;
         } else {
-            for(let i = 0;i < payment.links.length;i++){
-                if(payment.links[i].rel === 'approval_url'){
+            for (let i = 0; i < payment.links.length; i++) {
+                if (payment.links[i].rel === 'approval_url') {
                     res.json(payment.links[i].href);
                 }
             }
         }
     });
+
+    // payment started record
+    const transaction = require("../Model/transaction");
+    const payment = await transaction.create({
+        dataTime: getCurrentTime(),
+        amount: req.body.transfer_amount,
+        country_name: req.body.donate_country,
+        user_name: req.body.username,
+        status: "pending"
+    });
+
+    function getCurrentTime() {
+        var date = new Date();//当前时间
+        var month = zeroFill(date.getMonth() + 1);//月
+        var day = zeroFill(date.getDate());//日
+        var hour = zeroFill(date.getHours());//时
+        var minute = zeroFill(date.getMinutes());//分
+        var second = zeroFill(date.getSeconds());//秒
+
+        //当前时间
+        var curTime = date.getFullYear() + "-" + month + "-" + day
+            + " " + hour + ":" + minute + ":" + second;
+
+        return curTime;
+    }
+
+    /**
+     * 补零
+     */
+    function zeroFill(i){
+        if (i >= 0 && i <= 9) {
+            return "0" + i;
+        } else {
+            return i;
+        }
+    }
 
 });
 
