@@ -31,9 +31,9 @@ $('#submit').on('click', function () {
                 email: email
             },
             success: function(res){
-                if ( 'email existed') {
+                if (res.msg == 'email existed') {
                     $('.tip00').show();
-                } else if (res === 'code sent') {
+                } else if (res.result === 'code sent') {
                     document.getElementById("emailInput").innerHTML = getEmailInput();
                     $('#information').css('display','none');
                     $('#emailVerify').show();
@@ -57,7 +57,7 @@ $('#next').on('click', function () {
             url: 'http://localhost:3000/register/verify',
             dataType : 'json',
             data: {
-                userName: usn,
+                username: usn,
                 password: psd,
                 verify_return: emailCode,
                 email: email
@@ -70,7 +70,7 @@ $('#next').on('click', function () {
                     $('.tip1').show();
                 } else {
                     // need a tip
-                    window.location.href='http://localhost:3000/loginPage'
+                    // window.location.href='http://localhost:3000/loginPage'
                 }
             }
         });
@@ -78,13 +78,13 @@ $('#next').on('click', function () {
 })
 
 $('#resend').on('click', function () {
-    // need a tip
+    showToast("Code sent", 1500)
     $.ajax({
         type: 'POST',
-        url: 'http://localhost:3000/verify',
+        url: 'http://localhost:3000/register/register1',
         dataType : 'json',
         data: {
-            userName: usn,
+            username: usn,
             password: psd,
             verify_return: emailCode,
             email: email
@@ -96,7 +96,7 @@ $('#resend').on('click', function () {
             if (res === 'wrong code') {
                 $('.tip1').show();
             } else {
-                window.location.href='http://localhost:3000/loginPage'
+                // window.location.href='http://localhost:3000/loginPage'
             }
         }
     });
