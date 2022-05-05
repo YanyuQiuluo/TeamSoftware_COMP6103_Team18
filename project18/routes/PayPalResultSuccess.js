@@ -8,19 +8,20 @@ router.route("/")
 
         const payerId = req.query.PayerID;
         const paymentId = req.query.paymentId;
+        const uuid = req.query.uuid;
 
         const execute_payment_json = {
             "payer_id": payerId,
             "transactions": [{
                 "amount": {
-                    "currency": "USD",
+                    "currency": "GBP",
                     "total": "25.00"
                 }
             }]
         };
 
 // Obtains the transaction details from paypal
-        paypal.payment.execute(paymentId, execute_payment_json, function (error, payment) {
+        paypal.payment.execute(paymentId, execute_payment_json, async function (error, payment) {
             //When error occurs when due to non-existent transaction, throw an error else log the transaction details in the console then send a Success string reposponse to the user.
             if (error) {
                 console.log(error.response);
@@ -28,6 +29,13 @@ router.route("/")
             } else {
                 console.log(JSON.stringify(payment));
                 res.send('Success');
+
+                const transaction = require("../Model/transaction");
+                await transaction.update({ status: "success" }, {
+                    where: {
+                        uuid: uuid
+                    }
+                });
             }
         });
 
