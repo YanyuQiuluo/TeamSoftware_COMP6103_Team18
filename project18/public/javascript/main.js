@@ -240,6 +240,27 @@ $(document).ready(function() {
         }
     });
 
+
+//    关于logout按钮
+
+if(window.sessionStorage.getItem("userName")){
+    $('#logout').show();
+    $('#logout').on("click",function (){
+        window.sessionStorage.removeItem("userName");
+        $('#userid').css('display','none');
+        $('#un-login').show();
+        if (window.sessionStorage.getItem("userName")){
+            console.log('error');
+        }else{
+            $('#logout').hide();
+        }
+
+    });
+
+    }
+
+
+
 });
 
 // function getUsername(){
@@ -255,4 +276,6 @@ function navDonate() {
         window.location.href='http://localhost:3000/basketPage'
     }
 }
+
+
 
