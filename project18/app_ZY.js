@@ -14,7 +14,7 @@ function Load(app) {
     app.use('/register', verifyRouter);
     app.use('/countrylist', countrylistRouter_);
     app.use('/userPage', userPageRouter_);
-    app.use('/paypal_start', paypalRouter_);
+    app.use('/paypal_start', paypalRouter);
 
 }
 module.exports=Load
