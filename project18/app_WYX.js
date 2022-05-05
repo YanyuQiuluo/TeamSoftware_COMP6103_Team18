@@ -13,8 +13,8 @@ function Load(app) {
     app.use("/success",success);
     app.use("/cancel",cancel);
     app.use("/pay_history",pay_history);
-
-
+app.use("/user_list",require("./routes/managerUserList"));
+    app.use("/upgrade_user",require("./routes/managerUpgrateUser"));
 }
 
 module.exports=Load
