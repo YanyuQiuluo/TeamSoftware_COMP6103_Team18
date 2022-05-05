@@ -77,11 +77,11 @@ router.post('/', async (req, res) => {
         var date = new Date();//current time
         var month = zeroFill(date.getMonth() + 1);//month
         var day = zeroFill(date.getDate());//day
-        var hour = zeroFill(date.getHours());//时
-        var minute = zeroFill(date.getMinutes());//分
-        var second = zeroFill(date.getSeconds());//秒
+        var hour = zeroFill(date.getHours());//hour
+        var minute = zeroFill(date.getMinutes());//minute
+        var second = zeroFill(date.getSeconds());//second
 
-        //当前时间
+        //current time
         var curTime = date.getFullYear() + "-" + month + "-" + day
             + " " + hour + ":" + minute + ":" + second;
 
@@ -89,7 +89,7 @@ router.post('/', async (req, res) => {
     }
 
     /**
-     * 补零
+     * fill zero
      */
     function zeroFill(i){
         if (i >= 0 && i <= 9) {
