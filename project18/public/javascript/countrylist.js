@@ -31,13 +31,13 @@ function addData() {
             '                    <div class="col-sm-6 col-lg-4 col-xl-3">\n' +
             '                        <div class="product-item">\n' +
             '                            <div class="product-item__thumb">\n' +
-            '                                <a href="http://localhost:3000/countryDetailPage?id='+result[i].country_id+'">\n' +
+            '                                <a href="http://localhost:3000/countryDetailPage?name='+result[i].country_name+'">\n' +
             '                                    <img class="thumb-primary" src='+result[i].country_image+' alt=""/>\n' +
             '                                </a>\n' +
             '                            </div>\n' +
             '                            <div class="product-item__content">\n' +
             '                                <div class="product-item__info">\n' +
-            '                                    <h4 class="title"><a href="http://localhost:3000/countryDetailPage?id='+result[i].country_id+'">'+ result[i].country_name+'</a></h4>\n' +
+            '                                    <h4 class="title"><a href="http://localhost:3000/countryDetailPage?name='+result[i].country_name+'">'+ result[i].country_name+'</a></h4>\n' +
             '                                    <p class="price"><strong>Carbon Emissions per capita: </strong>'+ result[i].carbon_emissions+ ' metric tons'+'</p>\n' +
             '                                    <p class="price"><strong>GDP: </strong>'+ '$'+ result[i].gdp+' billion'+'</p>\n' +
             '                                    <p class="price"><strong>Price of a solor panel: </strong>'+ '$'+ result[i].price_of_solar_panel+'</p>\n' +
