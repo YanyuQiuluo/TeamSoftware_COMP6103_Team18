@@ -61,16 +61,18 @@ router.post('/', async (req, res) => {
     const transaction = require("../Model/transaction");
     const payment = await transaction.create({
         dataTime: getCurrentTime(),
-        amount: req.body.transfer_amount,
+        transfer_amount: req.body.transfer_amount,
+        panel_amount: req.body.panel_amount,
         country_name: req.body.donate_country,
         user_name: req.body.username,
-        status: "pending"
+        status: "pending",
+        uuid:req.body.uuid
     });
 
     function getCurrentTime() {
-        var date = new Date();//当前时间
-        var month = zeroFill(date.getMonth() + 1);//月
-        var day = zeroFill(date.getDate());//日
+        var date = new Date();//current time
+        var month = zeroFill(date.getMonth() + 1);//month
+        var day = zeroFill(date.getDate());//day
         var hour = zeroFill(date.getHours());//时
         var minute = zeroFill(date.getMinutes());//分
         var second = zeroFill(date.getSeconds());//秒
