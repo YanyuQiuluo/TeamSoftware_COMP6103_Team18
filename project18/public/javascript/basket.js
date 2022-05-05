@@ -6,7 +6,9 @@ $(function(){
     if(element.scrollHeight <= element.clientHeight + 20) { /** There is a scroll bar, then fixed the foot bar*/
         document.getElementById("footer-nav-container").style.position = 'fixed'
     }
-    result = JSON.parse(window.localStorage.getItem("userBasket"))
+    if (JSON.parse(window.localStorage.getItem("userBasket")).userId == window.sessionStorage.getItem("userName")) {
+        result = JSON.parse(window.localStorage.getItem("userBasket"))
+    }
     $.ajax({
         type: 'POST',
         url: 'http://localhost:3000/countrylist',
@@ -29,25 +31,27 @@ $(function(){
 
 function addData() {
     var html = '';
-    for(let i=0; i<result.basket.length; i++) {
-        html += '<div class="table-item">\n' +
-            '         <table>\n' +
-            '            <tr>\n' +
-            '               <td style="width: 30%;">'+getCountryName(result.basket[i].countryId)+'</td>\n' +
-            '               <td style="width: 25%;">£'+getPrice(result.basket[i].countryId)+'</td>\n' +
-            '               <td style="width: 15%;">\n' +
-            '                   <input type="text" value="'+getQty(result.basket[i].countryId)+'" id="number'+result.basket[i].countryId+'" onBlur="numberInput('+result.basket[i].countryId+')" style="width: 80px;height: 35px" />\n' +
-            '               </td>\n' +
-            '               <td style="width: 30%;">\n' +
-            '                   <input class="inputOp" type="button" value="-" id="sub'+result.basket[i].countryId+'" onClick="decrease('+result.basket[i].countryId+')" />\n' +
-            '                   <input class="inputOp" type="button" value="+" id="add'+result.basket[i].countryId+'" onClick="increase('+result.basket[i].countryId+')" />\n' +
-            '               </td>\n' +
-            '            </tr>\n' +
-            '          </table>\n' +
-            '    </div>'
+    if (Object.values(result).length > 0) {
+        for(let i=0; i<result.basket.length; i++) {
+            html += '<div class="table-item">\n' +
+                '         <table>\n' +
+                '            <tr>\n' +
+                '               <td style="width: 30%;">'+result.basket[i].countryName+'</td>\n' +
+                '               <td style="width: 25%;">£'+getPrice(result.basket[i].countryName)+'</td>\n' +
+                '               <td style="width: 15%;">\n' +
+                '                   <input type="text" value="'+getQty(result.basket[i].countryName)+'" id="number'+result.basket[i].countryName+'" onBlur="numberInput('+result.basket[i].countryName+')" style="width: 80px;height: 35px" />\n' +
+                '               </td>\n' +
+                '               <td style="width: 30%;">\n' +
+                '                   <input class="inputOp" type="button" value="-" id="sub'+result.basket[i].countryName+'" onClick="decrease(\''+result.basket[i].countryName+'\')" />\n' +
+                '                   <input class="inputOp" type="button" value="+" id="add'+result.basket[i].countryName+'" onClick="increase(\''+result.basket[i].countryName+'\')" />\n' +
+                '               </td>\n' +
+                '            </tr>\n' +
+                '          </table>\n' +
+                '    </div>'
+        }
+        $('#basket-row').append(html);
+        $("#basket-row").trigger("create");
     }
-    $('#basket-row').append(html);
-    $("#basket-row").trigger("create");
 }
 
 function addTotalAmount() {
@@ -58,20 +62,20 @@ function addTotalAmount() {
 }
 
 /** Minus button click event */
-function decrease(countryId){
-    let number = document.getElementById("number"+countryId);
+function decrease(countryName){
+    let number = document.getElementById("number"+countryName);
     if (number.value<=0) {
         /** If the value of the input is less than 1, set the value to 1 */
         number.value = 0;
     }else {
         number.value = number.value - 1;
     }
-    refreshData(countryId, number.value);
+    refreshData(countryName, number.value);
 }
 
 /** Input box out of focus event */
-function numberInput(countryId){
-    let number = document.getElementById("number"+countryId);
+function numberInput(countryName){
+    let number = document.getElementById("number"+countryName);
     let value = number.value;
     /**  If the value of the input is empty, set the value to 0*/
     if (value=="") {
@@ -85,20 +89,20 @@ function numberInput(countryId){
     if (parseInt(value)<=1) {
         number.value = 1;
     }
-    refreshData(countryId, number.value);
+    refreshData(countryName, number.value);
 }
 
  /** Add button click event */
-function increase(countryId){
-     let number = document.getElementById("number"+countryId);
+function increase(countryName){
+     let number = document.getElementById("number"+countryName);
      number.value = parseInt(number.value) + 1;
-     refreshData(countryId, number.value);
+     refreshData(countryName, number.value);
 }
 
 /** Refresh the data in basket*/
-function refreshData(countryId, qty){
+function refreshData(countryName, qty){
     for(let j=0; j<result.basket.length; j++) {
-        if(result.basket[j].countryId == countryId) {
+        if(result.basket[j].countryName == countryName) {
             result.basket[j].qty = parseInt(qty);
         }
     }
@@ -107,27 +111,18 @@ function refreshData(countryId, qty){
 }
 
 /** Search the quantity of a country in basket*/
-function getQty(countryId){
+function getQty(countryName){
     for(let i=0; i<result.basket.length; i++) {
-        if(result.basket[i].countryId == countryId) {
+        if(result.basket[i].countryName == countryName) {
             return result.basket[i].qty;
         }
     }
 }
 
-/** Get the name of country */
-function getCountryName(countryId){
-    for(let i=0; i<priceArr.length; i++) {
-        if(priceArr[i].country_id == countryId) {
-            return priceArr[i].country_name;
-        }
-    }
-}
-
 /** Get the price of solar panels, keys-countryName, value-price*/
-function getPrice(countryId){
+function getPrice(countryName){
     for(let i=0; i<priceArr.length; i++) {
-        if(priceArr[i].country_id == countryId) {
+        if(priceArr[i].country_name == countryName) {
             return parseInt(priceArr[i].price_of_solar_panel);
         }
     }
@@ -136,8 +131,10 @@ function getPrice(countryId){
 /** Compute the total amount */
 function getTotalAmount(){
     let amount = 0
-    for(let i=0; i<result.basket.length; i++) {
-        amount += getPrice(result.basket[i].countryId) * result.basket[i].qty;
+    if (Object.values(result).length > 0) {
+        for (let i = 0; i < result.basket.length; i++) {
+            amount += getPrice(result.basket[i].countryName) * result.basket[i].qty;
+        }
     }
     return amount;
 }

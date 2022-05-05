@@ -1,14 +1,14 @@
 let result = [] // response data array
 let basketObj = {} // Object of basket data
-let countryId = ''
+let countryName = ''
 $(function(){
-    countryId = parseInt(getUrlParam('id'));
+    countryName = getUrlParam('name');
     $.ajax({
         type: 'POST',
         url: 'http://localhost:3000/country_detail',
         dataType : 'json',
         data: {
-            countryID: countryId
+            country_name: countryName
         },
         success: function(res){
             if (res.code === '200') {
@@ -20,7 +20,8 @@ $(function(){
         }
     });
     if(window.sessionStorage.getItem("userName") && window.localStorage.getItem("userBasket")
-        && JSON.parse(window.localStorage.getItem("userBasket")).basket.length > 0) {
+        && JSON.parse(window.localStorage.getItem("userBasket")).basket.length > 0
+        && JSON.parse(window.localStorage.getItem("userBasket")).userId == window.sessionStorage.getItem("userName")) {
         $('.empty-basket').css('display','none');
         $('.not-empty-basket').show();
     } else {
@@ -49,7 +50,7 @@ function addData() {
         '                                    <p class="price"><strong>Savings for the country: </strong>'+ '£'+ result.savings+'</p>\n' +
         '                                </div>\n' +
         '                                <div class="product-item__desc">\n' +
-        '                                    <p>'+ result.country_discription+'</p>\n' +
+        '                                    <p>'+ result.country_description+'</p>\n' +
         '                                </div>\n' +
         '                                <div class="product-action">\n' +
         '                                    <div class="product-action-tips">' +
@@ -63,7 +64,7 @@ function addData() {
         '                            </div>\n' +
         '                        </div>\n' +
         '                        <div class="donate-button">\n' +
-        '                           <div class="basket-item"><button id="submit" onClick="add2Basket('+ result.country_id+')">Add to Basket</button></div>\n' +
+        '                           <div class="basket-item"><button id="submit" onClick="add2Basket(\''+result.country_name+'\')">Add to Basket</button></div>\n' +
         '                        </div>\n' +
         '                    </div>\n' +
         '                </div>\n' +
@@ -115,11 +116,12 @@ function increase(){
     number.value = parseInt(number.value) + 1;
 }
 
-function add2Basket(countryId) {
+function add2Basket(countryName){
     if (!window.sessionStorage.getItem("userName")) {
         window.location.href='http://localhost:3000/loginPage'
     } else {
-        if(!window.localStorage.getItem("userBasket")) {
+        if(!window.localStorage.getItem("userBasket")
+        || JSON.parse(window.localStorage.getItem("userBasket")).userId != window.sessionStorage.getItem("userName")) {
             basketObj = {
                 userId: window.sessionStorage.getItem("userName"),
                 basket: []
@@ -129,7 +131,7 @@ function add2Basket(countryId) {
         }
         let qty = document.getElementById("number").value
         if (parseInt(qty) > 0) {
-            sortBasket(countryId, qty)
+            sortBasket(countryName, qty)
             window.localStorage.setItem("userBasket", JSON.stringify(basketObj));
             showToast("Added to your donation basket", 1500)
             $('.empty-basket').css('display','none');
@@ -138,17 +140,17 @@ function add2Basket(countryId) {
     }
 }
 
-function sortBasket(countryId, qty) {
+function sortBasket(countryName, qty) {
     let existCountryId = false
     for(let i=0; i< basketObj.basket.length; i++) {
-        if(basketObj.basket[i].countryId == countryId) {
+        if(basketObj.basket[i].countryName == countryName) {
             basketObj.basket[i].qty += parseInt(qty)
             existCountryId = true
         }
     }
     if (!existCountryId) {
         basketObj.basket[basketObj.basket.length] = {
-            countryId: countryId,
+            countryName: countryName,
             qty: parseInt(qty)
         }
     }
