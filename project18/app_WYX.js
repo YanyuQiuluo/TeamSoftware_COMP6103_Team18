@@ -16,13 +16,13 @@ const userPageRouter_ = require("./routes/userPage_");
 const verifyRouter_ = require("./routes/register_");
 
 function Load(app) {
-    app.use('/login', loginRouter);
-    app.use('/login_', loginRouter_);
+    // app.use('/login', loginRouter);
+    app.use('/login', loginRouter_);
 
-    app.use("/country_detail",countryDetail);
-    app.use("/country_detail_",countryDetail_);
+    // app.use("/country_detail",countryDetail);
+    app.use("/country_detail",countryDetail_);
 
-    app.use('/countrylist_', countrylistRouter_);
+    // app.use('/countrylist_', countrylistRouter_);
 
     app.use("/success",success);
     app.use("/cancel",cancel);
@@ -30,8 +30,8 @@ function Load(app) {
     app.use("/pay_history",pay_history);
 
     app.use("/test",test);
-    app.use('/userPage_', userPageRouter_);
-    app.use('/register_', verifyRouter_);
+    // app.use('/userPage_', userPageRouter_);
+    // app.use('/register_', verifyRouter_);
 }
 
 module.exports=Load
