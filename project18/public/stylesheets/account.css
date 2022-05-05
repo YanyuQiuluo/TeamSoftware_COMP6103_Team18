@@ -37,3 +37,7 @@ h1, .h1 {
 body{
     font-size: 1.7rem; !important;
 }
+
+#scroll{
+    padding-bottom: 80px;
+}
