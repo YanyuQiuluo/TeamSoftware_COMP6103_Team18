@@ -10,8 +10,8 @@ async  function func(req,res){
     if(!userid)throw "userid null";
     let to= await m.findOne({where: {"user_id": userid}});
     if(!to)throw "user no found";
-    if(to.user_type=="staff")throw "the user is already an staff";
-    if(to.user_type!="household")throw  "can not upgrade";
+    if(to.user_type=="staff")return  to;
+    if(to.user_type!="household")return  to;
     to.user_type="staff";
    return  await to.save();
 }
