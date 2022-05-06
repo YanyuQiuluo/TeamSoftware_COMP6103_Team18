@@ -3,7 +3,7 @@ let priceArr = [] /** Array of price of solar panels */
 let uuid = "" /** An unique ID to represent a transaction */
 $(function(){
     let element = document.getElementById("basket-container");
-    if(element.scrollHeight <= element.clientHeight + 20) { /** There is a scroll bar, then fixed the foot bar*/
+    if(element.scrollHeight <= element.clientHeight + 20) { /** There is not a scroll bar, then fixed the foot bar*/
         document.getElementById("footer-nav-container").style.position = 'fixed'
     }
     if (JSON.parse(window.localStorage.getItem("userBasket")).userId == window.sessionStorage.getItem("userName")) {
@@ -23,7 +23,7 @@ $(function(){
                 addData();
                 addTotalAmount();
             } else {
-                alert('error')
+                alert('Network error, please try again')
             }
         }
     });
@@ -152,22 +152,32 @@ function uniqueId(){
 function confirmDonate(){
     if (getTotalAmount() > 0) {
         uuid = uniqueId()
-        console.log(result.basket)
+        let basketSend = []
+        for(let i=0;i<result.basket.length;i++) {
+            let objItem = {
+                "donate_country": String(result.basket[i].countryName),
+                "panel_amount": String(result.basket[i].qty),
+                "transfer_amount": String(getPrice(result.basket[i].countryName) * result.basket[i].qty)
+            }
+            basketSend[i] = JSON.stringify(objItem)
+        }
+        let parmsSend = {
+                basket: basketSend,
+                uuid: String(uuid),
+                username: String(window.sessionStorage.getItem("userName")),
+                transfer_amount_total: String(getTotalAmount())
+            }
         $.ajax({
             type: 'POST',
             url: 'http://localhost:3000/paypal_start',
             dataType : 'json',
-            data: {
-                uuid: uuid,
-                username: window.sessionStorage.getItem("userName"),
-                transfer_amount: getTotalAmount(),
-                basket: result.basket
-            },
+            traditional: true,
+            data: parmsSend,
             success: function(res){
-                if (res) {
-                    window.open(res)
+                if (res.code == "200") {
+                    window.open(res.result)
                 } else {
-                    alert('error')
+                    alert('Network error, please try again')
                 }
             }
         });
@@ -176,6 +186,33 @@ function confirmDonate(){
 
 function gotoResult() {
     // 还需判断交易是否成功
-    window.location.href='http://localhost:3000/paymentResultPage'
+    $.ajax({
+        type: 'POST',
+        url: 'http://localhost:3000/pay_history_uuid',
+        dataType : 'json',
+        data: {
+            // uuid: String(uuid)
+            uuid: '234567891'
+        },
+        success: function(res){
+            if (res.code === '200') {
+                if (res.result.length > 0) {
+                    if (res.result[0].status == 'success') {
+                        // window.location.href='http://localhost:3000/paymentResultPage?id='+uuid
+                        window.location.href='http://localhost:3000/paymentResultPage?id='+'234567891'
+                    } else if (res.result[0].status == 'cancel') {
+                        // tips for cancel
+                    } else if (res.result[0].status == 'pending') {
+                        // tips for pending
+                    }
+                } else {
+                    // tips for not pay
+                }
+            } else {
+                alert('Network error, please try again')
+            }
+        }
+    });
 }
+
 

@@ -37,6 +37,8 @@ $('#submit').on('click', function () {
                     document.getElementById("emailInput").innerHTML = getEmailInput();
                     $('#information').css('display','none');
                     $('#emailVerify').show();
+                } else {
+                    alert('Network error, please try again')
                 }
             }
         });
@@ -66,11 +68,12 @@ $('#next').on('click', function () {
                 document.getElementById("emailInput").innerHTML = getEmailInput();
                 $('#information').css('display','none');
                 $('#emailVerify').show();
-                if (res === 'wrong code') {
+                if (res.code == '200') {
+                    // window.location.href='http://localhost:3000/loginPage'
+                } else if (res.msg == 'verify error') {
                     $('.tip1').show();
                 } else {
-                    // need a tip
-                    // window.location.href='http://localhost:3000/loginPage'
+                    alert('Network error, please try again')
                 }
             }
         });
@@ -93,10 +96,12 @@ $('#resend').on('click', function () {
             document.getElementById("emailInput").innerHTML = getEmailInput();
             $('#information').css('display','none');
             $('#emailVerify').show();
-            if (res === 'wrong code') {
+            if (res.code == '200') {
+                // window.location.href='http://localhost:3000/loginPage'
+            } else if (res.msg == 'verify error') {
                 $('.tip1').show();
             } else {
-                // window.location.href='http://localhost:3000/loginPage'
+                alert('Network error, please try again')
             }
         }
     });

@@ -38,15 +38,19 @@
     <div class="container main-menu">
         <div class="row align-items-center justify-content-between d-flex">
             <div id="logo">
-                <a href="http://localhost:3000/loginPage"><img src="img/login.png" alt="" title="" /></a>
+<!--                <a href="http://localhost:3000/loginPage"><img src="img/login.png" alt="" title="" /></a>-->
             </div>
 
             <p1 class="un-login" id="un-login">
                 <a href="http://localhost:3000/loginPage" style="margin-right: 455px;">Log in</a>
             </p1>
-            <p1 class="userName" id="userid" style="display: inline;margin-right: 455px;">
+            <p1 class="userName" id="userid" style="display: inline;margin-right: 428px;">
                 Hi! <p1 id="useridd"></p1>
             </p1>
+
+            <div style="position:relative;right:429px; display: none" id="logout">
+                <button style="background-color:rgb(239, 239, 239)">logout</button>
+            </div>
 
             <nav id="nav-menu-container">
                 <ul class="nav-menu">
@@ -55,7 +59,7 @@
                     <li><a href="countrylistPage">COUNTRY LIST</a></li>
                     <li><a href="javascript:void(0);" onclick="navDonate()">DONATE</a></li>
                     <li><a href="http://localhost:3000/myaccountPage">MY ACCOUNT</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="contactPage">Contact</a></li>
                 </ul>
             </nav><!-- #nav-menu-container -->
         </div>
