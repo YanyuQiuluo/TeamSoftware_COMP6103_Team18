@@ -25,7 +25,7 @@ $('#submit').on('click', function () {
                     window.sessionStorage.setItem("userName", usn);
                     window.location.href='http://localhost:3000/'
                 } else {
-                    alert('error')
+                    alert('Network error, please try again')
                 }
             }
         });
