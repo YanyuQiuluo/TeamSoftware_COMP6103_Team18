@@ -74,9 +74,12 @@ router.post('/', async (req, res) => {
        // payment started record
        const transaction = require("../Model/transaction");
        for (var i = 0; i < req.body.basket.length; i++) {
-           // console.log(req.body.basket[i]);
-           let to = req.body.basket[i];
-            // to=JSON.parse(req.body.basket[i]);
+           let to = ''
+           if (typeof req.body.basket[i] == 'string') {
+               to=JSON.parse(req.body.basket[i]);
+           } else if (typeof req.body.basket[i] == 'object' && req.body.basket[i]) {
+               to = req.body.basket[i];
+           }
            console.log(to);
            const payment = await transaction.create({
                dataTime: getCurrentTime(),
