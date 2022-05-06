@@ -1,5 +1,5 @@
-let result = [] // response data array
-let basketObj = {} // Object of basket data
+let result = [] /** response data array */
+let basketObj = {} /** Object of basket data */
 let countryName = ''
 $(function(){
     countryName = getUrlParam('name');
@@ -15,7 +15,7 @@ $(function(){
                 result = res.result
                 addData();
             } else {
-                alert('error')
+                alert('Network error, please try again')
             }
         }
     });
