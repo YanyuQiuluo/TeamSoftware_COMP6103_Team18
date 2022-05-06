@@ -7,11 +7,11 @@ router.route("/")
     .post( function (req, res) {result.Run(req,res,func);});
 
 async  function func(req,res){
-    let username = req.body.username;
-    if(!username)throw "username null";
-    let re= await m.findOne({where:{"username":username}})
+    let user_id = req.body.user_id;
+    if(!user_id)throw "uset_id null";
+    let re= await m.findOne({where:{"user_id":user_id}})
     if(!re)throw "userid no found";
-    let re2=await  m2.findAll({where:{"user_name":username}})
+    let re2=await  m2.findAll({where:{"user_id":user_id}})
     return [re,re2];
 }
 
