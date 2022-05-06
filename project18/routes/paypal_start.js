@@ -15,95 +15,101 @@ router.get('/', (req, res) => res.sendFile(__dirname + "/index.html"));
 //outer.listen(PORT, () => console.log(`Server Started on ${PORT}`));
 
 
+function getCurrentTime() {
+    var date = new Date();//current time
+    var month = zeroFill(date.getMonth() + 1);//month
+    var day = zeroFill(date.getDate());//day
+    var hour = zeroFill(date.getHours());//hour
+    var minute = zeroFill(date.getMinutes());//minute
+    var second = zeroFill(date.getSeconds());//second
 
+    //current time
+    var curTime = date.getFullYear() + "-" + month + "-" + day
+        + " " + hour + ":" + minute + ":" + second;
+
+    return curTime;
+}
+
+/**
+ * fill zero
+ */
+function zeroFill(i) {
+    if (i >= 0 && i <= 9) {
+        return "0" + i;
+    } else {
+        return i;
+    }
+}
 
 
 router.post('/', async (req, res) => {
-    res.setHeader('Content-Type', 'application/json');
-    const create_payment_json = {
-        "intent": "sale",
-        "payer": {
-            "payment_method": "paypal"
-        },
-        "redirect_urls": {
-            "return_url": "http://localhost:3000/success?uuid="+req.body.uuid+"&total="+req.body.transfer_amount_total,
-            "cancel_url": "http://localhost:3000/cancel?uuid="+req.body.uuid+"&total="+req.body.transfer_amount_total
-        },
-        "transactions": [{
-            "item_list": {
-                "items": [{
-                    "name": "Redhock Bar Soap",
-                    "sku": "001",
-                    "price": req.body.transfer_amount_total,//"25.00",
-                    "currency": "GBP",
-                    "quantity": 1
-                }]
-            },
-            "amount": {
-                "currency": "GBP",
-                "total": req.body.transfer_amount_total//"25.00"
-            },
-            "description": "Washing Bar soap"
-        }]
-    };
+   try {
+       res.setHeader('Content-Type', 'application/json');
+       const create_payment_json = {
+           "intent": "sale",
+           "payer": {
+               "payment_method": "paypal"
+           },
+           "redirect_urls": {
+               "return_url": "http://localhost:3000/success?uuid=" + req.body.uuid + "&total=" + req.body.transfer_amount_total,
+               "cancel_url": "http://localhost:3000/cancel?uuid=" + req.body.uuid + "&total=" + req.body.transfer_amount_total
+           },
+           "transactions": [{
+               "item_list": {
+                   "items": [{
+                       "name": "Redhock Bar Soap",
+                       "sku": "001",
+                       "price": req.body.transfer_amount_total,//"25.00",
+                       "currency": "GBP",
+                       "quantity": 1
+                   }]
+               },
+               "amount": {
+                   "currency": "GBP",
+                   "total": req.body.transfer_amount_total//"25.00"
+               },
+               "description": "Washing Bar soap"
+           }]
+       };
+       // payment started record
+       const transaction = require("../Model/transaction");
+       for (var i = 0; i < req.body.basket.length; i++) {
+           // console.log(req.body.basket[i]);
+           let to = req.body.basket[i];
+            // to=JSON.parse(req.body.basket[i]);
+           console.log(to);
+           const payment = await transaction.create({
+               dataTime: getCurrentTime(),
+               transfer_amount: to.transfer_amount,
+               panel_amount: to.panel_amount,
+               country_id: to.donate_country_id,
+               user_id: req.body.user_id,
+               status: "pending",
+               uuid: req.body.uuid
+           });
+       }
 
-    // payment started
-    paypal.payment.create(create_payment_json, function (error, payment) {
-        if (error) {
-            res.json(result.fail( error));
+       // payment started
+       paypal.payment.create(create_payment_json, function (error, payment) {
+           if (error) {
+               res.json(result.fail(error));
 
-        } else {
-            for (let i = 0; i < payment.links.length; i++) {
-                if (payment.links[i].rel === 'approval_url') {
-                    let re=payment.links[i].href;
-                    console.log(re);
-                    res.json(result.success( re));
-                }
-            }
-        }
-    });
-
-    // payment started record
-    const transaction = require("../Model/transaction");
-    for(var i=0; i<req.body.basket.length; i++){
-        const payment = await transaction.create({
-
-            dataTime: getCurrentTime(),
-            transfer_amount: JSON.parse(req.body.basket[i]).transfer_amount,
-            panel_amount: JSON.parse(req.body.basket[i]).panel_amount,
-            country_id: JSON.parse(req.body.basket[i]).donate_country_id,
-            user_name: req.body.username,
-            status: "pending",
-            uuid:req.body.uuid
-        });
-    }
+           } else {
+               for (let i = 0; i < payment.links.length; i++) {
+                   if (payment.links[i].rel === 'approval_url') {
+                       let re = payment.links[i].href;
+                       console.log(re);
+                       res.json(result.success(re));
+                   }
+               }
+           }
+       });
 
 
-    function getCurrentTime() {
-        var date = new Date();//current time
-        var month = zeroFill(date.getMonth() + 1);//month
-        var day = zeroFill(date.getDate());//day
-        var hour = zeroFill(date.getHours());//hour
-        var minute = zeroFill(date.getMinutes());//minute
-        var second = zeroFill(date.getSeconds());//second
-
-        //current time
-        var curTime = date.getFullYear() + "-" + month + "-" + day
-            + " " + hour + ":" + minute + ":" + second;
-
-        return curTime;
-    }
-
-    /**
-     * fill zero
-     */
-    function zeroFill(i){
-        if (i >= 0 && i <= 9) {
-            return "0" + i;
-        } else {
-            return i;
-        }
-    }
+   }
+   catch (e){
+       res.json(result.fail(e.message));
+   }
 
 });
 
