@@ -16,7 +16,7 @@ $(function(){
                 result = res.result
                 addData();
             } else {
-                alert('error')
+                alert('Network error, please try again')
             }
         }
     });
@@ -129,7 +129,7 @@ function getRankedList(feature_index, ranking_index) {
                 result = res.result
                 addData();
             } else {
-                alert('error')
+                alert('Network error, please try again')
             }
         }
     });
