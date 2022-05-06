@@ -3,13 +3,15 @@ const { Sequelize, DataTypes } = require('sequelize');
 const country = sequelize.define(
     'transaction',
     {
-            dataTime:Sequelize.TIME,
-            transfer_amount: Sequelize.DOUBLE,
-            panel_amount:Sequelize.DOUBLE,
-            country_name: Sequelize.name,
-            user_name:Sequelize.name,
-            status:Sequelize.name,
-            uuid:Sequelize.name
+        dataTime:Sequelize.STRING,
+        transfer_amount: Sequelize.DOUBLE,
+        panel_amount:Sequelize.INTEGER,
+        status:Sequelize.STRING,
+        uuid:Sequelize.STRING,
+        country_id: Sequelize.INTEGER,
+        user_id:Sequelize.INTEGER,
+        start_time:Sequelize.STRING,
+        end_time:Sequelize.STRING
     },
     { timestamps: false }
 )

@@ -71,7 +71,7 @@ router.post('/', async (req, res) => {
             dataTime: getCurrentTime(),
             transfer_amount: JSON.parse(req.body.basket[i]).transfer_amount,
             panel_amount: JSON.parse(req.body.basket[i]).panel_amount,
-            country_name: JSON.parse(req.body.basket[i]).donate_country,
+            country_id: JSON.parse(req.body.basket[i]).donate_country_id,
             user_name: req.body.username,
             status: "pending",
             uuid:req.body.uuid
