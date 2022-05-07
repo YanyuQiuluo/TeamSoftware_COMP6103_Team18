@@ -18,6 +18,25 @@ function upgrade(i){
         }
     });
 }
+function relegation(i){
+    $.ajax({
+        type : 'POST',
+        url : 'http://localhost:3000/relegation_user',
+        dataType : 'json',
+        data : {
+            userid : i
+        },
+        success : function (res){
+            if (res.code === '200'){
+                result = res.result
+                console.log(result);
+                fresh();
+            } else {
+                alert('error')
+            }
+        }
+    });
+}
 function  fresh(){
     let object = window.sessionStorage.getItem("userName");
     let element = document.getElementById("scroll");
@@ -61,7 +80,9 @@ function addTable(){
     var html = '';
     for (var i = 0;i < result.length;i++){
         let func='\''+'upgrade('+result[i].user_id+')'+'\'';
-        console.log(func);
+        // console.log(func);
+        let f2='\''+'relegation('+result[i].user_id+')'+'\'';
+        // console.log(f2);
         html += '<tr>\n' +
             '<td>' + result[i].user_full_name + '</td>\n' +
             '<td>' + result[i].username + '</td>\n' +
@@ -76,6 +97,10 @@ function addTable(){
             '<td>' + result[i].user_type + '</td>\n' ;
             if(result[i].user_type=="household"){
                 html+='<td><button  style="width: 100px; height: 73px;"  class="btn btn-info" onClick='+func+'> upgrade</button></td>\n';
+            }
+            else if(result[i].user_type=="staff"){
+                html+='<td><button  style="width: 100px; height: 73px;"  class="btn btn-info" onClick='+f2+'> relegation</button></td>\n';
+
             }
 
         html+='</tr>'
