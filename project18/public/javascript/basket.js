@@ -23,7 +23,7 @@ $(function(){
                 addData();
                 addTotalAmount();
             } else {
-                alert('Network error, please try again')
+                alert(res.msg)
             }
         }
     });
@@ -186,7 +186,7 @@ function confirmDonate(){
                 if (res.code == "200") {
                     window.open(res.result)
                 } else {
-                    alert('Network error, please try again')
+                    alert(res.msg)
                 }
             }
         });
@@ -218,7 +218,7 @@ function gotoResult() {
                     alert('Your payment seems not be accepted, please make your donations in the newly opened widow')
                 }
             } else {
-                alert('Network error, please try again')
+                alert(res.msg)
             }
         }
     });

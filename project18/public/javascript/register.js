@@ -38,7 +38,7 @@ $('#submit').on('click', function () {
                     $('#information').css('display','none');
                     $('#emailVerify').show();
                 } else {
-                    alert('Network error, please try again')
+                    alert(res.msg)
                 }
             }
         });
@@ -69,11 +69,12 @@ $('#next').on('click', function () {
                 $('#information').css('display','none');
                 $('#emailVerify').show();
                 if (res.code == '200') {
-                    // window.location.href='http://localhost:3000/loginPage'
+                    alert('Signed up successfully! Please sign in')
+                    window.location.href='http://localhost:3000/loginPage'
                 } else if (res.msg == 'verify error') {
                     $('.tip1').show();
                 } else {
-                    alert('Network error, please try again')
+                    alert(res.msg)
                 }
             }
         });
@@ -97,11 +98,12 @@ $('#resend').on('click', function () {
             $('#information').css('display','none');
             $('#emailVerify').show();
             if (res.code == '200') {
-                // window.location.href='http://localhost:3000/loginPage'
+                alert('Signed up successfully! Please sign in')
+                window.location.href='http://localhost:3000/loginPage'
             } else if (res.msg == 'verify error') {
                 $('.tip1').show();
             } else {
-                alert('Network error, please try again')
+                alert(res.msg)
             }
         }
     });
