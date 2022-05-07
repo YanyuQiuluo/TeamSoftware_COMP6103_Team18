@@ -48,11 +48,17 @@ let result = [];
 
 $(function(){
 
+    if (!window.sessionStorage.getItem("userName")){
+        window.location.replace("http://localhost:3000/loginPage");
+    }
+
     let id=window.sessionStorage.getItem("userID");
     let element = document.getElementById("scroll");
     if(element.scrollHeight <= element.clientHeight + 20) { /** There is a scroll bar, then fixed the foot bar*/
     document.getElementById("footer123").style.position = 'fixed'
     }
+
+
 
     $.ajax({
         type : 'POST',
@@ -75,10 +81,15 @@ $(function(){
 function addData(){
     document.getElementById("uname").innerHTML = "Username: " + result[0].username;
     document.getElementById("emaiL").innerHTML = "Email: " + result[0].email;
-    document.getElementById("carbonF").innerHTML = "Carbon footprint: " + result[0].feul_usage_pm
+    // document.getElementById("carbonF").innerHTML = "Carbon footprint: " + result[0].feul_usage_pm
+    document.getElementById("carbonF").innerHTML = "Carbon footprint (Kg per Month) : 0"
     // document.getElementById("Elect").innerHTML = "Electricity usage monthly: " + result[0].electicity_usage_pm
 
 
+}
+
+function changeData(){
+    document.getElementById("carbonF").innerHTML =  "Carbon footprint (Kg per Month) : " + result;
 }
 
 function addTable(){
@@ -87,7 +98,7 @@ function addTable(){
         html += '<tr>\n' +
             // '<td>' + result[1][i].user_name + '</td>\n' +
             '<td>' + result[1][i].country.country_name + '</td>\n' +
-            '<td>' + result[1][i].transfer_amount + '</td>\n' +
+            '<td>$' + result[1][i].transfer_amount + '</td>\n' +
             '<td>' + result[1][i].dataTime + '</td>\n' +
             '</tr>'
     }
@@ -95,7 +106,51 @@ function addTable(){
     $("#tablePersonal").trigger("create");
 }
 
+
+
 $('#submitEle').on('click',function (){
+
+    let id = window.sessionStorage.getItem("userID");
+    let ele = document.getElementById("Elect").value;
+
+    if (!isNumber(ele)){
+        alert("Electricity consumption is a number, please enter a number!")
+    }
+
+    function isNumber(value) {         //验证是否为数字
+        var patrn = /^(-)?\d+(\.\d+)?$/;
+        if (patrn.exec(value) == null || value == "") {
+            return false
+        } else {
+            return true
+        }
+    }
+    // if (typeof(ele) !== 'number'){
+    //     alert("Electricity consumption is a number, please enter a number!")
+    //     // document.getElementById("carbonF").innerHTML = "Carbon footprint (Kg per Month) : wrong"
+    // }
+
+    $.ajax({
+        type : 'POST',
+        url : 'http://localhost:3000/getFootPrint',
+        dataType : 'json',
+        data : {
+            // user_id : id,
+            electricity_consumption : ele,
+        },
+        success : function (res){
+            if (res.code === '200'){
+
+                console.log(res.result);
+                result = res.result;
+                changeData();
+            }else{
+                alert(res.msg)
+            }
+        }
+
+    })
+
 
 })
 
