@@ -6,12 +6,10 @@ const country = sequelize.define(
         dataTime:Sequelize.STRING,
         transfer_amount: Sequelize.DOUBLE,
         panel_amount:Sequelize.INTEGER,
+        country_name:Sequelize.STRING,
+        user_name:Sequelize.STRING,
         status:Sequelize.STRING,
         uuid:Sequelize.STRING,
-        country_id: Sequelize.INTEGER,
-        user_id:Sequelize.INTEGER,
-        start_time:Sequelize.STRING,
-        end_time:Sequelize.STRING
     },
     { timestamps: false }
 )
