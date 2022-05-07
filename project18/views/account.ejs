@@ -91,7 +91,11 @@
                         <h2 id="uname"></h2>
                         <h2 id="emaiL"></h2>
                         <h2 id="carbonF"></h2>
-                        <h2 id="Elect"></h2>
+                        <h2 class="margin-top:13px"> Electricity consumption :
+                            <input type="text" id="Elect"  placeholder=""></input>
+                            <button type="submit" class="btn btn-primary" style="margin-bottom: 6px" id="submitEle">Submit</button>
+                        </h2>
+
                     </div>
 <!--                    <div class="col-md-4 bg-white">-->
 <!--                        <h2>name: XXX</h2>-->
@@ -194,9 +198,16 @@
 </body>
 
 <script type="text/javascript">
+
     let user2Name ="Welcome back "+ window.sessionStorage.getItem("userName");
+    let user3Name = window.sessionStorage.getItem("userName");
+    if (user3Name){
     let object = document.getElementById("superuser");
     object.innerHTML = user2Name;
+    } else {
+        let object = document.getElementById("superuser");
+        object.innerHTML = "Welcome back"
+    }
 </script>
 </html>
 
