@@ -27,7 +27,7 @@ function  fresh(){
 
     $.ajax({
         type : 'POST',
-        url : 'http://localhost:3000/user_list',
+        url : 'http://localhost:3000/staffPage_info',
         dataType : 'json',
         data : {
             username : object
@@ -35,6 +35,7 @@ function  fresh(){
         success : function (res){
             if (res.code === '200'){
                 result = res.result
+
 
                 // addData();
                 addTable();
@@ -59,8 +60,9 @@ $(fresh());
 function addTable(){
 
     let html = '';
-    //console.log(result);
-    for (let i = 0;i < result.size;i++){
+    console.log(result[0]);
+    console.log(result[0].length);
+    for (let i = 0;i < result[0].length;i++){
         // let func='\''+'upgrade('+result[i].user_id+')'+'\'';
         // console.log(func);
         html += '<tr>\n' +
