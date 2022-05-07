@@ -1,4 +1,7 @@
+var express = require('express');
+var router = express.Router();
 const result = require("../mode_js/result");
+
 router.route("/")
     .post( function (req, res) {result.Run(req,res,func);});
 
