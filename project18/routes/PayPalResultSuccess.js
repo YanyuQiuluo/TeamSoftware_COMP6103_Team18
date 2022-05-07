@@ -29,8 +29,7 @@ router.route("/")
                 throw error;
             } else {
                 console.log(JSON.stringify(payment));
-                res.send('Success');
-
+                res.render('paymentSuccess');
                 const transaction = require("../Model/transaction");
                 await transaction.update({ status: "success" }, {
                     where: {

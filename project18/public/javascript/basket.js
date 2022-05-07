@@ -200,15 +200,15 @@ function gotoResult() {
         url: 'http://localhost:3000/pay_history_uuid',
         dataType : 'json',
         data: {
-            // uuid: String(uuid)
-            uuid: '1234546'
+            uuid: String(uuid)
+            // uuid: '1234546'
         },
         success: function(res){
             if (res.code === '200') {
                 if (res.result.length > 0) {
                     if (res.result[0].status == 'success') {
-                        // window.location.href='http://localhost:3000/paymentResultPage?id='+uuid
-                        window.location.href='http://localhost:3000/paymentResultPage?id='+'1234546'
+                        window.location.href='http://localhost:3000/paymentResultPage?id='+uuid
+                        // window.location.href='http://localhost:3000/paymentResultPage?id='+'1234546'
                     } else if (res.result[0].status == 'cancel') {
                         alert('Your payment has been canceled, please try again')
                     } else if (res.result[0].status == 'pending') {
