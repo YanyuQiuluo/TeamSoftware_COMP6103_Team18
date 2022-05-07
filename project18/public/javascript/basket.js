@@ -3,6 +3,11 @@ let priceArr = [] /** Array of price of solar panels */
 let uuid = "" /** An unique ID to represent a transaction */
 $(function(){
     let element = document.getElementById("basket-container");
+
+    if(!window.sessionStorage.getItem("userName")){
+        window.location.replace('/loginPage')
+    }
+
     if(element.scrollHeight <= element.clientHeight + 20) { /** There is not a scroll bar, then fixed the foot bar*/
         document.getElementById("footer-nav-container").style.position = 'fixed'
     }
