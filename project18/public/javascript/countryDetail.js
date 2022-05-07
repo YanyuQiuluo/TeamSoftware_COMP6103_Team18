@@ -15,7 +15,7 @@ $(function(){
                 result = res.result
                 addData();
             } else {
-                alert('Network error, please try again')
+                alert(res.msg)
             }
         }
     });
