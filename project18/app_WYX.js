@@ -16,6 +16,8 @@ function Load(app) {
     app.use("/pay_history_uuid",require("./routes/PayHistory_uuid"));
     app.use("/user_list",require("./routes/managerUserList"));
     app.use("/upgrade_user",require("./routes/managerUpgrateUser"));
+    app.use("/relegation_user",require("./routes/managerRelegationUser"));
+
     app.use("/adminPage",require("./routes/adminPage"));
 }
 
