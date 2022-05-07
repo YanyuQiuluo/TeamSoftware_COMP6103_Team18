@@ -76,7 +76,7 @@ function addData(){
     document.getElementById("uname").innerHTML = "Username: " + result[0].username;
     document.getElementById("emaiL").innerHTML = "Email: " + result[0].email;
     document.getElementById("carbonF").innerHTML = "Carbon footprint: " + result[0].feul_usage_pm
-    document.getElementById("Elect").innerHTML = "Electricity usage monthly: " + result[0].electicity_usage_pm
+    // document.getElementById("Elect").innerHTML = "Electricity usage monthly: " + result[0].electicity_usage_pm
 
 
 }
@@ -94,6 +94,11 @@ function addTable(){
     $('#tablePersonal').append(html);
     $("#tablePersonal").trigger("create");
 }
+
+$('#submitEle').on('click',function (){
+
+})
+
 
 })
 
