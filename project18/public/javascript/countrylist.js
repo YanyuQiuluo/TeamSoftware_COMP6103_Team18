@@ -1,7 +1,6 @@
 let result = [] /** response data array */
 let option = '' /** sort selection: Carbon/GDP/Price/Saving */
 let rankType = 0 /** 0-default 1-increase -1-decrease */
-let maxPage = 0 /** the maximum number of paging */
 let pageIndex = 1 /** the current page number */
 $(function(){
     option = document.getElementById("sort").value
@@ -16,9 +15,8 @@ $(function(){
         success: function(res){
             if (res.code === '200') {
                 result = res.result
-                maxPage = Math.ceil(result.length/4)
                 addData(0)
-                addPageNum()
+                addPageNum(1)
             } else {
                 alert(res.msg)
             }
@@ -28,14 +26,20 @@ $(function(){
 
 function addData(num) {
     let html = '';
-    for (var i = num; i < num + 4; i++) {
+    let maxNum = ''
+    if (num + 6 > result.length) {
+        maxNum = result.length
+    } else {
+        maxNum = num + 6
+    }
+    for (var i = num; i < maxNum; i++) {
         html += ' <div class="container container-wide">\n' +
             '            <div class="product-wrapper product-layout layout-list">\n' +
             '                <div class="row mtn-30">\n' +
             '                    <div class="col-sm-6 col-lg-4 col-xl-3">\n' +
             '                        <div class="product-item">\n' +
             '                            <div class="product-item__thumb">\n' +
-            '                                <a href="http://localhost:3000/countryDetailPage?name=' + result[i].country_name + '">\n' +
+            '                                <a href="http://localhost:3000/countryDetailPage?id=' + result[i].country_id + '">\n' +
             '                                    <img class="thumb-primary" src=' + result[i].country_image + ' alt=""/>\n' +
             '                                </a>\n' +
             '                            </div>\n' +
@@ -58,35 +62,40 @@ function addData(num) {
     $("#product-item").trigger("create");
 }
 
-function addPageNum() {
+function addPageNum(num) {
     let html1 = '';
-    if (result.length <= 4) {
-        html1 += '  <p>Showing '+ pageIndex +' of '+ result.length +' results</p>\n'
+    let maxNum = ''
+    if (num+5 >= result.length) {
+        maxNum = result.length
     } else {
-        html1 += '  <p>Showing '+ pageIndex +'-'+ (pageIndex+3) +' of '+ result.length +' results</p>\n'
+        maxNum = num+5
+    }
+    if (result.length <= 6) {
+        html1 += '  <p>Showing '+ num +' of '+ result.length +' results</p>\n'
+    } else {
+        html1 += '  <p>Showing '+ num +'-'+ maxNum +' of '+ result.length +' results</p>\n'
     }
     $('#page-number').append(html1);
     $('#page-number').trigger("create");
-    let html2 = ''
-    html2 = '<span onclick="goFront()">\n' +
-        '       <img src="img/front.png">\n' +
-        '    </span>\n' +
-        '    <span onclick="goBack()">\n' +
-        '        <img src="img/back.png">\n' +
-        '     </span>'
-    $('#page-icon').append(html2);
-    $('#page-icon').trigger("create");
 }
 
-function goFront() {
-    if (pageIndex > 1) {
-        pageIndex -= 1
+function goFront () {
+    if (pageIndex > 6) {
+        pageIndex -= 6
+        $('#product-item').empty();
+        $('#page-number').empty();
+        addData(pageIndex)
+        addPageNum(pageIndex)
     }
 }
 
-function goBack() {
-    if (pageIndex < maxPage) {
-        pageIndex += 1
+function goBack () {
+    if (pageIndex < result.length) {
+        pageIndex += 6
+        $('#product-item').empty();
+        $('#page-number').empty();
+        addData(pageIndex)
+        addPageNum(pageIndex)
     }
 }
 
