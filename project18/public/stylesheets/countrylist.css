@@ -646,3 +646,7 @@ button:focus {
     background-size: 22px 22px;
     border: none;
 }
+.col-sm-6 img{
+    width: 25px;
+    height: 25px;
+}
