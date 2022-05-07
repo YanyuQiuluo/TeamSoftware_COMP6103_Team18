@@ -47,7 +47,7 @@ let result = [];
 
 
 $(function(){
-    let object = window.sessionStorage.getItem("usetID");
+    let object = window.sessionStorage.getItem("userID");
     let element = document.getElementById("scroll");
     if(element.scrollHeight <= element.clientHeight + 20) { /** There is a scroll bar, then fixed the foot bar*/
     document.getElementById("footer123").style.position = 'fixed'
