@@ -22,7 +22,8 @@ $('#submit').on('click', function () {
             },
             success: function(res){
                 if (res.code === '200') {
-                    window.sessionStorage.setItem("userName", usn);
+                    window.sessionStorage.setItem("userID",res.result.user.user_id)
+                    window.sessionStorage.setItem("userName", res.result.user.username);
                     window.location.href='http://localhost:3000/'
                 } else {
                     alert('Network error, please try again')

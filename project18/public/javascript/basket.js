@@ -6,7 +6,7 @@ $(function(){
     if(element.scrollHeight <= element.clientHeight + 20) { /** There is not a scroll bar, then fixed the foot bar*/
         document.getElementById("footer-nav-container").style.position = 'fixed'
     }
-    if (JSON.parse(window.localStorage.getItem("userBasket")).userId == window.sessionStorage.getItem("userName")) {
+    if (JSON.parse(window.localStorage.getItem("userBasket")).userId == window.sessionStorage.getItem("userID")) {
         result = JSON.parse(window.localStorage.getItem("userBasket"))
     }
     $.ajax({
@@ -36,14 +36,14 @@ function addData() {
             html += '<div class="table-item">\n' +
                 '         <table>\n' +
                 '            <tr>\n' +
-                '               <td style="width: 30%;">'+result.basket[i].countryName+'</td>\n' +
-                '               <td style="width: 25%;">£'+getPrice(result.basket[i].countryName)+'</td>\n' +
+                '               <td style="width: 30%;">'+getCountryName(result.basket[i].countryId)+'</td>\n' +
+                '               <td style="width: 25%;">£'+getPrice(result.basket[i].countryId)+'</td>\n' +
                 '               <td style="width: 15%;">\n' +
-                '                   <input type="text" value="'+getQty(result.basket[i].countryName)+'" id="number'+result.basket[i].countryName+'" onBlur="numberInput('+result.basket[i].countryName+')" style="width: 80px;height: 35px" />\n' +
+                '                   <input type="text" value="'+getQty(result.basket[i].countryId)+'" id="number'+result.basket[i].countryId+'" onBlur="numberInput('+result.basket[i].countryId+')" style="width: 80px;height: 35px" />\n' +
                 '               </td>\n' +
                 '               <td style="width: 30%;">\n' +
-                '                   <input class="inputOp" type="button" value="-" id="sub'+result.basket[i].countryName+'" onClick="decrease(\''+result.basket[i].countryName+'\')" />\n' +
-                '                   <input class="inputOp" type="button" value="+" id="add'+result.basket[i].countryName+'" onClick="increase(\''+result.basket[i].countryName+'\')" />\n' +
+                '                   <input class="inputOp" type="button" value="-" id="sub'+result.basket[i].countryId+'" onClick="decrease(\''+result.basket[i].countryId+'\')" />\n' +
+                '                   <input class="inputOp" type="button" value="+" id="add'+result.basket[i].countryId+'" onClick="increase(\''+result.basket[i].countryId+'\')" />\n' +
                 '               </td>\n' +
                 '            </tr>\n' +
                 '          </table>\n' +
@@ -61,21 +61,30 @@ function addTotalAmount() {
     $("#basket-total").trigger("create");
 }
 
+/** Get the name of country */
+function getCountryName(countryId){
+    for(let i=0; i<priceArr.length; i++) {
+        if(priceArr[i].country_id == countryId) {
+            return priceArr[i].country_name;
+        }
+    }
+}
+
 /** Minus button click event */
-function decrease(countryName){
-    let number = document.getElementById("number"+countryName);
+function decrease(countryId){
+    let number = document.getElementById("number"+countryId);
     if (number.value<=0) {
         /** If the value of the input is less than 1, set the value to 1 */
         number.value = 0;
     }else {
         number.value = number.value - 1;
     }
-    refreshData(countryName, number.value);
+    refreshData(countryId, number.value);
 }
 
 /** Input box out of focus event */
-function numberInput(countryName){
-    let number = document.getElementById("number"+countryName);
+function numberInput(countryId){
+    let number = document.getElementById("number"+countryId);
     let value = number.value;
     /**  If the value of the input is empty, set the value to 0*/
     if (value=="") {
@@ -89,20 +98,20 @@ function numberInput(countryName){
     if (parseInt(value)<=1) {
         number.value = 1;
     }
-    refreshData(countryName, number.value);
+    refreshData(countryId, number.value);
 }
 
  /** Add button click event */
-function increase(countryName){
-     let number = document.getElementById("number"+countryName);
+function increase(countryId){
+     let number = document.getElementById("number"+countryId);
      number.value = parseInt(number.value) + 1;
-     refreshData(countryName, number.value);
+     refreshData(countryId, number.value);
 }
 
 /** Refresh the data in basket*/
-function refreshData(countryName, qty){
+function refreshData(countryId, qty){
     for(let j=0; j<result.basket.length; j++) {
-        if(result.basket[j].countryName == countryName) {
+        if(result.basket[j].countryId == countryId) {
             result.basket[j].qty = parseInt(qty);
         }
     }
@@ -111,18 +120,18 @@ function refreshData(countryName, qty){
 }
 
 /** Search the quantity of a country in basket*/
-function getQty(countryName){
+function getQty(countryId){
     for(let i=0; i<result.basket.length; i++) {
-        if(result.basket[i].countryName == countryName) {
+        if(result.basket[i].countryId == countryId) {
             return result.basket[i].qty;
         }
     }
 }
 
-/** Get the price of solar panels, keys-countryName, value-price*/
-function getPrice(countryName){
+/** Get the price of solar panels, keys-countryId, value-price*/
+function getPrice(countryId){
     for(let i=0; i<priceArr.length; i++) {
-        if(priceArr[i].country_name == countryName) {
+        if(priceArr[i].country_id == countryId) {
             return parseInt(priceArr[i].price_of_solar_panel);
         }
     }
@@ -133,7 +142,7 @@ function getTotalAmount(){
     let amount = 0
     if (Object.values(result).length > 0) {
         for (let i = 0; i < result.basket.length; i++) {
-            amount += getPrice(result.basket[i].countryName) * result.basket[i].qty;
+            amount += getPrice(result.basket[i].countryId) * result.basket[i].qty;
         }
     }
     return amount;
@@ -155,16 +164,16 @@ function confirmDonate(){
         let basketSend = []
         for(let i=0;i<result.basket.length;i++) {
             let objItem = {
-                "donate_country": String(result.basket[i].countryName),
-                "panel_amount": String(result.basket[i].qty),
-                "transfer_amount": String(getPrice(result.basket[i].countryName) * result.basket[i].qty)
+                donate_country_id: String(result.basket[i].countryId),
+                panel_amount: String(result.basket[i].qty),
+                transfer_amount: String(getPrice(result.basket[i].countryId) * result.basket[i].qty)
             }
             basketSend[i] = JSON.stringify(objItem)
         }
         let parmsSend = {
                 basket: basketSend,
                 uuid: String(uuid),
-                username: String(window.sessionStorage.getItem("userName")),
+                user_id: String(window.sessionStorage.getItem("userID")),
                 transfer_amount_total: String(getTotalAmount())
             }
         $.ajax({
@@ -192,21 +201,21 @@ function gotoResult() {
         dataType : 'json',
         data: {
             // uuid: String(uuid)
-            uuid: '234567891'
+            uuid: '1234546'
         },
         success: function(res){
             if (res.code === '200') {
                 if (res.result.length > 0) {
                     if (res.result[0].status == 'success') {
                         // window.location.href='http://localhost:3000/paymentResultPage?id='+uuid
-                        window.location.href='http://localhost:3000/paymentResultPage?id='+'234567891'
+                        window.location.href='http://localhost:3000/paymentResultPage?id='+'1234546'
                     } else if (res.result[0].status == 'cancel') {
-                        // tips for cancel
+                        alert('Your payment has been canceled, please try again')
                     } else if (res.result[0].status == 'pending') {
-                        // tips for pending
+                        alert('Your payment is still pending, please wait for a minute')
                     }
                 } else {
-                    // tips for not pay
+                    alert('Your payment seems not be accepted, please make your donations in the newly opened widow')
                 }
             } else {
                 alert('Network error, please try again')

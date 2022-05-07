@@ -47,7 +47,7 @@ let result = [];
 
 
 $(function(){
-    let object = window.sessionStorage.getItem("userName");
+    let object = window.sessionStorage.getItem("usetID");
     let element = document.getElementById("scroll");
     if(element.scrollHeight <= element.clientHeight + 20) { /** There is a scroll bar, then fixed the foot bar*/
     document.getElementById("footer123").style.position = 'fixed'
@@ -58,7 +58,7 @@ $(function(){
         url : 'http://localhost:3000/userPage',
         dataType : 'json',
         data : {
-            username : object
+            user_id : object
         },
         success : function (res){
             if (res.code === '200'){
@@ -66,7 +66,7 @@ $(function(){
                 addData();
                 addTable();
             } else {
-                alert('error')
+                alert(res.msg)
             }
         }
     });

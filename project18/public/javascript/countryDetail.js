@@ -1,14 +1,14 @@
 let result = [] /** response data array */
 let basketObj = {} /** Object of basket data */
-let countryName = ''
+let countryId = ''
 $(function(){
-    countryName = getUrlParam('name');
+    countryId = getUrlParam('id');
     $.ajax({
         type: 'POST',
         url: 'http://localhost:3000/country_detail',
         dataType : 'json',
         data: {
-            country_name: countryName
+            id: countryId
         },
         success: function(res){
             if (res.code === '200') {
@@ -19,9 +19,9 @@ $(function(){
             }
         }
     });
-    if(window.sessionStorage.getItem("userName") && window.localStorage.getItem("userBasket")
+    if(window.sessionStorage.getItem("userID") && window.localStorage.getItem("userBasket")
         && JSON.parse(window.localStorage.getItem("userBasket")).basket.length > 0
-        && JSON.parse(window.localStorage.getItem("userBasket")).userId == window.sessionStorage.getItem("userName")) {
+        && JSON.parse(window.localStorage.getItem("userBasket")).userId == window.sessionStorage.getItem("userID")) {
         $('.empty-basket').css('display','none');
         $('.not-empty-basket').show();
     } else {
@@ -64,7 +64,7 @@ function addData() {
         '                            </div>\n' +
         '                        </div>\n' +
         '                        <div class="donate-button">\n' +
-        '                           <div class="basket-item"><button id="submit" onClick="add2Basket(\''+result.country_name+'\')">Add to Basket</button></div>\n' +
+        '                           <div class="basket-item"><button id="submit" onClick="add2Basket(\''+result.country_id+'\')">Add to Basket</button></div>\n' +
         '                        </div>\n' +
         '                    </div>\n' +
         '                </div>\n' +
@@ -116,14 +116,14 @@ function increase(){
     number.value = parseInt(number.value) + 1;
 }
 
-function add2Basket(countryName){
-    if (!window.sessionStorage.getItem("userName")) {
+function add2Basket(countryId){
+    if (!window.sessionStorage.getItem("userID")) {
         window.location.href='http://localhost:3000/loginPage'
     } else {
         if(!window.localStorage.getItem("userBasket")
-        || JSON.parse(window.localStorage.getItem("userBasket")).userId != window.sessionStorage.getItem("userName")) {
+        || JSON.parse(window.localStorage.getItem("userBasket")).userId != window.sessionStorage.getItem("userID")) {
             basketObj = {
-                userId: window.sessionStorage.getItem("userName"),
+                userId: window.sessionStorage.getItem("userID"),
                 basket: []
             }
         } else {
@@ -131,7 +131,7 @@ function add2Basket(countryName){
         }
         let qty = document.getElementById("number").value
         if (parseInt(qty) > 0) {
-            sortBasket(countryName, qty)
+            sortBasket(countryId, qty)
             window.localStorage.setItem("userBasket", JSON.stringify(basketObj));
             showToast("Added to your donation basket", 1500)
             $('.empty-basket').css('display','none');
@@ -140,24 +140,24 @@ function add2Basket(countryName){
     }
 }
 
-function sortBasket(countryName, qty) {
+function sortBasket(countryId, qty) {
     let existCountryId = false
     for(let i=0; i< basketObj.basket.length; i++) {
-        if(basketObj.basket[i].countryName == countryName) {
+        if(basketObj.basket[i].countryId == countryId) {
             basketObj.basket[i].qty += parseInt(qty)
             existCountryId = true
         }
     }
     if (!existCountryId) {
         basketObj.basket[basketObj.basket.length] = {
-            countryName: countryName,
+            countryId: countryId,
             qty: parseInt(qty)
         }
     }
 }
 
 function gotoBasket() {
-    if (!window.sessionStorage.getItem("userName")) {
+    if (!window.sessionStorage.getItem("userID")) {
         window.location.href='http://localhost:3000/loginPage'
     } else {
         window.location.href='http://localhost:3000/basketPage'
