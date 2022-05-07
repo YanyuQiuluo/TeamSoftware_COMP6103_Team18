@@ -3,6 +3,7 @@ const router = express.Router();
 const result = require("../mode_js/result");
 const Tokens = require("../mode_js/Tokens");
 const m = require("../Model/Contry");
+const Contry = require("../Model/Contry");
 
 router.route("/")
     .post( function (req, res) {result.Run(req,res,func);});
@@ -21,7 +22,11 @@ async  function func(req,res){
         else  if(featureIndex==2)re=  a.price_of_solar_panel-b.price_of_solar_panel;
         else if(featureIndex==3)re= a.savings-b.savings;
         return re*rankingTypeIndex;
+
+
     });
+    console.log(re)
+
     return  re;
 }
 module.exports = router;
