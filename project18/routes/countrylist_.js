@@ -25,7 +25,6 @@ async  function func(req,res){
 
 
     });
-    console.log(re)
 
     return  re;
 }
