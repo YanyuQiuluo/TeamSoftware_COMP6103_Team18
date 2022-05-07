@@ -65,8 +65,8 @@ function addTable(){
         html += '<tr>\n' +
             '<td>' + result[i].country + '</td>\n' +
             '<td>' + result[i].transfer_Amount + '</td>\n' +
-            '<td>' + result[i].carbon_emission + '</td>\n' +
-            '<td>' + result[i].panels_has_received + '</td>\n' ;
+            '<td>' + result[i].panels_has_received + '</td>\n' +
+            '<td>' + result[i].carbon_emission + '</td>\n' ;
         // if(result[i].user_type=="household"){
         //     html+='<td><button  style="width: 200px; height: 30px;"  onClick='+func+'> upgrade</button></td>\n';
         // }
