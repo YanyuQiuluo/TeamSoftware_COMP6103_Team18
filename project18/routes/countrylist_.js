@@ -20,7 +20,7 @@ async  function func(req,res){
         if(featureIndex==0)re= a.gdp-b.gdp;
         else if(featureIndex==1)re= a.carbon_emissions-b.carbon_emissions;
         else  if(featureIndex==2)re=  a.price_of_solar_panel-b.price_of_solar_panel;
-        else if(featureIndex==3)re= a.savings-b.savings;
+        else if(featureIndex==3)re= a.carbon_saving_factor-b.carbon_saving_factor;
         return re*rankingTypeIndex;
 
 
