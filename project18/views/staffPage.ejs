@@ -43,7 +43,7 @@
     <div class="container main-menu">
         <div class="row align-items-center justify-content-between d-flex">
             <div id="logo">
-                <a href="http://localhost:3000/loginPage"><img src="img/login.png" alt="" title="" /></a>
+<!--                <a href="http://localhost:3000/loginPage"><img src="img/login.png" alt="" title="" /></a>-->
             </div>
 
             <p1 class="un-login" id="un-login">
@@ -70,12 +70,12 @@
 
 <div class="members-home" id="scroll">
 
-    <section class="centre-content bg-black ">
+<!--    <section class="centre-content bg-black ">-->
 
-        <h1 id="superuser" class="index-header">
-        </h1>
-        </h1>
-    </section>
+<!--        <h1 id="superuser" class="index-header">-->
+<!--        </h1>-->
+<!--        </h1>-->
+<!--    </section>-->
 
 
     <section class="light-color strip-content">
@@ -84,12 +84,12 @@
 
                 <div class="col-md-12">
                     <div class="row dashboard-stats">
-                        <div class="col-md-12 bg-white" style="text-align:left" id="userInformation">
-                            <h2 id="uname"></h2>
-                            <h2 id="emaiL"></h2>
-                            <h2 id="carbonF"></h2>
-                            <h2 id="Elect"></h2>
-                        </div>
+<!--                        <div class="col-md-12 bg-white" style="text-align:left" id="userInformation">-->
+<!--                            <h2 id="uname"></h2>-->
+<!--                            <h2 id="emaiL"></h2>-->
+<!--                            <h2 id="carbonF"></h2>-->
+<!--                            <h2 id="Elect"></h2>-->
+<!--                        </div>-->
                         <!--                    <div class="col-md-4 bg-white">-->
                         <!--                        <h2>name: XXX</h2>-->
                         <!--                        <h2>Birthday: XX/XX</h2>-->
@@ -120,18 +120,18 @@
                                         <thead>
                                         <tr>
                                             <th>Country</th>
-                                            <th>Transfer Amout</th>
+                                            <th>Transfer Amount</th>
                                             <th>Panels has Received</th>
-                                            <th>Final</th>
+                                            <th>carbon emission</th>
                                         </tr>
                                         </thead>
                                         <tbody id="tablePersonal">
-                                        <tr>
-                                            <td>Country</td>
-                                            <td>Transfer Amout</td>
-                                            <td>Panels has Received</td>
-                                            <td>Final</td>
-                                        </tr>
+<!--                                        <tr>-->
+<!--                                            <td>Country</td>-->
+<!--                                            <td>Transfer Amout</td>-->
+<!--                                            <td>Panels has Received</td>-->
+<!--                                            <td>Final</td>-->
+<!--                                        </tr>-->
                                         <!--                                    <tr>-->
                                         <!--                                        <td></td>-->
                                         <!--                                        <td></td>-->
@@ -183,13 +183,21 @@
 <!--== End Page Content Wrapper ==-->
 
 <div class="footer-nav-container" id="footer123">
+    <div class="footer-nav" role="navigation">
+        <div class="footer-nav-item hover-line"><a href="http://localhost:3000/aboutPage">ABOUT US</a><div class="hover-nav"></div></div>
+        <div class="footer-nav-item hover-line"><a href="/contactPage">CONTACT US</a><div class="hover-nav"></div></div>
+        <div class="footer-nav-item hover-line"><a href="javascript:alert('Coming soon!');">NEWS</a><div class="hover-nav" id="mag"></div></div>
+        <div class="footer-nav-item hover-line"><a href="javascript:alert('Coming soon!');">BLOG</a><div class="hover-nav" id="blo"></div></div>
+        <div class="footer-nav-item hover-line"><a href="javascript:alert('Coming soon!');">ACTION FUND</a><div class="hover-nav"></div></div>
+        <div class="footer-nav-item hover-line"><a href="javascript:alert('Coming soon!');">CAREERS</a><div class="hover-nav" id="career"></div></div>
+    </div>
 </div>
 
 
 </body>
 
 <script type="text/javascript">
-    let user2Name ="Welcome back "+ window.sessionStorage.getItem("userName");
+    let user2Name ="Welcome "+ window.sessionStorage.getItem("userName");
     let object = document.getElementById("superuser");
     object.innerHTML = user2Name;
 </script>
