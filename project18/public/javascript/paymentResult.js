@@ -58,7 +58,7 @@ function addData() {
                 '          </table>\n' +
                 '    </div>'
         }
-        html1 += ' <h4>You have reduced <strong>'+ totalFootprint +'kg </strong> CO2 by this donation</h4>'
+        html1 += ' <h4>You have reduced <strong>'+ totalFootprint +'kg </strong> carbon footprint by this donation</h4>'
         $('#result-row').append(html);
         $('#footprint-amount').append(html1);
         $("#result-row").trigger("create");

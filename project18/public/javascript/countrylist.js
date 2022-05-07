@@ -1,5 +1,5 @@
 let result = [] /** response data array */
-let option = '' /** sort selection: Carbon/GDP/Price/Saving */
+let option = '' /** sort selection: Carbon/GDP/Price/Footprint */
 let rankType = 0 /** 0-default 1-increase -1-decrease */
 let pageIndex = 1 /** the current page number */
 $(function(){
@@ -47,9 +47,9 @@ function addData(num) {
             '                                <div class="product-item__info">\n' +
             '                                    <h4 class="title"><a href="http://localhost:3000/countryDetailPage?id=' + result[i].country_id + '">' + result[i].country_name + '</a></h4>\n' +
             '                                    <p class="price"><strong>Carbon Emissions per capita: </strong>' + result[i].carbon_emissions + ' metric tons' + '</p>\n' +
-            '                                    <p class="price"><strong>GDP: </strong>' + '$' + result[i].gdp + ' billion' + '</p>\n' +
+            '                                    <p class="price"><strong>Monthly Carbon Footprint reduction of each solar panel: </strong>' + result[i].carbon_saving_factor + ' kg</p>\n' +
             '                                    <p class="price"><strong>Price of a solor panel: </strong>' + '$' + result[i].price_of_solar_panel + '</p>\n' +
-            '                                    <p class="price"><strong>Savings for the country: </strong>' + '£' + result[i].savings + '</p>\n' +
+            '                                    <p class="price"><strong>GDP: </strong>' + '$' + result[i].gdp + ' billion' + '</p>\n' +
             '                                </div>\n' +
             '                            </div>\n' +
             '                        </div>\n' +
@@ -152,7 +152,7 @@ function getFeatureIndex(){
         case 'Price':
             featureIndex = 2
             break;
-        case 'Saving':
+        case 'Footprint':
             featureIndex = 3
             break;
     }
