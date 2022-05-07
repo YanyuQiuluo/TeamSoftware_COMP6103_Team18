@@ -254,6 +254,7 @@ if(window.sessionStorage.getItem("userName")){
     $('#logout').show();
     $('#logout').on("click",function (){
         window.sessionStorage.removeItem("userName");
+        location.reload();
         $('#userid').css('display','none');
         $('#un-login').show();
         if (window.sessionStorage.getItem("userName")){
@@ -265,7 +266,7 @@ if(window.sessionStorage.getItem("userName")){
     });
 
     }
-
+if (window.sessionStorage.getItem("userName")){
 if (window.sessionStorage.getItem("userType") === "admin"){
     var html = '';
     html += '<li id="ManageP"><a href="adminPage">Admin</a></li> '
@@ -289,6 +290,7 @@ if (window.sessionStorage.getItem("userType") === "admin"){
         $('#contactP').after(html);
         $('#contactP').trigger("create");
     }
+}
 
 
 

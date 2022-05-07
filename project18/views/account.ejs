@@ -79,7 +79,30 @@
     </h1>
     </h1>
 </section>
-
+<!--<script>-->
+<!--    function calculate(){-->
+<!--        let id=window.sessionStorage.getItem("userID");-->
+<!--       let to= document.getElementById("Elect").value;-->
+<!--        $.ajax({-->
+<!--        type : 'POST',-->
+<!--        url : 'http://localhost:3000/getFootPrint',-->
+<!--        dataType : 'json',-->
+<!--        data : {-->
+<!--            user_id : id,-->
+<!--            electricity_consumption : to,-->
+<!--        },-->
+<!--        success : function (res){-->
+<!--            if (res.code === '200'){-->
+<!--                -->
+<!--                console.log(res.result)-->
+<!--                result = res.result-->
+<!--            }else{-->
+<!--                alert(res.msg)-->
+<!--            }-->
+<!--        }-->
+<!--    })-->
+<!--    }-->
+<!--</script>-->
 
 <section class="light-color strip-content">
     <div class="wrapper">
@@ -91,11 +114,18 @@
                         <h2 id="uname"></h2>
                         <h2 id="emaiL"></h2>
                         <h2 id="carbonF"></h2>
-                        <h2 class="margin-top:13px"> Electricity consumption :
-                            <input type="text" id="Elect"  placeholder=""></input>
-                            <button type="submit" class="btn btn-primary" style="margin-bottom: 6px" id="submitEle">Submit</button>
+                        <div style="display: flex; flex-direction: row; justify-content: flex-start">
+                        <h2 class="margin-top:13px"> Electricity consumption : (Kg CO2 per Month)
+<!--                            <form action="">-->
+                                <input type="text" id="Elect" placeholder="0" ></input>
+
+
+                            <button  type="submit" class="btn btn-primary" style="margin-bottom: 6px" id="submitEle">Submit</button>
+<!--                            </form>-->
                         </h2>
 
+                        </div>
+                        <h3 style="margin-left: 370px;color: red">(Please enter the month Electricity consumption)</h3>
                     </div>
 <!--                    <div class="col-md-4 bg-white">-->
 <!--                        <h2>name: XXX</h2>-->
