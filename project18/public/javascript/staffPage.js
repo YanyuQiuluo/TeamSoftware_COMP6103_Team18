@@ -59,14 +59,15 @@ $(fresh());
 function addTable(){
 
     let html = '';
-    for (let i = 0;i < result.length;i++){
-        let func='\''+'upgrade('+result[i].user_id+')'+'\'';
-        console.log(func);
+    //console.log(result);
+    for (let i = 0;i < result.size;i++){
+        // let func='\''+'upgrade('+result[i].user_id+')'+'\'';
+        // console.log(func);
         html += '<tr>\n' +
-            '<td>' + result[i].country + '</td>\n' +
-            '<td>' + result[i].transfer_Amount + '</td>\n' +
-            '<td>' + result[i].panels_has_received + '</td>\n' +
-            '<td>' + result[i].carbon_emission + '</td>\n' ;
+            '<td>' + result[0][i] + '</td>\n' +
+            '<td>' + result[1][i] + '</td>\n' +
+            '<td>' + result[2][i] + '</td>\n' +
+            '<td>' + result[3][i] + '</td>\n' ;
         // if(result[i].user_type=="household"){
         //     html+='<td><button  style="width: 200px; height: 30px;"  onClick='+func+'> upgrade</button></td>\n';
         // }
