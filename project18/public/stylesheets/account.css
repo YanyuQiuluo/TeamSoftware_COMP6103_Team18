@@ -41,3 +41,7 @@ body{
 #scroll{
     padding-bottom: 80px;
 }
+
+#edge{
+    max-width: 1285px; !important;
+}

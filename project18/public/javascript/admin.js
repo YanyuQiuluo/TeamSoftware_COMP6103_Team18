@@ -75,7 +75,7 @@ function addTable(){
             '<td>' + result[i].electicity_usage_pm + '</td>\n' +
             '<td>' + result[i].user_type + '</td>\n' ;
             if(result[i].user_type=="household"){
-                html+='<td><button  style="width: 200px; height: 30px;"  onClick='+func+'> upgrade</button></td>\n';
+                html+='<td><button  style="width: 100px; height: 73px;"  class="btn btn-info" onClick='+func+'> upgrade</button></td>\n';
             }
 
         html+='</tr>'

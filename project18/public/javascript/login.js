@@ -25,9 +25,11 @@ $('#submit').on('click', function () {
                     window.sessionStorage.setItem("user",res.result.user);
                     window.sessionStorage.setItem("userID",res.result.user.user_id);
                     window.sessionStorage.setItem("userName", res.result.user.username);
+                    window.sessionStorage.setItem("userType", res.result.user.user_type);
                     window.location.href='http://localhost:3000/'
                 } else {
-                    alert('Network error, please try again')
+                    console.log(res);
+                    alert(res.msg)
                 }
             }
         });
