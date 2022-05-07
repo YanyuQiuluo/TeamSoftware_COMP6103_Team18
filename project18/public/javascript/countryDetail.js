@@ -45,16 +45,16 @@ function addData() {
         '                                <div class="product-item__info">\n' +
         '                                    <h4 class="title">'+ result.country_name+'</a></h4>\n' +
         '                                    <p class="price"><strong>Carbon Emissions per capita: </strong>'+ result.carbon_emissions+ ' metric tons'+'</p>\n' +
+        '                                    <p class="price"><strong>Monthly Carbon Footprint reduction of each solar panel: </strong>'+ result.carbon_saving_factor+' kg</p>\n' +
+        '                                    <p class="price"><strong>Price of a solor panel: </strong>'+ '£'+ result.price_of_solar_panel+'</p>\n' +
         '                                    <p class="price"><strong>GDP: </strong>'+ '$'+ result.gdp+' billion'+'</p>\n' +
-        '                                    <p class="price"><strong>Price of a solor panel: </strong>'+ '$'+ result.price_of_solar_panel+'</p>\n' +
-        '                                    <p class="price"><strong>Savings for the country: </strong>'+ '£'+ result.savings+'</p>\n' +
         '                                </div>\n' +
         '                                <div class="product-item__desc">\n' +
         '                                    <p>'+ result.country_description+'</p>\n' +
         '                                </div>\n' +
         '                                <div class="product-action">\n' +
         '                                    <div class="product-action-tips">' +
-        '                                         <strong>You can reduce carbon emissions by donating solar panels for '+ result.country_name+ ':' +'</strong>\n' +
+        '                                         <strong>You can reduce '+ result.carbon_saving_factor+' kg carbon footprint per month by donating a solar panel to '+ result.country_name+ ':' +'</strong>\n' +
         '                                    </div>\n' +
         '                                    <input type="button" value="-" id="subtraction" style="width: 40px;height: 35px;font-size: 20px" onClick="decrease()" />\n' +
         '                                    <input type="text" value="1" id="number" onBlur="number()" style="width: 80px;height: 35px" />\n' +
