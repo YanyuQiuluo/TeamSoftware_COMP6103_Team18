@@ -170,9 +170,10 @@ function getRankedList(feature_index, ranking_index) {
         },
         success: function(res){
             if (res.code === '200') {
-                $("#product-item").html("");
+                $("#product-item").empty();
                 result = res.result
-                addData();
+                pageIndex = 1
+                addData(0)
             } else {
                 alert(res.msg)
             }
