@@ -174,7 +174,7 @@ function getRankedList(feature_index, ranking_index) {
                 result = res.result
                 addData();
             } else {
-                alert('Network error, please try again')
+                alert(res.msg)
             }
         }
     });
