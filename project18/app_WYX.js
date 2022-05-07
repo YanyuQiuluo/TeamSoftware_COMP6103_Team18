@@ -19,6 +19,7 @@ function Load(app) {
     app.use("/relegation_user",require("./routes/managerRelegationUser"));
 
     app.use("/adminPage",require("./routes/adminPage"));
+    app.use("/getFootPrint",require("./routes/getFootprint"));
 }
 
 module.exports=Load
