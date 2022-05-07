@@ -17,16 +17,28 @@ router.route("/")
 
         let get_country = req.body.get_country;
         let Countrylist = await Contry.findAll();
-        //let transactionlist = await transaction.findAll();
-        let returnlist;
+
+
+
+
+
+        let returnlist = Countrylist;
 
         for (let i = 0; i  < Countrylist.length; i++){
-            console.log(Countrylist[i]);
-            res.json(Countrylist[i]);
-            //let countryname = Countrylist[i].get(country_name);
-            //console.log(countryname);
+
+            let country_name = Countrylist[i].get('country_name');
+            console.log(country_name);
+            //算出一个国家的所有值的和
+            returnlist[i] = await transaction.sum(
+                'transfer_amount',
+                {
+                    where:
+                        {"country_name": country_name
+                        }
+                });
 
             }
+        res.json(result.success(returnlist));
 
 
 
