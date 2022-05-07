@@ -9,7 +9,7 @@ router.route("/")
 
 async  function func(req,res){
     let user_id = req.body.user_id;
-    if(!user_id)throw "uset_id null";
+    if(!user_id)throw "user_id null";
     let re= await m.findOne({where:{"user_id":user_id}})
     if(!re)throw "userid no found";
 
