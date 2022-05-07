@@ -266,6 +266,21 @@ if(window.sessionStorage.getItem("userName")){
 
     }
 
+if (window.sessionStorage.getItem("userType") === "admin"){
+    var html = '';
+    html += '<li id="ManageP"><a href="adminPage">Admin</a></li> '
+
+    $('#contactP').after(html);
+    $('#contactP').trigger("create");
+}
+
+    if (window.sessionStorage.getItem("userType") === "admin" || "staff"){
+        var html = '';
+        html += '<li id="checkR"><a href="#">Report</a></li> '
+
+        $('#ManageP').after(html);
+        $('#ManageP').trigger("create");
+    }
 
 
 
