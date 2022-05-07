@@ -1,6 +1,6 @@
 const sequelize = require("../mode_js/MySql");
 const { Sequelize, DataTypes } = require('sequelize');
-const country = sequelize.define(
+const transaction = sequelize.define(
     'transaction',
     {
             dataTime:Sequelize.STRING,
@@ -16,5 +16,9 @@ const country = sequelize.define(
     },
     { timestamps: false }
 )
-
-module.exports = country;
+const c=require("../Model/Contry_name");
+transaction.belongsTo(c,{
+    foreignKey: 'country_id',
+    targetKey: 'country_id',
+})
+module.exports = transaction;
