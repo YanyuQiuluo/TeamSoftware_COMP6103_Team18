@@ -4,6 +4,7 @@ const countrylistRouter_ = require("./routes/countrylist_");
 const userPageRouter_ = require("./routes/userPage_");
 const paymentResultRouter = require("./routes/paymentResult");
 const staffPageRouter = require("./routes/staffPage");
+const staffPageRouter_ = require("./routes/staffPage_info");
 
 function Load(app) {
     app.use('/register', registerRouter);
@@ -12,6 +13,7 @@ function Load(app) {
     app.use('/userPage', userPageRouter_);
     app.use('/paymentResult', paymentResultRouter);
     app.use('/staffPage', staffPageRouter);
+    app.use('/staffPage_info', staffPageRouter_);
 
 }
 module.exports=Load
