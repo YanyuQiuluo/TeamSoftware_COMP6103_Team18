@@ -14,7 +14,7 @@ async  function func(req,res){
     if(!re)throw "userid no found";
 
     let re2=await  m2.findAll({
-        where:{"user_id":user_id},
+        where:{"user_id":user_id,"status":"success"},
         include:[
             {
                 attributes: ['country_name'],
