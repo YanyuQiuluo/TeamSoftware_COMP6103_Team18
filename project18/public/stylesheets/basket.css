@@ -139,8 +139,7 @@
 }
 .donate-btn button {
     background-color: #f8dc00;
-    border-color: #f8dc00;
-    border-radius: 0px;
+    border: none;
     height: 50px;
     width: 150px;
     margin: 0 auto;

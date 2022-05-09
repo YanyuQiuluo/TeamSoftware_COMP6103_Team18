@@ -3,10 +3,10 @@ let result = [] /** response data array */
 let carbonArr = [] /** response data array to get carbon_saving_factor */
 let totalFootprint = 0 /** Total reduced footprint of this donation */
 $(function(){
-    let element = document.getElementById("result-container");
-    if(element.scrollHeight <= element.clientHeight + 20) { /** There is not a scroll bar, then fixed the foot bar*/
-        document.getElementById("footer-nav-container").style.position = 'fixed'
-    }
+    // let element = document.getElementById("result-container");
+    // if(element.scrollHeight <= element.clientHeight + 20) { /** There is not a scroll bar, then fixed the foot bar*/
+    //     document.getElementById("footer-nav-container").style.position = 'fixed'
+    // }
     uuid = getUrlParam('id');
     $.ajax({
         type: 'POST',
@@ -58,7 +58,7 @@ function addData() {
                 '          </table>\n' +
                 '    </div>'
         }
-        html1 += ' <h4>You will save <strong>'+ totalFootprint +' kg </strong> carbon footprint per month through this donation.</h4>'
+        html1 += ' <h4>You will reduce <strong>'+ totalFootprint +' kg </strong> carbon footprint per month through this donation.</h4>'
         $('#result-row').append(html);
         $('#footprint-amount').append(html1);
         $("#result-row").trigger("create");
@@ -82,4 +82,8 @@ function getUrlParam(name) {
     var r = window.location.search.substr(1).match(reg); //Match target parameters
     if (r != null) return unescape(r[2]);
     return null;
+}
+
+function gotoAccount() {
+    window.location.href="http://localhost:3000/myaccountPage"
 }

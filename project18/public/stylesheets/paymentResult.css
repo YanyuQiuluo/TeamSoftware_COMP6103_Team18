@@ -1,6 +1,9 @@
+#header {
+    position: relative;
+}
 .result-pic{
     text-align:center;
-    margin-top: 160px;
+    margin-top: 40px;
 }
 .result-pic img{
     width: 100px;
@@ -41,5 +44,35 @@
     width: 100%;
 }
 .footprint-amount{
+    margin-top: 20px;
+}
+.donate-button{
+    display: flex;
+}
+.basket-item {
+    position: relative;
+    width: 360px;
+    margin: 0 auto;
+    padding-bottom: 15px;
+}
+.basket-item button {
+    background-color: #f8dc00;
+    border: none;
+    height: 60px;
+    width: 250px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 10px;
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 600;
+}
+.bottom-tips{
+    text-align: center;
+    font-weight: 400;
+    font-size: 18px;
     margin-top: 20px;
 }
