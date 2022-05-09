@@ -53,12 +53,12 @@ function addData() {
                 '               <td style="width: 20%;">' + result[i].dataTime + '</td>\n' +
                 '               <td style="width: 25%;">' + result[i].country_name + '</td>\n' +
                 '               <td style="width: 25%;">' + result[i].panel_amount + '</td>\n' +
-                '               <td style="width: 30%;">' + computeFootprint(result[i].country_id,  result[i].panel_amount)+ '</td>\n' +
+                '               <td style="width: 30%;">' + computeFootprint(result[i].country_id,  result[i].panel_amount)+ ' kg</td>\n' +
                 '            </tr>\n' +
                 '          </table>\n' +
                 '    </div>'
         }
-        html1 += ' <h4>You have reduced <strong>'+ totalFootprint +' kg </strong> carbon footprint through this donation.</h4>'
+        html1 += ' <h4>You will save <strong>'+ totalFootprint +' kg </strong> carbon footprint per month through this donation.</h4>'
         $('#result-row').append(html);
         $('#footprint-amount').append(html1);
         $("#result-row").trigger("create");

@@ -68,7 +68,7 @@ function addData() {
 
 function addTotalAmount() {
     let totalAmount = '<div>\n' +
-        '                   You can reduce <strong style="font-size: 26px;">'+computeTotalFootprint()+' kg </strong>Carbon Footprint per month through this donation.\n' +
+        '                   You will save <strong style="font-size: 26px;">'+computeTotalFootprint()+' kg </strong>Carbon Footprint per month through this donation.\n' +
         '              </div>\n' +
         '              <div>\n' +
         '                   Total Amount: <strong style="font-size: 26px;">£'+getTotalAmount()+'</strong>\n' +
