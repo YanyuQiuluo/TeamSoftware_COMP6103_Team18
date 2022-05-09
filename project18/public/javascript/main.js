@@ -277,7 +277,7 @@ if (window.sessionStorage.getItem("userType") === "admin"){
 
     if (window.sessionStorage.getItem("userType") === "admin"){
         var html = '';
-        html += '<li id="checkR"><a href="#">Report</a></li> '
+        html += '<li id="checkR"><a href="staffPage">Report</a></li> '
 
         $('#ManageP').after(html);
         $('#ManageP').trigger("create");

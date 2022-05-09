@@ -135,7 +135,7 @@ $('#submitEle').on('click',function (){
         url : 'http://localhost:3000/getFootPrint',
         dataType : 'json',
         data : {
-            // user_id : id,
+            user_id : id,
             electricity_consumption : ele,
         },
         success : function (res){
