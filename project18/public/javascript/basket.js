@@ -9,7 +9,7 @@ $(function(){
         window.location.replace('/loginPage')
     }
 
-    if(element.scrollHeight <= element.clientHeight + 20) { /** There is not a scroll bar, then fixed the foot bar*/
+    if(element.scrollHeight + 300 <= element.clientHeight) { /** There is not a scroll bar, then fixed the foot bar*/
         document.getElementById("footer-nav-container").style.position = 'fixed'
     }
     if (JSON.parse(window.localStorage.getItem("userBasket")) &&
