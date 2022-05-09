@@ -47,7 +47,7 @@ function addData(num) {
             '                                <div class="product-item__info">\n' +
             '                                    <h4 class="title"><a href="http://localhost:3000/countryDetailPage?id=' + result[i].country_id + '">' + result[i].country_name + '</a></h4>\n' +
             '                                    <p class="price"><strong>Carbon Emissions per capita: </strong>' + result[i].carbon_emissions + ' metric tons' + '</p>\n' +
-            '                                    <p class="price"><strong>Monthly Carbon Footprint reduction of each solar panel: </strong>' + result[i].carbon_saving_factor + ' kg</p>\n' +
+            '                                    <p class="price"><strong>Monthly Carbon Footprint savings of each solar panel: </strong>' + result[i].carbon_saving_factor + ' kg</p>\n' +
             '                                    <p class="price"><strong>Price of a solor panel: </strong>' + '$' + result[i].price_of_solar_panel + '</p>\n' +
             '                                    <p class="price"><strong>GDP: </strong>' + '$' + result[i].gdp + ' billion' + '</p>\n' +
             '                                </div>\n' +

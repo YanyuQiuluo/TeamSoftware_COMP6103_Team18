@@ -44,17 +44,27 @@ function addData() {
         '                            <div class="product-item__content">\n' +
         '                                <div class="product-item__info">\n' +
         '                                    <h4 class="title">'+ result.country_name+'</a></h4>\n' +
-        '                                    <p class="price"><strong>Carbon Emissions per capita: </strong>'+ result.carbon_emissions+ ' metric tons'+'</p>\n' +
-        '                                    <p class="price"><strong>Monthly Carbon Footprint reduction of each solar panel: </strong>'+ result.carbon_saving_factor+' kg</p>\n' +
-        '                                    <p class="price"><strong>Price of a solor panel: </strong>'+ '£'+ result.price_of_solar_panel+'</p>\n' +
-        '                                    <p class="price"><strong>GDP: </strong>'+ '$'+ result.gdp+' billion'+'</p>\n' +
+        '                                    <div class="price"><strong>Carbon Emissions per capita: </strong>'+ result.carbon_emissions+ ' metric tons'+'</div>\n' +
+        '                                    <div class="price"><strong>Monthly Carbon Footprint savings of each solar panel: </strong>'+ result.carbon_saving_factor+' kg\n'+
+        '                                         <span class="tooltiptext">The amount of CO2 reduction per month of each solar panel.</span>\n'+
+        '                                    </div>\n' +
+        '                                    <div class="price"><strong>Price of each solor panel: </strong>'+ '£'+ result.price_of_solar_panel+'\n'+
+        '                                         <span class="tooltiptext">Total cost of installation for solar panels by country.</span>\n'+
+        '                                    </div>\n' +
+        '                                    <div class="price"><strong>GDP: </strong>'+ '$'+ result.gdp+' billion'+'</div>\n' +
+        '                                    <div class="price"><strong>Carbon Intensity: </strong>'+ result.carbon_intensity+' gCO₂eq/kWh\n'+
+        '                                         <span class="tooltiptext">Carbon Intensity is a measure of how much CO2 emissions are produced per kilowatt hour of electricity consumed.</span>\n'+
+        '                                    </div>\n' +
+        '                                    <div class="price"><strong>Monthly Solar Power Intensity: </strong>'+ result.kwh_m2_mon+' kWh\n'+
+        '                                         <span class="tooltiptext">Monthly Solar Power Intensity is a measure of the peak power generation of each solar panel per month in a country.</span>\n'+
+        '                                    </div>\n' +
         '                                </div>\n' +
         '                                <div class="product-item__desc">\n' +
         '                                    <p>'+ result.country_description+'</p>\n' +
         '                                </div>\n' +
         '                                <div class="product-action">\n' +
         '                                    <div class="product-action-tips">' +
-        '                                         <strong>You can reduce '+ result.carbon_saving_factor+' kg carbon footprint per month by donating a solar panel to '+ result.country_name+ ':' +'</strong>\n' +
+        '                                         <strong>You will save '+ result.carbon_saving_factor+' kg carbon footprint per month by donating a solar panel to '+ result.country_name+ ':' +'</strong>\n' +
         '                                    </div>\n' +
         '                                    <input type="button" value="-" id="subtraction" style="width: 40px;height: 35px;font-size: 20px" onClick="decrease()" />\n' +
         '                                    <input type="text" value="1" id="number" onBlur="number()" style="width: 80px;height: 35px" />\n' +
