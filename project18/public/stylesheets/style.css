@@ -437,7 +437,8 @@ h1, h4, h6 {
 }
 
 .blog-area .single-blog-post .thumb img {
-  border-radius: 10px
+  width: 180px;
+  height: 120px;
 }
 
 .blog-area .single-blog-post .title {
