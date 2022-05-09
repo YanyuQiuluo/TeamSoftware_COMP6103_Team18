@@ -1,10 +1,160 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>countryListPage</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
+    <!--css-->
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="/stylesheets/bootstrap.css">
+    <link rel="stylesheet" href="/stylesheets/owl.carousel.css">
+    <link rel="stylesheet" href="/stylesheets/basket.css">
+    <link rel="stylesheet" href="/stylesheets/contact.css">
+
+    <!--javascript-->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+    <script src="javascript/bootstrap.min.js"></script>
+    <script src="javascript/superfish.min.js"></script>
+    <script src="javascript/jquery.magnific-popup.min.js"></script>
+    <script src="javascript/owl.carousel.min.js"></script>
+    <script src="javascript/main.js"></script>
+
 </head>
 <body>
-<h1>Coming soon!</h1>
+
+<header id="header">
+    <div class="header-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-sm-6 col-4 header-top-left no-padding">
+                    <a href="tel:+XX XXX XXXX XXX">+XX XXX XXXX XXXX</a>
+                    <a href="XXXXXX@XXXXXXXX">XXXXXX@XXXXXXXX</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="container main-menu" style="max-width: 1290px">
+        <div class="row align-items-center justify-content-between d-flex">
+            <div id="logo">
+                <!--                <a href="http://localhost:3000/loginPage"><img src="img/login.png" alt="" title="" /></a>-->
+            </div>
+
+            <p1 class="un-login" id="un-login">
+                <a href="http://localhost:3000/loginPage" style="margin-right: 455px;">Log in</a>
+            </p1>
+            <p1 class="userName" id="userid" style="display: inline;margin-right: 428px;">
+                Hi! <p1 id="useridd"></p1>
+            </p1>
+
+            <div style="position:relative;right:429px; display: none" id="logout">
+                <button class="btn btn-outline-primary">logout</button>
+            </div>
+
+            <nav id="nav-menu-container">
+                <ul class="nav-menu">
+                    <li class="menu-active"><a href="/">Home</a></li>
+                    <li><a href="aboutPage">About</a></li>
+                    <li><a href="countrylistPage">COUNTRY LIST</a></li>
+                    <li><a href="javascript:void(0);" onclick="navDonate()">DONATE</a></li>
+                    <li><a href="http://localhost:3000/myaccountPage">MY ACCOUNT</a></li>
+                    <li id="contactP"><a href="contactPage">Contact</a></li>
+                </ul>
+            </nav><!-- #nav-menu-container -->
+        </div>
+    </div>
+</header><!-- #header -->
+
+<!--== Start Page Header Area ==-->
+<div class="page-header-wrap bg-img" >
+    <!--    <img class="img-header" src="img/page-header-bg.jpg" alt="" >-->
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <div class="page-header-content">
+                    <div class="page-header-content-inner">
+                        <h1>Contact Page</h1>
+
+                        <ul class="breadcrumb">
+                            <li><a href="/">Home</a></li>
+                            <li class="current"><a href="#">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--start-->
+<section class="contact-page-area section-gap" style="background-color: #f9f9ff;">
+<!--<div style="background-color: #f9f9ff;">-->
+
+
+    <div class="wrapper" style="margin: 0 auto;width: 1024px;">
+<div class="">
+        <div class="d-flex flex-row" style="margin-top: 20px">
+        <div>
+            <img src="img/home.png" alt="">
+        </div>
+            <div class="contact-details" style="margin-top: 18px">
+                <h5>The university of Sheffield</h5>
+                <span>Western Bank, Sheffield, S10 2TN</span>
+            </div>
+        </div>
+        <div class="d-flex flex-row" style="margin-top: 20px">
+        <div>
+            <img src="img/phone.png" alt="" class="small-icon">
+        </div>
+            <div class="contact-details" style="margin-top: 18px">
+                <span>+86 15720605656<br/></span>
+                <span>+44 07546942447<br/></span>
+                <span>+44 7771786980<br/></span>
+                <span>+44 7375100804<br/></span>
+                <span>+44 07925705940</span>
+            </div>
+            </div>
+        <div class="d-flex flex-row" style="margin-top: 20px">
+        <div>
+            <img src="img/email2.png" alt="" class="small-icon">
+        </div>
+            <div class="contact-details" style="margin-top: 18px">
+                <span>ywang597@sheffield.ac.uk<br/></span>
+                <span>yzhou209@sheffield.ac.uk<br/></span>
+                <span>yguo94@sheffield.ac.uk<br/></span>
+                <span>aaalfitni1@sheffield.ac.uk<br/></span>
+                <span>zli259@sheffield.ac.uk</span>
+            </div>
+        </div>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2379.871413303282!2d-1.4906169483048732!3d53.38135017988819!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4879827871f2884f%3A0xc9ec1e8b34c33663!2z6Zuq6I-y54i-5aSn5a24!5e0!3m2!1szh-CN!2suk!4v1652107533905!5m2!1szh-CN!2suk"
+            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade" class="maps"></iframe>
+        </div>
+
+
+    </div>
+
+<!--</div>-->
+</section>
+
+<!--end-->
+
+<div class="footer-nav-container" id="footer-nav-container" style="position: relative">
+    <div class="footer-nav" role="navigation">
+        <div class="footer-nav-item hover-line"><a href="http://localhost:3000/aboutPage">ABOUT US</a><div class="hover-nav"></div></div>
+        <div class="footer-nav-item hover-line"><a href="/contactPage">CONTACT US</a><div class="hover-nav"></div></div>
+        <div class="footer-nav-item hover-line"><a href="javascript:alert('Coming soon!');">NEWS</a><div class="hover-nav" id="mag"></div></div>
+        <div class="footer-nav-item hover-line"><a href="javascript:alert('Coming soon!');">BLOG</a><div class="hover-nav" id="blo"></div></div>
+        <div class="footer-nav-item hover-line"><a href="javascript:alert('Coming soon!');">ACTION FUND</a><div class="hover-nav"></div></div>
+        <div class="footer-nav-item hover-line"><a href="javascript:alert('Coming soon!');">CAREERS</a><div class="hover-nav" id="career"></div></div>
+    </div>
+</div>
+
+
 </body>
 </html>
+
+
+
