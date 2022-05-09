@@ -4,7 +4,7 @@
 }
 
 .basket-item{
-    width: 70%;
+    width: 75%;
     margin: 0 auto;
     border: 2px solid #f8dc00;
     border-radius: 18px;
@@ -38,13 +38,12 @@
 .basket-total {
     border-top: 2px solid #f8dc00;
     margin-top: 20px;
-    height:60px;
     font-size: 19px;
     line-height: 60px;
     font-weight: 500;
     border-radius:0 0 10px 10px;
     text-align: right;
-    padding-right: 100px;
+    padding-right: 70px;
 }
 .basket-btn{
     display: flex;
@@ -60,7 +59,7 @@
 .donate-btn button {
     background-color: #f8dc00;
     border-color: #f8dc00;
-    border-radius: 10px;
+    border-radius: 0px;
     height: 50px;
     width: 150px;
     margin: 0 auto;
@@ -74,4 +73,22 @@
     height: 35px;
     font-size: 20px;
     line-height: 30px
+}
+.empty-container{
+    display: none;
+    margin-top: 170px;
+    margin-bottom: 40px;
+}
+.empty-item{
+    margin: 0 auto;
+    text-align: center;
+}
+.empty-item img {
+    height: 100px;
+    width: 100px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+.empty-tips2{
+    margin-bottom: 40px;
 }

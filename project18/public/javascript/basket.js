@@ -1,6 +1,7 @@
 let result = {} /** Basket data array */
 let priceArr = [] /** Array of price of solar panels */
 let uuid = "" /** An unique ID to represent a transaction */
+let totalFootprint = 0 /** Total reduced footprint of this donation */
 $(function(){
     let element = document.getElementById("basket-container");
 
@@ -11,8 +12,12 @@ $(function(){
     if(element.scrollHeight <= element.clientHeight + 20) { /** There is not a scroll bar, then fixed the foot bar*/
         document.getElementById("footer-nav-container").style.position = 'fixed'
     }
-    if (JSON.parse(window.localStorage.getItem("userBasket")).userId == window.sessionStorage.getItem("userID")) {
+    if (JSON.parse(window.localStorage.getItem("userBasket")) &&
+        JSON.parse(window.localStorage.getItem("userBasket")).userId == window.sessionStorage.getItem("userID")) {
         result = JSON.parse(window.localStorage.getItem("userBasket"))
+    } else {
+        $('.basket-container').css('display','none');
+        $('.empty-container').show();
     }
     $.ajax({
         type: 'POST',
@@ -27,6 +32,7 @@ $(function(){
                 priceArr = res.result;
                 addData();
                 addTotalAmount();
+
             } else {
                 alert(res.msg)
             }
@@ -41,12 +47,13 @@ function addData() {
             html += '<div class="table-item">\n' +
                 '         <table>\n' +
                 '            <tr>\n' +
-                '               <td style="width: 30%;">'+getCountryName(result.basket[i].countryId)+'</td>\n' +
-                '               <td style="width: 25%;">£'+getPrice(result.basket[i].countryId)+'</td>\n' +
+                '               <td style="width: 20%;">'+getCountryName(result.basket[i].countryId)+'</td>\n' +
+                '               <td style="width: 20%;">£'+getPrice(result.basket[i].countryId)+'</td>\n' +
+                '               <td style="width: 25%;">'+getFootprint(result.basket[i].countryId)+' kg</td>\n' +
                 '               <td style="width: 15%;">\n' +
                 '                   <input type="text" value="'+getQty(result.basket[i].countryId)+'" id="number'+result.basket[i].countryId+'" onBlur="numberInput('+result.basket[i].countryId+')" style="width: 80px;height: 35px" />\n' +
                 '               </td>\n' +
-                '               <td style="width: 30%;">\n' +
+                '               <td style="width: 20%;">\n' +
                 '                   <input class="inputOp" type="button" value="-" id="sub'+result.basket[i].countryId+'" onClick="decrease(\''+result.basket[i].countryId+'\')" />\n' +
                 '                   <input class="inputOp" type="button" value="+" id="add'+result.basket[i].countryId+'" onClick="increase(\''+result.basket[i].countryId+'\')" />\n' +
                 '               </td>\n' +
@@ -60,7 +67,12 @@ function addData() {
 }
 
 function addTotalAmount() {
-    let totalAmount = 'Total Amount: <strong style="font-size: 26px;">£'+getTotalAmount()+'</strong>'
+    let totalAmount = '<div>\n' +
+        '                   You can reduce <strong style="font-size: 26px;">'+computeTotalFootprint()+' kg </strong>Carbon Footprint per month through this donation.\n' +
+        '              </div>\n' +
+        '              <div>\n' +
+        '                   Total Amount: <strong style="font-size: 26px;">£'+getTotalAmount()+'</strong>\n' +
+        '              </div>'
     $('#basket-total').empty();
     $('#basket-total').append(totalAmount);
     $("#basket-total").trigger("create");
@@ -137,9 +149,31 @@ function getQty(countryId){
 function getPrice(countryId){
     for(let i=0; i<priceArr.length; i++) {
         if(priceArr[i].country_id == countryId) {
-            return parseInt(priceArr[i].price_of_solar_panel);
+            return parseFloat(priceArr[i].price_of_solar_panel);
         }
     }
+}
+
+/** Get the reduced carbon footprint */
+function getFootprint(countryId){
+    let footprintSingle = ''
+    for(let i=0; i<priceArr.length; i++) {
+        if(priceArr[i].country_id == countryId) {
+            footprintSingle = parseFloat(priceArr[i].carbon_saving_factor)
+        }
+    }
+    return footprintSingle
+}
+
+/** Get the total reduced carbon footprint */
+function computeTotalFootprint(){
+    let amount = 0
+    if (Object.values(result).length > 0) {
+        for (let i = 0; i < result.basket.length; i++) {
+            amount += getFootprint(result.basket[i].countryId) * result.basket[i].qty
+        }
+    }
+    return amount.toFixed(2);
 }
 
 /** Compute the total amount */
@@ -227,6 +261,10 @@ function gotoResult() {
             }
         }
     });
+}
+
+function gotoList() {
+    window.location.href='http://localhost:3000/countrylistPage'
 }
 
 
