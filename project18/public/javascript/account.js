@@ -110,15 +110,17 @@ function addData(){
     document.getElementById("emaiL").innerHTML = "Email: " + result[0].email;
     // document.getElementById("carbonF").innerHTML = "Carbon footprint: " + result[0].feul_usage_pm
     document.getElementById("carbonS").innerHTML = "Carbon footprint savings (kg) : 0"
-    document.getElementById("carbonF").innerHTML = "Carbon footprint (Kg per Month) : 0"
-
+    document.getElementById("carbonF").innerHTML = "Carbon footprint (Kg per Month) : "+ result[0].feul_usage_pm
+    document.getElementById("Electricity").innerHTML= result[0].electicity_usage_pm
     // document.getElementById("Elect").innerHTML = "Electricity usage monthly: " + result[0].electicity_usage_pm
 
 
 }
 
-function changeData(){
+function changeData(ele){
     document.getElementById("carbonF").innerHTML =  "Carbon footprint (Kg per Month) : " + electricity;
+    document.getElementById("Electricity").innerHTML= ele
+
 }
 
 function addTable(){
@@ -177,7 +179,7 @@ $('#submitEle').on('click',function (){
 
                 console.log(res.result);
                 electricity = res.result;
-                changeData();
+                changeData(ele);
             }else{
                 alert(res.msg)
             }
