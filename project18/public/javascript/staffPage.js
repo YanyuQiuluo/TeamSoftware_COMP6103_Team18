@@ -63,6 +63,19 @@ function addTable(){
     console.log(result[0]);
     console.log(result[0].length);
     for (let i = 0;i < result[0].length;i++){
+        if (result[0][i] === null){
+            result[0][i] =0 ;
+        }
+
+        if (result[1][i] === null){
+            result[1][i] =0 ;
+        }
+        if (result[2][i] === null){
+            result[2][i] =0 ;
+        }
+        if (result[3][i] === null){
+            result[3][i] =0 ;
+        }
         // let func='\''+'upgrade('+result[i].user_id+')'+'\'';
         // console.log(func);
         html += '<tr>\n' +

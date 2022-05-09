@@ -254,6 +254,8 @@ if(window.sessionStorage.getItem("userName")){
     $('#logout').show();
     $('#logout').on("click",function (){
         window.sessionStorage.removeItem("userName");
+        window.sessionStorage.removeItem("userType");
+        window.sessionStorage.removeItem("userID");
         location.reload();
         $('#userid').css('display','none');
         $('#un-login').show();
