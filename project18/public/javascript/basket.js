@@ -48,12 +48,12 @@ function addData() {
                 '         <table>\n' +
                 '            <tr>\n' +
                 '               <td style="width: 20%;">'+getCountryName(result.basket[i].countryId)+'</td>\n' +
-                '               <td style="width: 20%;">£'+getPrice(result.basket[i].countryId)+'</td>\n' +
+                '               <td style="width: 25%;">£'+getPrice(result.basket[i].countryId)+'</td>\n' +
                 '               <td style="width: 25%;">'+getFootprint(result.basket[i].countryId)+' kg</td>\n' +
                 '               <td style="width: 15%;">\n' +
                 '                   <input type="text" value="'+getQty(result.basket[i].countryId)+'" id="number'+result.basket[i].countryId+'" onBlur="numberInput('+result.basket[i].countryId+')" style="width: 80px;height: 35px" />\n' +
                 '               </td>\n' +
-                '               <td style="width: 20%;">\n' +
+                '               <td style="width: 15%;">\n' +
                 '                   <input class="inputOp" type="button" value="-" id="sub'+result.basket[i].countryId+'" onClick="decrease(\''+result.basket[i].countryId+'\')" />\n' +
                 '                   <input class="inputOp" type="button" value="+" id="add'+result.basket[i].countryId+'" onClick="increase(\''+result.basket[i].countryId+'\')" />\n' +
                 '               </td>\n' +
