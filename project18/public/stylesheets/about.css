@@ -3,8 +3,9 @@
 
 }
 .page-header-wrap.bg-img{
-    background: url("../img/world-map.png") no-repeat;
+    background: url("../img/solar-about.jpg") no-repeat;
     background-size: cover;
+    background-position-y: -300px;
 }
 .page-header-content {
     display: -webkit-box;
