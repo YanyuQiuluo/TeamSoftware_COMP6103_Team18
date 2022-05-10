@@ -118,7 +118,7 @@ function addData(){
 }
 
 function changeData(ele){
-    document.getElementById("carbonF").innerHTML =  "Carbon footprint (Kg per Month) : " + electricity;
+    document.getElementById("carbonF").innerHTML =  "Carbon footprint (Kg per Month) : " + electricity.toFixed(3);
     document.getElementById("Electricity").innerHTML= ele
 
 }
@@ -130,7 +130,7 @@ function addTable(){
             // '<td>' + result[1][i].user_name + '</td>\n' +
             '<td>' + result[1][i].country.country_name + '</td>\n' +
             '<td id="sss">￡' + result[1][i].transfer_amount + '</td>\n' +
-            '<td>' + result[1][i].savingF.toFixed(2) + 'kg</td>\n' +
+            '<td>' + result[1][i].savingF.toFixed(3) + 'kg</td>\n' +
             '<td>' + result[1][i].dataTime + '</td>\n' +
             '</tr>'
     }
