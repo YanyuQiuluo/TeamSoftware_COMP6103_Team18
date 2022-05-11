@@ -207,11 +207,10 @@ function confirmDonate(){
                 panel_amount: String(result.basket[i].qty),
                 transfer_amount: String(getPrice(result.basket[i].countryId) * result.basket[i].qty)
             }
-            basketSend[i] = objItem;
+            basketSend[i] = JSON.stringify(objItem)
         }
-       let  basket= JSON.stringify(basketSend);
         let parmsSend = {
-                basket: basket,
+                basket: basketSend,
                 uuid: String(uuid),
                 user_id: String(window.sessionStorage.getItem("userID")),
                 transfer_amount_total: String(getTotalAmount())
