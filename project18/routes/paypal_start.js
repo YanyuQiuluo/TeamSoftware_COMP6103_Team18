@@ -78,7 +78,7 @@ router.post('/', async (req, res) => {
        }
        for (var i = 0; i < req.body.basket.length; i++) {
            to = req.body.basket[i];
-           console.log(to);
+           // console.log(to);
            const payment = await transaction.create({
                dataTime: getCurrentTime(),
                transfer_amount: to.transfer_amount,
